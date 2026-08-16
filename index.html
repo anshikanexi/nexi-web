@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexi — Your Life OS</title>
+  <meta name="description" content="Nexi is the AI Operating System for life. Design your future. Build skills. Live intentionally." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient">
+    <div class="orb-glow"></div>
+    <div class="noise"></div>
+  </div>
+
+  <nav class="nav glass">
+    <a href="/" class="logo">NEXI</a>
+    <div class="nav-links">
+      <a href="why.html">Why Nexi</a>
+      <a href="how.html">How It Works</a>
+      <a href="experience.html">Experience Nexi</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="#waitlist" class="cta-nav">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow champagne">Life Operating System</p>
+        <h1>Your life OS.<br/><span class="accent">Savage. Interconnected. Unstoppable.</span></h1>
+        <p class="sub">Design your future. Build skills across Prestige, Soul & Wealth. One intelligent system that actually knows you.</p>
+        <div class="hero-actions">
+          <a href="#waitlist" class="btn primary glass-btn">Join the Waitlist</a>
+          <a href="experience.html" class="btn secondary">Experience Nexi</a>
+        </div>
+      </div>
+      <div class="orb-container">
+        <div class="orb" id="nexi-orb" aria-hidden="true">
+          <div class="orb-core"></div>
+          <div class="orb-ring"></div>
+          <div class="orb-pulse"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof glass-panel">
+      <div class="proof-grid">
+        <div class="proof-item">
+          <span class="num">3</span>
+          <span class="label">Interconnected Engines</span>
+        </div>
+        <div class="proof-item">
+          <span class="num">1</span>
+          <span class="label">Intelligent Diagnosis</span>
+        </div>
+        <div class="proof-item">
+          <span class="num">∞</span>
+          <span class="label">Adaptive Next Moves</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="waitlist" class="waitlist-section">
+      <div class="waitlist-card glass">
+        <h2>Be first when Nexi opens.</h2>
+        <p>Name + email only. No spam. Launch prioritization for early members.</p>
+        <form id="waitlist-form" class="waitlist-form">
+          <input type="text" name="name" placeholder="Your name" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
+          <button type="submit" class="btn primary">Reserve my spot</button>
+        </form>
+        <p id="waitlist-status" class="status" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer glass">
+    <p>© 2026 Nexi. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="why.html">Why</a>
+      <a href="how.html">How</a>
+      <a href="experience.html">Experience</a>
+      <a href="referral.html">Referral</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
