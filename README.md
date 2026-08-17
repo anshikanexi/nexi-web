@@ -4,17 +4,18 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live target:** https://anshikanexi.github.io/nexi-web/ (enable GitHub Pages from main / root)
 
-## Status (16 Aug 2026)
+## Status (17 Aug 2026)
 
-- Home: hero + Siri-breath orb + glass nav + waitlist form + proof strip
-- Experience Nexi: skeleton page ready for interactive diagnosis flow
-- Design system: Navy / Titanium / Champagne / Teal, Cormorant + Raleway, heavy glass + subtle pulses
-- Supabase: existing project `wzygcmsikopblntwdqsv` — waitlist insert pending table + edge function
+- Home: hero + Siri-breath orb + glass nav + **live waitlist** (name + email only → `public.waitlist`)
+- Why Nexi: full doctrine page (triple lens, diagnosis-first, next-move, memory, anti-mediocre)
+- Experience Nexi: skeleton ready for interactive diagnosis flow
+- Design system: Navy / Titanium / Champagne / Teal, Cormorant + Raleway, heavy glass + reveal animations + soft pulses
+- Supabase: existing project `wzygcmsikopblntwdqsv` — waitlist table + RLS insert for anon live
 
 ## Pages roadmap
 
 - [x] Home
-- [ ] Why Nexi
+- [x] Why Nexi
 - [ ] How It Works
 - [x] Experience Nexi (skeleton)
 - [ ] Sample Result
