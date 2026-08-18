@@ -3,40 +3,617 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experience Nexi</title>
+  <title>Experience Nexi — Live Diagnosis</title>
+  <meta name="description" content="Talk to Nexi’s diagnosis engine. Sharp questions, triple-lens read, one next move." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .exp-hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6rem 5% 4rem; text-align: center; }
-    .exp-card { max-width: 640px; width: 100%; padding: 2.5rem; border-radius: 20px; }
-    .exp-card h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .exp-card p { color: var(--muted); margin-bottom: 2rem; }
-    .chat-shell { min-height: 280px; background: rgba(0,0,0,0.3); border-radius: 16px; padding: 1.5rem; text-align: left; margin-bottom: 1.5rem; border: 1px solid var(--glass-border); }
-    .placeholder-msg { color: var(--muted); font-size: 0.95rem; }
+    .exp-shell {
+      min-height: 100vh;
+      padding: 7.5rem 5% 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .exp-stage {
+      width: 100%;
+      max-width: 720px;
+      position: relative;
+    }
+    .exp-card {
+      border-radius: 24px;
+      padding: 2rem 2rem 1.75rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 0%, rgba(45,212,191,0.08), transparent 55%);
+      pointer-events: none;
+    }
+    .phase-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 0.85rem;
+    }
+    .exp-title {
+      font-size: clamp(1.85rem, 3.5vw, 2.4rem);
+      line-height: 1.15;
+      margin-bottom: 0.65rem;
+    }
+    .exp-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.75rem;
+      max-width: 34rem;
+    }
+    .thread {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      min-height: 200px;
+      max-height: min(52vh, 420px);
+      overflow-y: auto;
+      padding: 0.25rem 0.15rem 1rem;
+      margin-bottom: 1rem;
+      scroll-behavior: smooth;
+    }
+    .thread::-webkit-scrollbar { width: 4px; }
+    .thread::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.12);
+      border-radius: 4px;
+    }
+    .msg {
+      max-width: 92%;
+      padding: 0.85rem 1.1rem;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      animation: msg-in 0.45s var(--ease) both;
+    }
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: none; }
+    }
+    .msg.nexi {
+      align-self: flex-start;
+      background: rgba(45, 212, 191, 0.08);
+      border: 1px solid rgba(45, 212, 191, 0.18);
+    }
+    .msg.user {
+      align-self: flex-end;
+      background: rgba(232, 213, 181, 0.1);
+      border: 1px solid rgba(232, 213, 181, 0.22);
+    }
+    .msg .who {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+      opacity: 0.7;
+    }
+    .msg.nexi .who { color: var(--teal); }
+    .msg.user .who { color: var(--champagne); }
+    .composer {
+      display: flex;
+      gap: 0.65rem;
+      align-items: stretch;
+    }
+    .composer input, .composer textarea {
+      flex: 1;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 0.95rem 1.1rem;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      resize: none;
+      min-height: 52px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .composer input:focus, .composer textarea:focus {
+      border-color: rgba(45, 212, 191, 0.4);
+      box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.08);
+    }
+    .composer button {
+      border-radius: 14px;
+      padding: 0 1.35rem;
+      white-space: nowrap;
+    }
+    .typing {
+      display: inline-flex;
+      gap: 5px;
+      align-items: center;
+      padding: 0.2rem 0;
+    }
+    .typing i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: 0.5;
+      animation: type-bounce 1.2s ease-in-out infinite;
+    }
+    .typing i:nth-child(2) { animation-delay: 0.15s; }
+    .typing i:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes type-bounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40% { transform: translateY(-4px); opacity: 1; }
+    }
+    .result-panel {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      animation: msg-in 0.55s var(--ease) both;
+    }
+    .result-panel.visible { display: flex; }
+    .diag-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    .diag-cell {
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid var(--glass-border);
+    }
+    .diag-cell.span2 { grid-column: 1 / -1; }
+    .diag-cell .k {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .diag-cell .v {
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+    .mission-card {
+      padding: 1.35rem 1.4rem;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(45,212,191,0.1), rgba(232,213,181,0.05));
+      border: 1px solid rgba(45, 212, 191, 0.28);
+      position: relative;
+      overflow: hidden;
+    }
+    .mission-card::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(45,212,191,0.2), transparent 70%);
+      pointer-events: none;
+    }
+    .mission-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.4rem;
+    }
+    .mission-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1rem;
+    }
+    .chip {
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-border);
+      color: var(--titanium);
+    }
+    .mission-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .mission-steps li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .mission-steps li span {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(45,212,191,0.4);
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      color: var(--teal);
+    }
+    .belief-line {
+      font-size: 0.92rem;
+      color: var(--champagne);
+      font-style: italic;
+      padding: 0.85rem 1rem;
+      border-left: 2px solid rgba(232,213,181,0.45);
+      background: rgba(232,213,181,0.04);
+      border-radius: 0 12px 12px 0;
+    }
+    .result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+    .status-bar .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 10px var(--teal);
+      animation: soft-pulse 2.5s ease-in-out infinite;
+    }
+    .gate {
+      text-align: center;
+      padding: 1rem 0 0.5rem;
+    }
+    .gate h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .gate p {
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .err {
+      color: #FF8A8A;
+      font-size: 0.88rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 640px) {
+      .diag-grid { grid-template-columns: 1fr; }
+      .exp-card { padding: 1.5rem 1.25rem; }
+      .composer { flex-direction: column; }
+      .composer button { width: 100%; padding: 0.95rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="ambient"><div class="orb-glow"></div><div class="noise"></div></div>
+  <div class="ambient">
+    <div class="orb-glow"></div>
+    <div class="noise"></div>
+  </div>
+
   <nav class="nav glass">
     <a href="index.html" class="logo">NEXI</a>
     <div class="nav-links">
       <a href="why.html">Why Nexi</a>
       <a href="how.html">How It Works</a>
       <a href="experience.html" class="active">Experience Nexi</a>
+      <a href="blueprint.html">Blueprint</a>
       <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
     </div>
   </nav>
-  <main class="exp-hero">
-    <div class="exp-card glass">
-      <p class="eyebrow champagne">Interactive</p>
-      <h1>Experience Nexi</h1>
-      <p>Talk to the real diagnosis engine. High-quality system prompts already live in Supabase. Sharp, adaptive next moves.</p>
-      <div class="chat-shell">
-        <p class="placeholder-msg">Interactive flow wiring next — onboarding-decision + nexi-chat edge functions + glass assembly animation. Pixel-close to the product feel.</p>
+
+  <main class="exp-shell">
+    <div class="exp-stage">
+      <div class="exp-card glass" id="exp-root">
+        <div id="phase-gate" class="gate">
+          <p class="phase-label">Live engine</p>
+          <h2 class="exp-title">Experience the diagnosis</h2>
+          <p class="exp-sub" style="margin-left:auto;margin-right:auto">Same loop the product uses: sharp questions, triple-lens read, one next move. Guest session — nothing stored under your real account.</p>
+          <button type="button" class="btn primary" id="btn-start">Start diagnosis</button>
+          <p class="err" id="gate-err" hidden></p>
+        </div>
+
+        <div id="phase-chat" hidden>
+          <div class="status-bar">
+            <span class="pulse-dot"></span>
+            <span id="status-text">Nexi is listening</span>
+          </div>
+          <p class="phase-label" id="chat-phase-label">Investigate</p>
+          <h2 class="exp-title" id="chat-title">What do you want?</h2>
+          <p class="exp-sub" id="chat-sub">State one concrete north star. Nexi will pressure-test it with a few facts.</p>
+          <div class="thread" id="thread" aria-live="polite"></div>
+          <form class="composer" id="composer">
+            <textarea id="user-input" rows="1" placeholder="Type your answer…" required autocomplete="off"></textarea>
+            <button type="submit" class="btn primary" id="btn-send">Send</button>
+          </form>
+          <p class="err" id="chat-err" hidden></p>
+        </div>
+
+        <div id="phase-result" class="result-panel" hidden>
+          <p class="phase-label">Diagnosis complete</p>
+          <h2 class="exp-title" id="result-title">Your next move</h2>
+          <div class="diag-grid" id="diag-grid"></div>
+          <div class="mission-card" id="mission-card"></div>
+          <div class="belief-line" id="belief-line"></div>
+          <div class="result-actions">
+            <button type="button" class="btn primary" id="btn-again">Run another diagnosis</button>
+            <a href="index.html#waitlist" class="btn secondary">Join the waitlist</a>
+          </div>
+        </div>
       </div>
-      <a href="index.html" class="btn secondary">Back home</a>
     </div>
   </main>
+
+  <footer class="footer glass">
+    <p>© 2026 Nexi. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="why.html">Why</a>
+      <a href="how.html">How</a>
+      <a href="experience.html">Experience</a>
+      <a href="referral.html">Referral</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+  <script>
+(function () {
+  const SUPABASE_URL = 'https://wzygcmsikopblntwdqsv.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6eWdjbXNpa29wYmxudHdkcXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4NTE2MDAsImV4cCI6MjEwMDQyNzYwMH0.tykWpPXzB-cMIoZSfQKByCuyZ8ipUs2RvSwMz6xaZUs';
+  const FN_URL = SUPABASE_URL + '/functions/v1/onboarding-decision';
+
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+  const el = {
+    gate: document.getElementById('phase-gate'),
+    chat: document.getElementById('phase-chat'),
+    result: document.getElementById('phase-result'),
+    thread: document.getElementById('thread'),
+    composer: document.getElementById('composer'),
+    input: document.getElementById('user-input'),
+    btnStart: document.getElementById('btn-start'),
+    btnSend: document.getElementById('btn-send'),
+    btnAgain: document.getElementById('btn-again'),
+    gateErr: document.getElementById('gate-err'),
+    chatErr: document.getElementById('chat-err'),
+    statusText: document.getElementById('status-text'),
+    chatTitle: document.getElementById('chat-title'),
+    chatSub: document.getElementById('chat-sub'),
+    chatPhase: document.getElementById('chat-phase-label'),
+    diagGrid: document.getElementById('diag-grid'),
+    missionCard: document.getElementById('mission-card'),
+    beliefLine: document.getElementById('belief-line'),
+    resultTitle: document.getElementById('result-title'),
+  };
+
+  let state = {
+    sessionId: null,
+    phase: 'gate',
+    busy: false,
+  };
+
+  function showPhase(name) {
+    el.gate.hidden = name !== 'gate';
+    el.chat.hidden = name !== 'chat';
+    el.result.hidden = name !== 'result';
+    el.result.classList.toggle('visible', name === 'result');
+    state.phase = name;
+  }
+
+  function addMsg(role, text) {
+    const div = document.createElement('div');
+    div.className = 'msg ' + role;
+    const who = document.createElement('span');
+    who.className = 'who';
+    who.textContent = role === 'nexi' ? 'Nexi' : 'You';
+    div.appendChild(who);
+    const body = document.createElement('div');
+    body.textContent = text;
+    div.appendChild(body);
+    el.thread.appendChild(div);
+    el.thread.scrollTop = el.thread.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const div = document.createElement('div');
+    div.className = 'msg nexi';
+    div.id = 'typing-indicator';
+    div.innerHTML = '<span class="who">Nexi</span><span class="typing"><i></i><i></i><i></i></span>';
+    el.thread.appendChild(div);
+    el.thread.scrollTop = el.thread.scrollHeight;
+  }
+
+  function removeTyping() {
+    const t = document.getElementById('typing-indicator');
+    if (t) t.remove();
+  }
+
+  function setBusy(v) {
+    state.busy = v;
+    el.btnSend.disabled = v;
+    el.input.disabled = v;
+    el.btnStart.disabled = v;
+    el.statusText.textContent = v ? 'Nexi is thinking…' : 'Nexi is listening';
+  }
+
+  async function ensureGuest() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) return session;
+    const { data, error } = await sb.auth.signInAnonymously();
+    if (error) throw error;
+    return data.session;
+  }
+
+  async function callDecision(payload) {
+    const session = await ensureGuest();
+    const res = await fetch(FN_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + session.access_token,
+        'apikey': SUPABASE_ANON,
+      },
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const msg = json.error || json.detail || ('Request failed (' + res.status + ')');
+      throw new Error(msg);
+    }
+    return json;
+  }
+
+  function renderResult(data) {
+    const d = data.diagnosis || {};
+    const a = data.next_best_action || {};
+
+    el.resultTitle.textContent = a.title || 'Your next move';
+
+    const cells = [
+      { k: 'Want', v: d.want, span: true },
+      { k: "What's going on", v: d.whats_going_on, span: true },
+      { k: 'Primary lens', v: (d.lens_label || d.lens || '—') },
+      { k: 'Not doing today', v: d.not_doing_today || '—' },
+    ];
+    if (d.collapse) cells.push({ k: 'Where it collapses', v: d.collapse, span: true });
+    if (d.better_path) cells.push({ k: 'Better path', v: d.better_path, span: true });
+
+    el.diagGrid.innerHTML = cells.map((c) =>
+      '<div class="diag-cell' + (c.span ? ' span2' : '') + '"><div class="k">' + esc(c.k) + '</div><div class="v">' + esc(c.v || '—') + '</div></div>'
+    ).join('');
+
+    const steps = Array.isArray(a.steps) ? a.steps : [];
+    el.missionCard.innerHTML =
+      '<h3>' + esc(a.title || 'Mission') + '</h3>' +
+      '<p style="color:var(--muted);font-size:0.92rem">' + esc(a.why || '') + '</p>' +
+      '<div class="mission-meta">' +
+        '<span class="chip">' + esc(a.type || 'execute') + '</span>' +
+        '<span class="chip">' + esc(String(a.est_minutes || 30)) + ' min</span>' +
+        '<span class="chip">Done when: ' + esc(a.done_when || '—') + '</span>' +
+      '</div>' +
+      (steps.length
+        ? '<ul class="mission-steps">' + steps.map((s, i) =>
+            '<li><span>' + (i + 1) + '</span><div>' + esc(s) + '</div></li>'
+          ).join('') + '</ul>'
+        : '');
+
+    const belief = data.belief || data.identity_line || data.tomorrow_focus;
+    el.beliefLine.textContent = belief
+      ? (data.belief ? '“' + belief + '”' : belief)
+      : 'Evidence compounds. Run the move.';
+    if (data.tomorrow_focus) {
+      el.beliefLine.textContent += ' · Tomorrow: ' + data.tomorrow_focus;
+    }
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&')
+      .replace(/</g, '<')
+      .replace(/>/g, '>')
+      .replace(/"/g, '"');
+  }
+
+  async function startSession() {
+    el.gateErr.hidden = true;
+    setBusy(true);
+    try {
+      await ensureGuest();
+      el.thread.innerHTML = '';
+      state.sessionId = null;
+      showPhase('chat');
+      el.chatPhase.textContent = 'North star';
+      el.chatTitle.textContent = 'What do you want?';
+      el.chatSub.textContent = 'One concrete destination. Nexi will ask only for facts that matter.';
+      el.input.placeholder = 'e.g. Ship a paid AI side project in 90 days';
+      el.input.focus();
+      addMsg('nexi', 'State the one outcome you actually want. Concrete. No vision-board language.');
+    } catch (e) {
+      console.error(e);
+      el.gateErr.hidden = false;
+      el.gateErr.textContent = e.message || 'Could not start guest session.';
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleSend(text) {
+    if (!text || state.busy) return;
+    el.chatErr.hidden = true;
+    addMsg('user', text);
+    el.input.value = '';
+    setBusy(true);
+    addTyping();
+
+    try {
+      let payload;
+      if (!state.sessionId) {
+        payload = { north_star_text: text };
+      } else {
+        payload = { session_id: state.sessionId, answer: text };
+      }
+
+      const data = await callDecision(payload);
+      removeTyping();
+      state.sessionId = data.session_id;
+
+      if (data.mode === 'ask') {
+        el.chatPhase.textContent = 'Investigate';
+        el.chatTitle.textContent = 'One more fact';
+        el.chatSub.textContent = 'Nexi is mapping the bottleneck — answer with a concrete detail.';
+        el.input.placeholder = 'Your answer…';
+        if (data.reaction) addMsg('nexi', data.reaction);
+        addMsg('nexi', data.next_question || 'What have you already tried?');
+      } else {
+        if (data.reaction) addMsg('nexi', data.reaction);
+        addMsg('nexi', 'Diagnosis locked. Here is the move.');
+        renderResult(data);
+        setTimeout(() => showPhase('result'), 480);
+      }
+    } catch (e) {
+      removeTyping();
+      console.error(e);
+      el.chatErr.hidden = false;
+      el.chatErr.textContent = e.message || 'Something went wrong. Try again.';
+    } finally {
+      setBusy(false);
+      el.input.focus();
+    }
+  }
+
+  el.btnStart.addEventListener('click', startSession);
+  el.btnAgain.addEventListener('click', () => {
+    state.sessionId = null;
+    showPhase('gate');
+  });
+
+  el.composer.addEventListener('submit', (e) => {
+    e.preventDefault();
+    handleSend(el.input.value.trim());
+  });
+
+  el.input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend(el.input.value.trim());
+    }
+  });
+})();
+  </script>
 </body>
 </html>
