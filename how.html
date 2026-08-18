@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — Nexi Life OS</title>
+  <meta name="description" content="How Nexi works: diagnosis-first conversation, triple lens, one next move, compounding memory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .flow-rail {
+      max-width: 720px;
+      margin: 0 auto 5rem;
+      padding: 0 5%;
+      position: relative;
+    }
+    .flow-rail::before {
+      content: '';
+      position: absolute;
+      left: calc(5% + 11px);
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(45,212,191,0.45), rgba(232,213,181,0.15), transparent);
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 1.35rem;
+      margin-bottom: 2.25rem;
+      position: relative;
+    }
+    .flow-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(7,3,15,0.9);
+      border: 1px solid rgba(45,212,191,0.5);
+      box-shadow: 0 0 18px rgba(45,212,191,0.25);
+      display: grid;
+      place-items: center;
+      z-index: 1;
+    }
+    .flow-dot span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: soft-pulse 3.2s ease-in-out infinite;
+    }
+    .flow-body {
+      padding: 1.35rem 1.5rem;
+      border-radius: 16px;
+    }
+    .flow-body h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.4rem;
+    }
+    .flow-body p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .flow-meta {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--champagne);
+    }
+    .lens-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 5%;
+    }
+    .lens-card {
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .lens-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .lens-card p { color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 700px) {
+      .lens-row { grid-template-columns: 1fr; }
+      .flow-rail::before { left: calc(5% + 11px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient">
+    <div class="orb-glow"></div>
+    <div class="noise"></div>
+  </div>
+
+  <nav class="nav glass">
+    <a href="index.html" class="logo">NEXI</a>
+    <div class="nav-links">
+      <a href="why.html">Why Nexi</a>
+      <a href="how.html" class="active">How It Works</a>
+      <a href="experience.html">Experience Nexi</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow champagne">Operating model</p>
+      <h1>Diagnosis first.<br/><span class="accent">One move. Compounding memory.</span></h1>
+      <p class="lead">Nexi is not a chatbot with goals bolted on. It runs a tight loop: extract facts, name the real bottleneck across three engines, prescribe a single legitimate action, then remember what worked.</p>
+    </section>
+
+    <div class="lens-row">
+      <article class="lens-card glass reveal-ready">
+        <div class="icon-dot" style="margin: 0 auto 1rem;"></div>
+        <h3>Prestige</h3>
+        <p>Skill, proof, reputation, and the evidence that compounds into optionality.</p>
+      </article>
+      <article class="lens-card glass reveal-ready">
+        <div class="icon-dot" style="margin: 0 auto 1rem;"></div>
+        <h3>Wealth</h3>
+        <p>Cash, leverage, and resource constraints that decide what is actually possible this week.</p>
+      </article>
+      <article class="lens-card glass reveal-ready">
+        <div class="icon-dot" style="margin: 0 auto 1rem;"></div>
+        <h3>Soul</h3>
+        <p>Energy, meaning, recovery, and the identity load that makes execution sustainable.</p>
+      </article>
+    </div>
+
+    <div class="flow-rail">
+      <div class="flow-step reveal-ready">
+        <div class="flow-dot"><span></span></div>
+        <div class="flow-body glass">
+          <h3>State the north star</h3>
+          <p>One concrete desire in plain language. Not a vision board — a destination Nexi can pressure-test against reality.</p>
+          <div class="flow-meta">Input · fact</div>
+        </div>
+      </div>
+      <div class="flow-step reveal-ready">
+        <div class="flow-dot"><span></span></div>
+        <div class="flow-body glass">
+          <h3>Investigate with sharp questions</h3>
+          <p>Two or three questions max. Grade, hours free, money, what was already tried, real deadline. No personality quizzes.</p>
+          <div class="flow-meta">Ask mode · ≤14 words</div>
+        </div>
+      </div>
+      <div class="flow-step reveal-ready">
+        <div class="flow-dot"><span></span></div>
+        <div class="flow-body glass">
+          <h3>Name the diagnosis</h3>
+          <p>What is going on, which lens is primary, where the path collapses, and what is not worth doing today.</p>
+          <div class="flow-meta">Act mode · triple lens</div>
+        </div>
+      </div>
+      <div class="flow-step reveal-ready">
+        <div class="flow-dot"><span></span></div>
+        <div class="flow-body glass">
+          <h3>Ship one next move</h3>
+          <p>Verb-first title. 15–45 minutes. Clear done-when. Two to four micro-steps. A fast legitimate win that becomes identity evidence.</p>
+          <div class="flow-meta">Mission · today only</div>
+        </div>
+      </div>
+      <div class="flow-step reveal-ready">
+        <div class="flow-dot"><span></span></div>
+        <div class="flow-body glass">
+          <h3>Seed memory</h3>
+          <p>Goals, constraints, beliefs, and bottleneck hypotheses land in the life model. Tomorrow’s questions already know the failures.</p>
+          <div class="flow-meta">Compound · graph</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-cta">
+      <a href="experience.html" class="btn primary">Run a live diagnosis</a>
+      <a href="index.html#waitlist" class="btn secondary" style="margin-left:0.75rem">Join the waitlist</a>
+    </section>
+  </main>
+
+  <footer class="footer glass">
+    <p>© 2026 Nexi. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="why.html">Why</a>
+      <a href="how.html">How</a>
+      <a href="experience.html">Experience</a>
+      <a href="referral.html">Referral</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const els = document.querySelectorAll('.reveal-ready');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add('revealed');
+              io.unobserve(en.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('revealed'));
+      }
+    });
+  </script>
+</body>
+</html>
