@@ -5,13 +5,15 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 **Intended live:** https://anshikanexi.github.io/nexi-web/  
 *(GitHub Pages not yet enabled — enable in Settings → Pages → Deploy from `main` / root)*
 
-## Status (19 Aug 2026)
+## Status (20 Aug 2026)
 
 - **Home** — hero + breathing orb + glass nav + live waitlist (name + email → `public.waitlist`)
 - **Why Nexi** — doctrine (triple lens, diagnosis-first, next-move, memory, anti-mediocre)
 - **How It Works** — full operating-model page (lens cards + 5-step diagnosis rail)
 - **Experience Nexi** — **live interactive diagnosis** wired to `onboarding-decision` edge function via anonymous auth; ask → act loop with glass thread UI, mission card assembly, belief line
 - **Sample Result** — static ultra-premium showcase of a completed diagnosis (staggered glass card assembly, mission pulse, belief line, motion-rich reveal)
+- **Referral** — personal invite link + code gen from waitlist email, glass share card, perk stack, circle rules
+- **Leaderboard** — ranked glass rows with staggered reveal, top-3 highlight, preview ranks until live tracking
 - Design system: Navy / Titanium / Champagne / Teal, Cormorant + Raleway, heavy glass + reveal + pulses
 - Supabase: existing project `wzygcmsikopblntwdqsv`
 
@@ -22,8 +24,8 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 - [x] How It Works
 - [x] Experience Nexi (live engine)
 - [x] Sample Result
-- [ ] Referral
-- [ ] Leaderboard
+- [x] Referral
+- [x] Leaderboard
 - [ ] Blueprint
 - [ ] Intelligence
 - [ ] Journey
