@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint — Nexi Life OS</title>
+  <meta name="description" content="Nexi engineers your optimal path from where you are today. Prestige, Wealth, Soul tracks. One executable next step. No terminal dead ends." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .bp-shell {
+      padding: 0 0 4rem;
+    }
+    .bp-hero {
+      padding: 9rem 5% 3.5rem;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .bp-hero h1 {
+      font-size: clamp(2.5rem, 4.8vw, 3.75rem);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .bp-hero .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin-bottom: 2rem;
+    }
+    .doctrine-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+    .doctrine-chip {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(45, 212, 191, 0.08);
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      color: var(--teal);
+    }
+
+    .assembly-stage {
+      max-width: 780px;
+      margin: 0 auto 5rem;
+      padding: 0 5%;
+    }
+    .assembly-card {
+      border-radius: 24px;
+      padding: 2rem 1.85rem 1.85rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .assembly-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 15% 0%, rgba(45,212,191,0.09), transparent 55%);
+      pointer-events: none;
+    }
+    .assembly-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 0.65rem;
+    }
+    .assembly-title {
+      font-size: clamp(1.55rem, 3vw, 1.95rem);
+      margin-bottom: 0.4rem;
+    }
+    .assembly-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+      max-width: 34rem;
+    }
+
+    .step-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      margin-bottom: 1.75rem;
+    }
+    .step-rail::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 14px;
+      bottom: 14px;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(45,212,191,0.5), rgba(232,213,181,0.2), transparent);
+    }
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 1.1rem;
+      padding: 0.55rem 0;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+    }
+    .step-row.assembled {
+      opacity: 1;
+      transform: none;
+    }
+    .step-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(7,3,15,0.95);
+      border: 1px solid rgba(45,212,191,0.45);
+      display: grid;
+      place-items: center;
+      z-index: 1;
+      position: relative;
+    }
+    .step-dot span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 10px rgba(45,212,191,0.55);
+      animation: soft-pulse 3s ease-in-out infinite;
+    }
+    .step-body {
+      padding: 0.35rem 0 0.15rem;
+    }
+    .step-body strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+      color: var(--text);
+    }
+    .step-body span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .track-cell {
+      padding: 1.1rem 1.15rem;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid var(--glass-border);
+      opacity: 0;
+      transform: translateY(16px) scale(0.97);
+      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease), border-color 0.3s;
+    }
+    .track-cell.assembled {
+      opacity: 1;
+      transform: none;
+    }
+    .track-cell:hover {
+      border-color: rgba(45,212,191,0.25);
+    }
+    .track-cell .tk {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .track-cell .tv {
+      font-size: 0.95rem;
+      line-height: 1.35;
+      color: var(--titanium);
+    }
+    .track-cell ul {
+      list-style: none;
+      margin-top: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .track-cell li {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-left: 0.85rem;
+      position: relative;
+    }
+    .track-cell li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(45,212,191,0.55);
+    }
+
+    .first-move {
+      padding: 1.35rem 1.4rem;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(45,212,191,0.1), rgba(232,213,181,0.05));
+      border: 1px solid rgba(45,212,191,0.28);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+    }
+    .first-move.assembled {
+      opacity: 1;
+      transform: none;
+    }
+    .first-move::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(45,212,191,0.2), transparent 70%);
+      pointer-events: none;
+      animation: mission-glow 5s ease-in-out infinite;
+    }
+    @keyframes mission-glow {
+      0%, 100% { opacity: 0.65; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+    .first-move h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.35rem;
+      position: relative;
+      z-index: 1;
+    }
+    .first-move p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+    .first-move .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+    .chip {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-border);
+      color: var(--titanium);
+    }
+
+    .principles {
+      max-width: 1000px;
+      margin: 0 auto 5rem;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .principle-card {
+      padding: 1.65rem 1.5rem;
+      border-radius: var(--radius);
+      transition: transform 0.4s var(--ease), border-color 0.3s;
+    }
+    .principle-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(45,212,191,0.22);
+    }
+    .principle-card .icon-dot {
+      margin-bottom: 1.1rem;
+    }
+    .principle-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .principle-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 1.75rem;
+      padding: 0 5%;
+    }
+
+    @media (max-width: 700px) {
+      .track-grid { grid-template-columns: 1fr; }
+      .assembly-card { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient">
+    <div class="orb-glow"></div>
+    <div class="noise"></div>
+  </div>
+
+  <nav class="nav glass">
+    <a href="index.html" class="logo">NEXI</a>
+    <div class="nav-links">
+      <a href="why.html">Why Nexi</a>
+      <a href="how.html">How It Works</a>
+      <a href="blueprint.html" class="active">Blueprint</a>
+      <a href="experience.html">Experience Nexi</a>
+      <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="bp-shell">
+    <section class="bp-hero">
+      <p class="eyebrow champagne">Engineering layer</p>
+      <h1>Your optimal path<br/><span class="accent">from where you are today.</span></h1>
+      <p class="lead">The Blueprint is not a vision board. It is a live engineering document: core goal, life areas, constraints, three tracks, and one executable step sized for today. Ambition is never dismissed. Reality is never ignored.</p>
+      <div class="doctrine-strip">
+        <span class="doctrine-chip">No terminal dead ends</span>
+        <span class="doctrine-chip">Honest constraints</span>
+        <span class="doctrine-chip">Intent-preserving paths</span>
+        <span class="doctrine-chip">Highest-probability progress</span>
+      </div>
+    </section>
+
+    <div class="assembly-stage">
+      <div class="assembly-card glass" id="assembly-root">
+        <p class="assembly-label">Sample blueprint · locked</p>
+        <h2 class="assembly-title">Ship a paid AI side project in 90 days</h2>
+        <p class="assembly-sub">Engineered from current skills, hours free, and zero existing customers. Prestige secondary until first revenue proof.</p>
+
+        <div class="step-rail" id="step-rail">
+          <div class="step-row" data-delay="0">
+            <div class="step-dot"><span></span></div>
+            <div class="step-body">
+              <strong>Initialize core goal</strong>
+              <span>North star pressure-tested into one concrete destination</span>
+            </div>
+          </div>
+          <div class="step-row" data-delay="80">
+            <div class="step-dot"><span></span></div>
+            <div class="step-body">
+              <strong>Build life areas</strong>
+              <span>Prestige · Wealth · Soul relevance scored against the goal</span>
+            </div>
+          </div>
+          <div class="step-row" data-delay="160">
+            <div class="step-dot"><span></span></div>
+            <div class="step-body">
+              <strong>Map priorities &amp; constraints</strong>
+              <span>Time, money, health, support — honest, not aspirational</span>
+            </div>
+          </div>
+          <div class="step-row" data-delay="240">
+            <div class="step-dot"><span></span></div>
+            <div class="step-body">
+              <strong>Balance the three tracks</strong>
+              <span>Concrete steps per engine, ordered from today outward</span>
+            </div>
+          </div>
+          <div class="step-row" data-delay="320">
+            <div class="step-dot"><span></span></div>
+            <div class="step-body">
+              <strong>Design the day</strong>
+              <span>Single highest-leverage action finishable before midnight</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="track-grid" id="track-grid">
+          <div class="track-cell" data-delay="0">
+            <div class="tk">Prestige</div>
+            <div class="tv">Proof after pay</div>
+            <ul>
+              <li>Ship v0 that solves one narrow pain</li>
+              <li>Capture before/after for portfolio</li>
+              <li>Public write-up only after first $</li>
+            </ul>
+          </div>
+          <div class="track-cell" data-delay="100">
+            <div class="tk">Wealth</div>
+            <div class="tv">Primary bottleneck</div>
+            <ul>
+              <li>5 outreach messages this week</li>
+              <li>One paid pilot offer, fixed scope</li>
+              <li>Price before polish</li>
+            </ul>
+          </div>
+          <div class="track-cell" data-delay="200">
+            <div class="tk">Soul</div>
+            <div class="tv">Sustainable load</div>
+            <ul>
+              <li>Protect 90-min deep block daily</li>
+              <li>No feature rabbit holes</li>
+              <li>Log energy after outreach</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="first-move" id="first-move">
+          <h3>Message 5 people who already feel the pain</h3>
+          <p>Highest-leverage move under real constraints. Distribution before another architecture pass.</p>
+          <div class="meta">
+            <span class="chip">wealth track</span>
+            <span class="chip">35 min</span>
+            <span class="chip">Done when: 5 personal notes sent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label">Doctrine that runs the engine</p>
+    <div class="principles">
+      <article class="principle-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>Never dismiss ambition</h3>
+        <p>Nexi never opens with “unrealistic.” It engineers from reality while protecting the intent of the dream.</p>
+      </article>
+      <article class="principle-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>Optimal = honest probability</h3>
+        <p>The path chosen is the highest-probability route under actual constraints — time, money, skill, energy.</p>
+      </article>
+      <article class="principle-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>No terminal dead ends</h3>
+        <p>If the exact destination cannot be guaranteed, Nexi still produces an intent-preserving next step and states assumptions.</p>
+      </article>
+      <article class="principle-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>One executable today</h3>
+        <p>Every blueprint ends in a single action finishable today. Verb-first. Done-when clear. Evidence compounds.</p>
+      </article>
+      <article class="principle-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>Three engines, one graph</h3>
+        <p>Prestige, Wealth, and Soul are scored, prioritized, and balanced. Bottlenecks surface where the engines collide.</p>
+      </article>
+      <article class="principle-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>Memory that upgrades the path</h3>
+        <p>Constraints, failed strategies, and wins land in the life model. Tomorrow’s blueprint already knows what broke.</p>
+      </article>
+    </div>
+
+    <section class="section-cta">
+      <a href="experience.html" class="btn primary">Experience the diagnosis</a>
+      <a href="sample-result.html" class="btn secondary" style="margin-left:0.75rem">See a sample result</a>
+    </section>
+  </main>
+
+  <footer class="footer glass">
+    <p>© 2026 Nexi. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="why.html">Why</a>
+      <a href="how.html">How</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="experience.html">Experience</a>
+      <a href="sample-result.html">Sample</a>
+      <a href="referral.html">Referral</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const steps = document.querySelectorAll('#step-rail .step-row');
+      const tracks = document.querySelectorAll('#track-grid .track-cell');
+      const first = document.getElementById('first-move');
+
+      steps.forEach((row) => {
+        const d = parseInt(row.dataset.delay || '0', 10);
+        setTimeout(() => row.classList.add('assembled'), 220 + d);
+      });
+
+      tracks.forEach((cell) => {
+        const d = parseInt(cell.dataset.delay || '0', 10);
+        setTimeout(() => cell.classList.add('assembled'), 720 + d);
+      });
+
+      setTimeout(() => first.classList.add('assembled'), 1150);
+
+      const cards = document.querySelectorAll('.reveal-ready');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add('revealed');
+              io.unobserve(en.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        cards.forEach((el) => io.observe(el));
+      } else {
+        cards.forEach((el) => el.classList.add('revealed'));
+      }
+    });
+  </script>
+</body>
+</html>
