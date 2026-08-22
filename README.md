@@ -3,18 +3,20 @@
 Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Intended live:** https://anshikanexi.github.io/nexi-web/  
-*(GitHub Pages not yet enabled — enable in Settings → Pages → Deploy from `main` / root)*
+*(Enable GitHub Pages: Settings → Pages → Deploy from `main` / root)*
 
-## Status (21 Aug 2026)
+## Status (22 Aug 2026)
 
 - **Home** — hero + breathing orb + glass nav + live waitlist (name + email → `public.waitlist`)
 - **Why Nexi** — doctrine (triple lens, diagnosis-first, next-move, memory, anti-mediocre)
 - **How It Works** — full operating-model page (lens cards + 5-step diagnosis rail)
-- **Blueprint** — engineering-layer showcase: doctrine chips, staggered step rail, triple-track assembly, first executable move (matches `engineering-blueprint` edge function)
+- **Blueprint** — engineering-layer showcase: doctrine chips, staggered step rail, triple-track assembly, first executable move
+- **Intelligence** — brain doctrine: operating loop assembly, capability grid (memory / adaptation / honesty / evidence), anti-mediocre principles
+- **Journey** — arc from waitlist → first diagnosis → day-one mission → compound memory → evidence-gated engines; week/month timeline
 - **Experience Nexi** — **live interactive diagnosis** wired to `onboarding-decision` edge function via anonymous auth; ask → act loop with glass thread UI, mission card assembly, belief line
-- **Sample Result** — static ultra-premium showcase of a completed diagnosis (staggered glass card assembly, mission pulse, belief line, motion-rich reveal)
-- **Referral** — personal invite link + code gen from waitlist email, glass share card, perk stack, circle rules
-- **Leaderboard** — ranked glass rows with staggered reveal, top-3 highlight, preview ranks until live tracking
+- **Sample Result** — static ultra-premium showcase of a completed diagnosis
+- **Referral** — personal invite link + code gen from waitlist email, glass share card, perk stack
+- **Leaderboard** — ranked glass rows with staggered reveal, top-3 highlight
 - Design system: Navy / Titanium / Champagne / Teal, Cormorant + Raleway, heavy glass + reveal + pulses
 - Supabase: existing project `wzygcmsikopblntwdqsv`
 
@@ -28,8 +30,8 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 - [x] Referral
 - [x] Leaderboard
 - [x] Blueprint
-- [ ] Intelligence
-- [ ] Journey
+- [x] Intelligence
+- [x] Journey
 
 ## Waitlist rule
 
