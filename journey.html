@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journey — Nexi Life OS</title>
+  <meta name="description" content="From waitlist to compound identity: the Nexi journey. First diagnosis, first mission, memory that upgrades, engines that unlock." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .journey-shell { padding-bottom: 4rem; }
+    .journey-hero {
+      padding: 9rem 5% 3rem;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .journey-hero h1 {
+      font-size: clamp(2.5rem, 4.8vw, 3.75rem);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .journey-hero .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin-bottom: 2rem;
+    }
+    .phase-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .phase-chip {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(232, 213, 181, 0.08);
+      border: 1px solid rgba(232, 213, 181, 0.22);
+      color: var(--champagne);
+    }
+
+    .path-stage {
+      max-width: 780px;
+      margin: 0 auto 4.5rem;
+      padding: 0 5%;
+    }
+    .path-card {
+      border-radius: 24px;
+      padding: 2rem 1.85rem 1.85rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), border-color 0.3s;
+    }
+    .path-card.assembled {
+      opacity: 1;
+      transform: none;
+    }
+    .path-card:hover {
+      border-color: rgba(45, 212, 191, 0.22);
+    }
+    .path-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 12% 0%, rgba(45,212,191,0.07), transparent 50%);
+      pointer-events: none;
+    }
+    .path-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 0.55rem;
+    }
+    .path-card h2 {
+      font-size: clamp(1.4rem, 2.8vw, 1.75rem);
+      margin-bottom: 0.45rem;
+    }
+    .path-card > p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.15rem;
+      max-width: 36rem;
+    }
+    .path-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .chip {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--glass-border);
+      color: var(--titanium);
+    }
+    .chip.teal {
+      background: rgba(45, 212, 191, 0.1);
+      border-color: rgba(45, 212, 191, 0.28);
+      color: var(--teal);
+    }
+
+    .timeline-rail {
+      max-width: 780px;
+      margin: 0 auto 5rem;
+      padding: 0 5%;
+      position: relative;
+    }
+    .timeline-rail::before {
+      content: '';
+      position: absolute;
+      left: calc(5% + 11px);
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(45,212,191,0.45), rgba(232,213,181,0.2), transparent);
+    }
+    .tl-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 1.15rem;
+      padding: 0.7rem 0;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+    }
+    .tl-row.assembled {
+      opacity: 1;
+      transform: none;
+    }
+    .tl-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(7,3,15,0.95);
+      border: 1px solid rgba(45,212,191,0.45);
+      display: grid;
+      place-items: center;
+      z-index: 1;
+      position: relative;
+    }
+    .tl-dot span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 10px rgba(45,212,191,0.55);
+      animation: soft-pulse 3s ease-in-out infinite;
+    }
+    .tl-body strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+    .tl-body span {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .outcomes {
+      max-width: 1000px;
+      margin: 0 auto 5rem;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .outcome-card {
+      padding: 1.65rem 1.5rem;
+      border-radius: var(--radius);
+      transition: transform 0.4s var(--ease), border-color 0.3s;
+    }
+    .outcome-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(45,212,191,0.22);
+    }
+    .outcome-card .icon-dot { margin-bottom: 1.1rem; }
+    .outcome-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .outcome-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 1.75rem;
+      padding: 0 5%;
+    }
+
+    @media (max-width: 700px) {
+      .path-card { padding: 1.5rem 1.25rem; }
+      .timeline-rail::before { left: calc(5% + 11px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient">
+    <div class="orb-glow"></div>
+    <div class="noise"></div>
+  </div>
+
+  <nav class="nav glass">
+    <a href="index.html" class="logo">NEXI</a>
+    <div class="nav-links">
+      <a href="why.html">Why Nexi</a>
+      <a href="how.html">How It Works</a>
+      <a href="journey.html" class="active">Journey</a>
+      <a href="experience.html">Experience Nexi</a>
+      <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="journey-shell">
+    <section class="journey-hero">
+      <p class="eyebrow champagne">The arc</p>
+      <h1>From first contact<br/><span class="accent">to compound identity.</span></h1>
+      <p class="lead">Nexi is not a daily checklist. It is a sequence: diagnose once with rigor, execute one move, let memory upgrade the next cycle. Engines unlock when evidence exists — not when you click a feature.</p>
+      <div class="phase-chips">
+        <span class="phase-chip">Waitlist</span>
+        <span class="phase-chip">First diagnosis</span>
+        <span class="phase-chip">Day-one mission</span>
+        <span class="phase-chip">Compound loops</span>
+      </div>
+    </section>
+
+    <div class="path-stage" id="path-stage">
+      <article class="path-card glass" data-delay="0">
+        <p class="path-num">01 · Entry</p>
+        <h2>Join the waitlist</h2>
+        <p>Name and email only. Early members get launch prioritization and referral standing. No spam. No funnel theater.</p>
+        <div class="path-meta">
+          <span class="chip teal">name + email</span>
+          <span class="chip">priority access</span>
+          <span class="chip">referral code</span>
+        </div>
+      </article>
+
+      <article class="path-card glass" data-delay="120">
+        <p class="path-num">02 · First contact</p>
+        <h2>Run the live diagnosis</h2>
+        <p>State one concrete north star. Nexi asks only for facts that matter, reads Prestige · Wealth · Soul, and locks a diagnosis plus one mission sized for today.</p>
+        <div class="path-meta">
+          <span class="chip teal">triple lens</span>
+          <span class="chip">one next move</span>
+          <span class="chip">15–45 min</span>
+        </div>
+      </article>
+
+      <article class="path-card glass" data-delay="240">
+        <p class="path-num">03 · Day one</p>
+        <h2>Execute the mission</h2>
+        <p>Verb-first action with a clear done-when. Evidence lands in the life model. Identity shifts from intention to proof — not from another plan document.</p>
+        <div class="path-meta">
+          <span class="chip teal">done-when clear</span>
+          <span class="chip">evidence logged</span>
+          <span class="chip">belief reinforced</span>
+        </div>
+      </article>
+
+      <article class="path-card glass" data-delay="360">
+        <p class="path-num">04 · Compound</p>
+        <h2>Memory upgrades the path</h2>
+        <p>Failed strategies are retired with reason. Wins strengthen beliefs. Tomorrow’s diagnosis already knows the constraints and the shortcuts that wasted time.</p>
+        <div class="path-meta">
+          <span class="chip teal">life model</span>
+          <span class="chip">retired strategies</span>
+          <span class="chip">adaptive roadmap</span>
+        </div>
+      </article>
+
+      <article class="path-card glass" data-delay="480">
+        <p class="path-num">05 · Engines</p>
+        <h2>Unlock Prestige, Wealth, Soul</h2>
+        <p>Engines activate when evidence justifies them — not on a feature checklist. Prestige after proof. Wealth after distribution attempts. Soul when load must be protected.</p>
+        <div class="path-meta">
+          <span class="chip teal">evidence-gated</span>
+          <span class="chip">streaks</span>
+          <span class="chip">XP with audit trail</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="section-label">What compounds over weeks</p>
+    <div class="timeline-rail" id="timeline-rail">
+      <div class="tl-row" data-delay="0">
+        <div class="tl-dot"><span></span></div>
+        <div class="tl-body">
+          <strong>Week 1 — Diagnosis + first wins</strong>
+          <span>North star locked. Bottleneck named. Three to five missions completed. Belief line starts to form from evidence.</span>
+        </div>
+      </div>
+      <div class="tl-row" data-delay="90">
+        <div class="tl-dot"><span></span></div>
+        <div class="tl-body">
+          <strong>Week 2–3 — Pattern recognition</strong>
+          <span>Nexi surfaces what keeps collapsing. Retired strategies stop repeating. Engines that have proof unlock.</span>
+        </div>
+      </div>
+      <div class="tl-row" data-delay="180">
+        <div class="tl-dot"><span></span></div>
+        <div class="tl-body">
+          <strong>Month 1 — Adaptive roadmap</strong>
+          <span>Milestones revise under real constraints. Identity label shifts from aspirational to demonstrated.</span>
+        </div>
+      </div>
+      <div class="tl-row" data-delay="270">
+        <div class="tl-dot"><span></span></div>
+        <div class="tl-body">
+          <strong>Ongoing — Life OS, not another app</strong>
+          <span>Same doctrine across conversation, missions, engines, and memory. The interface stays secondary. The operating model is the product.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label">Outcomes the journey optimizes for</p>
+    <div class="outcomes">
+      <article class="outcome-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>Clarity under pressure</h3>
+        <p>You always know the primary bottleneck and the single next move. Ambition stays intact; fog does not.</p>
+      </article>
+      <article class="outcome-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>Evidence over intention</h3>
+        <p>Identity is updated from completed missions and artifacts — not from vision boards or streak theater alone.</p>
+      </article>
+      <article class="outcome-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>No wasted cycles</h3>
+        <p>Strategies that failed are retired with reason. The system refuses to re-recommend paths that already collapsed.</p>
+      </article>
+      <article class="outcome-card glass reveal-ready">
+        <div class="icon-dot"></div>
+        <h3>Engines that earn unlocks</h3>
+        <p>Prestige, Wealth, and Soul surface when the data justifies them. Features follow proof, not the other way around.</p>
+      </article>
+    </div>
+
+    <section class="section-cta">
+      <a href="index.html#waitlist" class="btn primary">Join the waitlist</a>
+      <a href="experience.html" class="btn secondary" style="margin-left:0.75rem">Experience the diagnosis</a>
+    </section>
+  </main>
+
+  <footer class="footer glass">
+    <p>© 2026 Nexi. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="why.html">Why</a>
+      <a href="how.html">How</a>
+      <a href="intelligence.html">Intelligence</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="experience.html">Experience</a>
+      <a href="journey.html">Journey</a>
+      <a href="sample-result.html">Sample</a>
+      <a href="referral.html">Referral</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('#path-stage .path-card');
+      const rows = document.querySelectorAll('#timeline-rail .tl-row');
+
+      cards.forEach((card) => {
+        const d = parseInt(card.dataset.delay || '0', 10);
+        setTimeout(() => card.classList.add('assembled'), 180 + d);
+      });
+
+      rows.forEach((row) => {
+        const d = parseInt(row.dataset.delay || '0', 10);
+        setTimeout(() => row.classList.add('assembled'), 900 + d);
+      });
+
+      const reveal = document.querySelectorAll('.reveal-ready');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add('revealed');
+              io.unobserve(en.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveal.forEach((el) => io.observe(el));
+      } else {
+        reveal.forEach((el) => el.classList.add('revealed'));
+      }
+    });
+  </script>
+</body>
+</html>
