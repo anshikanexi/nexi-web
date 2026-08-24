@@ -24,10 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # One-time (founder): Repo → Settings → Pages → Build and deployment → Source: GitHub Actions
+      # enablement:true fails with "Resource not accessible by integration" until that is set.
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
