@@ -2,29 +2,24 @@
 
 Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
-**Intended live:** https://anshikanexi.github.io/nexi-web/
+**Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (25 Aug 2026)
+## Status (26 Aug 2026)
 
-### Deploy (still blocking — one founder click)
-GitHub Actions workflow is ready and correct. Prior runs failed only because Pages was never enabled for this repo (`Create Pages site failed: Resource not accessible by integration`).
+### Live
+GitHub Pages is active. Every push to `main` deploys automatically.
 
-**Founder — one time only (highest priority):**
-1. Open https://github.com/anshikanexi/nexi-web/settings/pages
-2. **Build and deployment → Source:** select **GitHub Actions** (not Deploy from a branch)
-3. Save. Then re-run the latest workflow under Actions, or push any commit to `main`.
-
-After that, every push to `main` deploys automatically. Site becomes live at the URL above.
-
-### Today (25 Aug)
-- Deepened glassmorphism: stronger blur/saturate, dual-inset highlights, gradient glass surface
-- Fluid card hover assembly (lift + scale + teal rim glow)
-- Orb core intensity + breath timing refined
+### Today (26 Aug)
+- Dual-layer glass surface (gradient fill + dual inset highlights)
 - Primary button specular sweep on hover
-- Reveal transitions lengthened for premium feel
+- Orb core denser gradients + multi-layer glow + refined breath timing
+- Feature cards: lift + micro-scale + teal rim on hover
 - Waitlist card hover depth
+- Scrolled nav: stronger blur/saturate
+- Reveal transitions lengthened for premium feel
+- Mobile drawer glass denser
 
-All prior surface work remains intact. No generic templates.
+No generic templates. Product-grade surface only.
 
 ### Product surface
 - **Home** — hero + breathing orb + glass nav + live waitlist (name + email → `public.waitlist`)
@@ -39,7 +34,7 @@ All prior surface work remains intact. No generic templates.
 - Premium mobile glass drawer nav (burger + backdrop + ESC) — sitewide via `app.js`
 - Scroll-aware nav glass intensify
 - Staggered card reveal on feature grids
-- Heavy glass + soft pulses + CSS orb (parallax) — refined 25 Aug
+- Heavy glass + soft pulses + CSS orb (parallax) — refined 26 Aug
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
@@ -58,9 +53,9 @@ All prior surface work remains intact. No generic templates.
 - [x] Blueprint
 - [x] Intelligence
 - [x] Journey
-- [x] GitHub Pages deploy pipeline (awaiting one-time Source = GitHub Actions)
+- [x] GitHub Pages deploy (live)
 - [x] Mobile navigation (premium glass)
-- [x] 25 Aug glass + motion depth pass
+- [x] 26 Aug glass + motion depth pass
 
 ## Waitlist rule
 
@@ -68,4 +63,4 @@ Store **only** name + email.
 
 ## Local
 
-Open any HTML file or serve static. Live path: Settings → Pages → **GitHub Actions** once, then push.
+Open any HTML file or serve static. Live: https://anshikanexi.github.io/nexi-web/
