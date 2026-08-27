@@ -4,37 +4,36 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (26 Aug 2026)
+## Status (27 Aug 2026)
 
 ### Live
 GitHub Pages is active. Every push to `main` deploys automatically.
 
-### Today (26 Aug)
-- Dual-layer glass surface (gradient fill + dual inset highlights)
-- Primary button specular sweep on hover
-- Orb core denser gradients + multi-layer glow + refined breath timing
-- Feature cards: lift + micro-scale + teal rim on hover
-- Waitlist card hover depth
-- Scrolled nav: stronger blur/saturate
-- Reveal transitions lengthened for premium feel
-- Mobile drawer glass denser
+### Today (27 Aug)
+Highest-priority unfinished piece: **Home was a thin hero + waitlist.** It now carries a real product surface.
+
+- Product orb rewritten to the app spec (Siri glass sphere: flowing champagne/teal blobs, luminosity breath, static rim — no spinning toy ring)
+- Home engines: Prestige / Wealth / Soul glass cards
+- Operating-loop rail: Want → Investigate → Name it → Ship today
+- Sample next-move preview card (same shape as Sample Result / Experience)
+- Reveal + hover depth on new home modules
 
 No generic templates. Product-grade surface only.
 
 ### Product surface
-- **Home** — hero + breathing orb + glass nav + live waitlist (name + email → `public.waitlist`)
+- **Home** — hero + product orb + engines + loop + sample lock + live waitlist (name + email → `public.waitlist`)
 - **Why Nexi** — doctrine (triple lens, diagnosis-first, next-move, memory, anti-mediocre)
 - **How It Works** — full operating-model page
 - **Blueprint / Intelligence / Journey** — engineering + brain + arc pages
-- **Experience Nexi** — live interactive diagnosis via `onboarding-decision` + anonymous auth (Mission Zero system prompt — sharp, adaptive, act-early)
+- **Experience Nexi** — live interactive diagnosis via `onboarding-decision` + anonymous auth
 - **Sample Result / Referral / Leaderboard** — showcase + growth loops
 
 ### Design system
 - Navy / Titanium / Champagne / Teal, Cormorant + Raleway
-- Premium mobile glass drawer nav (burger + backdrop + ESC) — sitewide via `app.js`
+- Premium mobile glass drawer nav — sitewide via `app.js`
 - Scroll-aware nav glass intensify
-- Staggered card reveal on feature grids
-- Heavy glass + soft pulses + CSS orb (parallax) — refined 26 Aug
+- Staggered card reveal
+- Product orb: canvas painter matching `NexiOrbWidget`
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
@@ -43,7 +42,7 @@ No generic templates. Product-grade surface only.
 
 ## Pages roadmap
 
-- [x] Home
+- [x] Home (27 Aug product-surface pass)
 - [x] Why Nexi
 - [x] How It Works
 - [x] Experience Nexi (live engine)
@@ -55,7 +54,6 @@ No generic templates. Product-grade surface only.
 - [x] Journey
 - [x] GitHub Pages deploy (live)
 - [x] Mobile navigation (premium glass)
-- [x] 26 Aug glass + motion depth pass
 
 ## Waitlist rule
 

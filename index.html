@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexi — Your Life OS</title>
-  <meta name="description" content="Nexi is the AI Operating System for life. Design your future. Build skills. Live intentionally." />
+  <meta name="description" content="Nexi is the AI Operating System for life. Diagnosis first. One next move. Prestige, Soul & Wealth." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
   <div class="ambient">
@@ -32,7 +33,7 @@
       <div class="hero-content">
         <p class="eyebrow champagne">Life Operating System</p>
         <h1>Your life OS.<br/><span class="accent">Savage. Interconnected. Unstoppable.</span></h1>
-        <p class="sub">Design your future. Build skills across Prestige, Soul & Wealth. One intelligent system that actually knows you.</p>
+        <p class="sub">Design your future. Build skills across Prestige, Soul &amp; Wealth. One intelligence that diagnoses the system — then gives you one move.</p>
         <div class="hero-actions">
           <a href="#waitlist" class="btn primary glass-btn">Join the Waitlist</a>
           <a href="experience.html" class="btn secondary">Experience Nexi</a>
@@ -40,9 +41,8 @@
       </div>
       <div class="orb-container">
         <div class="orb" id="nexi-orb" aria-hidden="true">
-          <div class="orb-core"></div>
-          <div class="orb-ring"></div>
-          <div class="orb-pulse"></div>
+          <canvas id="nexi-orb-canvas" width="480" height="480"></canvas>
+          <div class="orb-mark">N</div>
         </div>
       </div>
     </section>
@@ -60,6 +60,78 @@
         <div class="proof-item">
           <span class="num">∞</span>
           <span class="label">Adaptive Next Moves</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-intro">
+        <p class="eyebrow champagne">The engines</p>
+        <h2>Three lenses. One bottleneck.</h2>
+        <p>Every ambition is read through Prestige, Wealth, and Soul. Nexi names where they collide — then refuses the path that wastes a year.</p>
+      </div>
+      <div class="card-grid home-grid">
+        <article class="feature-card glass">
+          <div class="icon-dot"></div>
+          <h3>Prestige</h3>
+          <p>Skill, proof, reputation. The evidence that compounds into optionality — not the appearance of being busy.</p>
+        </article>
+        <article class="feature-card glass">
+          <div class="icon-dot"></div>
+          <h3>Wealth</h3>
+          <p>Cash, leverage, and this week’s real constraints. What is actually possible — not what a vision board pretends.</p>
+        </article>
+        <article class="feature-card glass">
+          <div class="icon-dot"></div>
+          <h3>Soul</h3>
+          <p>Energy, meaning, recovery. The identity load that decides whether execution survives Tuesday.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section loop-section">
+      <div class="section-intro">
+        <p class="eyebrow champagne">Operating loop</p>
+        <h2>Diagnosis first. Then one move.</h2>
+      </div>
+      <div class="loop-row">
+        <article class="loop-card glass">
+          <span class="loop-n">01</span>
+          <h3>State the want</h3>
+          <p>One concrete destination. No vision-board language.</p>
+        </article>
+        <article class="loop-card glass">
+          <span class="loop-n">02</span>
+          <h3>Investigate</h3>
+          <p>Two or three facts. Hours, money, what already failed.</p>
+        </article>
+        <article class="loop-card glass">
+          <span class="loop-n">03</span>
+          <h3>Name it</h3>
+          <p>What’s going on. Primary lens. Where the path collapses.</p>
+        </article>
+        <article class="loop-card glass">
+          <span class="loop-n">04</span>
+          <h3>Ship today</h3>
+          <p>Verb-first mission. 15–45 minutes. Clear done-when.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-preview">
+      <div class="preview-card glass">
+        <div class="preview-status"><span class="pulse-dot"></span> Sample lock · live engine uses the same shape</div>
+        <p class="eyebrow champagne">Next move</p>
+        <h2>Message 5 people who already feel the pain</h2>
+        <p class="preview-why">The bottleneck is not code. It is the missing first paying user.</p>
+        <div class="preview-chips">
+          <span class="chip">execute</span>
+          <span class="chip">35 min</span>
+          <span class="chip">Done when: 5 messages sent</span>
+        </div>
+        <div class="preview-actions">
+          <a href="sample-result.html" class="btn secondary">See full sample</a>
+          <a href="experience.html" class="btn primary">Run a live diagnosis</a>
         </div>
       </div>
     </section>
