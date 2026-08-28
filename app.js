@@ -153,6 +153,10 @@ function initReveals() {
     '.loop-card',
     '.preview-card',
     '.section-intro',
+    '.contrast-card',
+    '.engine',
+    '.quote-line',
+    '.principle-card',
   ];
   const reveal = document.querySelectorAll(selectors.join(', '));
   if (!reveal.length) return;
