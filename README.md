@@ -4,25 +4,25 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (27 Aug 2026)
+## Status (28 Aug 2026)
 
 ### Live
 GitHub Pages is active. Every push to `main` deploys automatically.
 
-### Today (27 Aug)
-Highest-priority unfinished piece: **Home was a thin hero + waitlist.** It now carries a real product surface.
+### Today (28 Aug)
+Highest-priority unfinished piece: **Why Nexi was a thin six-card page.** It now carries the doctrine surface.
 
-- Product orb rewritten to the app spec (Siri glass sphere: flowing champagne/teal blobs, luminosity breath, static rim — no spinning toy ring)
-- Home engines: Prestige / Wealth / Soul glass cards
-- Operating-loop rail: Want → Investigate → Name it → Ship today
-- Sample next-move preview card (same shape as Sample Result / Experience)
-- Reveal + hover depth on new home modules
+- Contrast pair: usual stack vs Nexi standard
+- Manifesto card with staggered thesis assembly
+- Engine collision copy (Prestige / Wealth / Soul)
+- Experience Nexi: concrete starter wants on the gate + first chat turn
+- Result cells assemble; same live `onboarding-decision` engine
 
 No generic templates. Product-grade surface only.
 
 ### Product surface
 - **Home** — hero + product orb + engines + loop + sample lock + live waitlist (name + email → `public.waitlist`)
-- **Why Nexi** — doctrine (triple lens, diagnosis-first, next-move, memory, anti-mediocre)
+- **Why Nexi** — doctrine surface (contrast, manifesto, engine collision)
 - **How It Works** — full operating-model page
 - **Blueprint / Intelligence / Journey** — engineering + brain + arc pages
 - **Experience Nexi** — live interactive diagnosis via `onboarding-decision` + anonymous auth
@@ -43,7 +43,7 @@ No generic templates. Product-grade surface only.
 ## Pages roadmap
 
 - [x] Home (27 Aug product-surface pass)
-- [x] Why Nexi
+- [x] Why Nexi (28 Aug doctrine pass)
 - [x] How It Works
 - [x] Experience Nexi (live engine)
 - [x] Sample Result
