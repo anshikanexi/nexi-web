@@ -1,0 +1,10 @@
+.starters{display:flex;flex-wrap:wrap;gap:.45rem;margin:.85rem 0 0;justify-content:center}
+.starter{font-size:.72rem;letter-spacing:.02em;padding:.42rem .75rem;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);color:var(--titanium);cursor:pointer;font-family:inherit;transition:border-color .3s,background .3s,transform .3s}
+.starter:hover{border-color:rgba(45,212,191,.4);background:rgba(45,212,191,.08);transform:translateY(-1px)}
+.diag-cell{animation:msg-in .5s var(--ease) both}
+.diag-cell:nth-child(1){animation-delay:40ms}
+.diag-cell:nth-child(2){animation-delay:110ms}
+.diag-cell:nth-child(3){animation-delay:180ms}
+.diag-cell:nth-child(4){animation-delay:250ms}
+.diag-cell:nth-child(5){animation-delay:320ms}
+.diag-cell:nth-child(6){animation-delay:390ms}
