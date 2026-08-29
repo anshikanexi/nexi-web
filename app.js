@@ -157,6 +157,9 @@ function initReveals() {
     '.engine',
     '.quote-line',
     '.principle-card',
+    '.lens-card',
+    '.flow-body',
+    '.dash',
   ];
   const reveal = document.querySelectorAll(selectors.join(', '));
   if (!reveal.length) return;
