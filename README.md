@@ -4,56 +4,32 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (28 Aug 2026)
+## Status (29 Aug 2026)
 
 ### Live
 GitHub Pages is active. Every push to `main` deploys automatically.
 
-### Today (28 Aug)
-Highest-priority unfinished piece: **Why Nexi was a thin six-card page.** It now carries the doctrine surface.
+### Today (29 Aug)
+Highest-priority unfinished piece: **the 28 Aug cinematic home was visually strong but isolated from the product.**
 
-- Contrast pair: usual stack vs Nexi standard
-- Manifesto card with staggered thesis assembly
-- Engine collision copy (Prestige / Wealth / Soul)
-- Experience Nexi: concrete starter wants on the gate + first chat turn
-- Result cells assemble; same live `onboarding-decision` engine
-
-No generic templates. Product-grade surface only.
+- Home nav now routes to Why / How / Experience (not generic Features / Testimonials)
+- Hero primary CTA is live Experience Nexi; waitlist remains secondary
+- Cinematic mobile glass drawer (toggle + backdrop) so the 5-panel home works on phone
+- Experience extras (starter wants + result assembly) actually load
+- How It Works gained the decision protocol surface (question gate, collision read, one mission)
+- Waitlist stats no longer invent 10,000 believers — product facts only
 
 ### Product surface
-- **Home** — hero + product orb + engines + loop + sample lock + live waitlist (name + email → `public.waitlist`)
-- **Why Nexi** — doctrine surface (contrast, manifesto, engine collision)
-- **How It Works** — full operating-model page
-- **Blueprint / Intelligence / Journey** — engineering + brain + arc pages
-- **Experience Nexi** — live interactive diagnosis via `onboarding-decision` + anonymous auth
-- **Sample Result / Referral / Leaderboard** — showcase + growth loops
-
-### Design system
-- Navy / Titanium / Champagne / Teal, Cormorant + Raleway
-- Premium mobile glass drawer nav — sitewide via `app.js`
-- Scroll-aware nav glass intensify
-- Staggered card reveal
-- Product orb: canvas painter matching `NexiOrbWidget`
+- **Home** — 5-panel cinematic (silk, orb, glass dashboard) + waitlist (name + email)
+- **Why Nexi** — doctrine surface
+- **How It Works** — operating loop + decision protocol
+- **Experience Nexi** — live `onboarding-decision` + guest auth + starter wants
+- **Sample / Referral / Leaderboard / Blueprint / Intelligence / Journey**
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
-- Waitlist: **name + email only** (`public.waitlist`, insert for anon)
-- Experience engine: edge function `onboarding-decision` (Mission Zero)
-
-## Pages roadmap
-
-- [x] Home (27 Aug product-surface pass)
-- [x] Why Nexi (28 Aug doctrine pass)
-- [x] How It Works
-- [x] Experience Nexi (live engine)
-- [x] Sample Result
-- [x] Referral
-- [x] Leaderboard
-- [x] Blueprint
-- [x] Intelligence
-- [x] Journey
-- [x] GitHub Pages deploy (live)
-- [x] Mobile navigation (premium glass)
+- Waitlist: name + email only
+- Experience engine: `onboarding-decision` (Mission Zero)
 
 ## Waitlist rule
 
