@@ -6,6 +6,11 @@ const supabase = window.supabase
   : null;
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (!document.querySelector('script[src="product-bridge.js"]')) {
+    const bridge = document.createElement('script');
+    bridge.src = 'product-bridge.js';
+    document.body.appendChild(bridge);
+  }
   initMobileNav();
   initScrollNav();
   initWaitlist();
@@ -88,11 +93,11 @@ function initWaitlist() {
     const btn = form.querySelector('button[type="submit"]');
     if (btn) {
       btn.disabled = true;
-      btn.textContent = 'Reserving…';
+      btn.textContent = 'Reserving\u2026';
     }
 
     status.hidden = false;
-    status.textContent = 'Reserving your spot…';
+    status.textContent = 'Reserving your spot\u2026';
     status.style.color = 'var(--muted)';
 
     try {
