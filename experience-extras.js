@@ -204,6 +204,21 @@
     mo.observe(result, { attributes: true, attributeFilter: ['class', 'hidden'] });
   }
 
+  const nativeFetch = window.fetch.bind(window);
+  window.fetch = async function () {
+    const res = await nativeFetch.apply(this, arguments);
+    try {
+      const url = String(arguments[0] || '');
+      if (url.indexOf('onboarding-decision') !== -1) {
+        const data = await res.clone().json();
+        if (data && data.mode !== 'ask' && window.NexiExperience.onDiagnosis) {
+          window.NexiExperience.onDiagnosis(data);
+        }
+      }
+    } catch (err) {}
+    return res;
+  };
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootStarters);
   else bootStarters();
 })();
