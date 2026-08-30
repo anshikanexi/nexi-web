@@ -10,241 +10,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .sample-shell {
-      min-height: 100vh;
-      padding: 7.5rem 5% 5rem;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .sample-stage {
-      width: 100%;
-      max-width: 680px;
-      position: relative;
-    }
-    .sample-card {
-      border-radius: 24px;
-      padding: 2.25rem 2rem 2rem;
-      overflow: hidden;
-      position: relative;
-    }
-    .sample-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 18% 0%, rgba(45,212,191,0.09), transparent 55%);
-      pointer-events: none;
-    }
-    .phase-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--champagne);
-      margin-bottom: 0.75rem;
-    }
-    .sample-title {
-      font-size: clamp(1.9rem, 3.6vw, 2.55rem);
-      line-height: 1.12;
-      margin-bottom: 0.5rem;
-    }
-    .sample-sub {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.85rem;
-      max-width: 32rem;
-    }
-    .status-bar {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 1.35rem;
-    }
-    .status-bar .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 12px var(--teal);
-      animation: soft-pulse 2.4s ease-in-out infinite;
-    }
-    .diag-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-      margin-bottom: 1.25rem;
-    }
-    .diag-cell {
-      padding: 1.05rem 1.15rem;
-      border-radius: 14px;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid var(--glass-border);
-      opacity: 0;
-      transform: translateY(18px) scale(0.97);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), border-color 0.35s;
-    }
-    .diag-cell.assembled {
-      opacity: 1;
-      transform: none;
-    }
-    .diag-cell:hover {
-      border-color: rgba(45,212,191,0.22);
-    }
+    .sample-shell { min-height: 100vh; padding: 7.5rem 5% 5rem; display: flex; justify-content: center; align-items: flex-start; }
+    .sample-stage { width: 100%; max-width: 680px; position: relative; }
+    .sample-card { border-radius: 24px; padding: 2.25rem 2rem 2rem; overflow: hidden; position: relative; }
+    .sample-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 0%, rgba(45,212,191,0.09), transparent 55%); pointer-events: none; }
+    .phase-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--champagne); margin-bottom: 0.75rem; }
+    .sample-title { font-size: clamp(1.9rem, 3.6vw, 2.55rem); line-height: 1.12; margin-bottom: 0.5rem; }
+    .sample-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.85rem; max-width: 32rem; }
+    .status-bar { display: flex; align-items: center; gap: 0.55rem; font-size: 0.72rem; color: var(--muted); margin-bottom: 1.35rem; }
+    .status-bar .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 12px var(--teal); animation: soft-pulse 2.4s ease-in-out infinite; }
+    .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.25rem; }
+    .diag-cell { padding: 1.05rem 1.15rem; border-radius: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); opacity: 0; transform: translateY(18px) scale(0.97); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), border-color 0.35s; }
+    .diag-cell.assembled { opacity: 1; transform: none; }
+    .diag-cell:hover { border-color: rgba(45,212,191,0.22); }
     .diag-cell.span2 { grid-column: 1 / -1; }
-    .diag-cell .k {
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-    .diag-cell .v {
-      font-size: 0.93rem;
-      line-height: 1.42;
-    }
-    .mission-card {
-      padding: 1.45rem 1.5rem;
-      border-radius: 18px;
-      background: linear-gradient(145deg, rgba(45,212,191,0.11), rgba(232,213,181,0.05));
-      border: 1px solid rgba(45,212,191,0.3);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 1.15rem;
-      opacity: 0;
-      transform: translateY(22px) scale(0.96);
-      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-    }
-    .mission-card.assembled {
-      opacity: 1;
-      transform: none;
-    }
-    .mission-card::after {
-      content: '';
-      position: absolute;
-      top: -45%;
-      right: -18%;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(45,212,191,0.22), transparent 70%);
-      pointer-events: none;
-      animation: mission-glow 5s ease-in-out infinite;
-    }
-    @keyframes mission-glow {
-      0%, 100% { opacity: 0.7; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.08); }
-    }
-    .mission-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.4rem;
-      position: relative;
-      z-index: 1;
-    }
-    .mission-card > p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      position: relative;
-      z-index: 1;
-    }
-    .mission-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 0.85rem 0 1.1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .chip {
-      font-size: 0.68rem;
-      letter-spacing: 0.07em;
-      padding: 0.32rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--glass-border);
-      color: var(--titanium);
-    }
-    .mission-steps {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    .mission-steps li {
-      display: grid;
-      grid-template-columns: 24px 1fr;
-      gap: 0.55rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
-    }
-    .mission-steps li.assembled {
-      opacity: 1;
-      transform: none;
-    }
-    .mission-steps li span {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 1px solid rgba(45,212,191,0.45);
-      display: grid;
-      place-items: center;
-      font-size: 0.7rem;
-      color: var(--teal);
-      background: rgba(45,212,191,0.08);
-    }
-    .belief-line {
-      font-size: 0.95rem;
-      color: var(--champagne);
-      font-style: italic;
-      padding: 1rem 1.15rem;
-      border-left: 2px solid rgba(232,213,181,0.5);
-      background: rgba(232,213,181,0.05);
-      border-radius: 0 14px 14px 0;
-      margin-bottom: 1.75rem;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    }
-    .belief-line.assembled {
-      opacity: 1;
-      transform: none;
-    }
-    .result-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      opacity: 0;
-      transition: opacity 0.6s var(--ease);
-    }
+    .diag-cell .k { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .diag-cell .v { font-size: 0.93rem; line-height: 1.42; }
+    .mission-card { padding: 1.45rem 1.5rem; border-radius: 18px; background: linear-gradient(145deg, rgba(45,212,191,0.11), rgba(232,213,181,0.05)); border: 1px solid rgba(45,212,191,0.3); position: relative; overflow: hidden; margin-bottom: 1.15rem; opacity: 0; transform: translateY(22px) scale(0.96); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .mission-card.assembled { opacity: 1; transform: none; }
+    .mission-card::after { content: ''; position: absolute; top: -45%; right: -18%; width: 180px; height: 180px; background: radial-gradient(circle, rgba(45,212,191,0.22), transparent 70%); pointer-events: none; animation: mission-glow 5s ease-in-out infinite; }
+    @keyframes mission-glow { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+    .mission-card h3 { font-size: 1.4rem; margin-bottom: 0.4rem; position: relative; z-index: 1; }
+    .mission-card > p { color: var(--muted); font-size: 0.92rem; position: relative; z-index: 1; }
+    .mission-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.85rem 0 1.1rem; position: relative; z-index: 1; }
+    .chip { font-size: 0.68rem; letter-spacing: 0.07em; padding: 0.32rem 0.7rem; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid var(--glass-border); color: var(--titanium); }
+    .mission-steps { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; position: relative; z-index: 1; }
+    .mission-steps li { display: grid; grid-template-columns: 24px 1fr; gap: 0.55rem; font-size: 0.9rem; color: var(--muted); opacity: 0; transform: translateX(-8px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+    .mission-steps li.assembled { opacity: 1; transform: none; }
+    .mission-steps li span { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(45,212,191,0.45); display: grid; place-items: center; font-size: 0.7rem; color: var(--teal); background: rgba(45,212,191,0.08); }
+    .belief-line { font-size: 0.95rem; color: var(--champagne); font-style: italic; padding: 1rem 1.15rem; border-left: 2px solid rgba(232,213,181,0.5); background: rgba(232,213,181,0.05); border-radius: 0 14px 14px 0; margin-bottom: 1.75rem; opacity: 0; transform: translateY(12px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .belief-line.assembled { opacity: 1; transform: none; }
+    .result-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; opacity: 0; transition: opacity 0.6s var(--ease); }
     .result-actions.assembled { opacity: 1; }
-    .sample-note {
-      margin-top: 2.5rem;
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-    .sample-note a {
-      color: var(--teal);
-      text-decoration: none;
-    }
+    .sample-note { margin-top: 2.5rem; text-align: center; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.04em; }
+    .sample-note a { color: var(--teal); text-decoration: none; }
     .sample-note a:hover { text-decoration: underline; }
-    @media (max-width: 640px) {
-      .diag-grid { grid-template-columns: 1fr; }
-      .sample-card { padding: 1.6rem 1.3rem; }
-    }
+    @media (max-width: 640px) { .diag-grid { grid-template-columns: 1fr; } .sample-card { padding: 1.6rem 1.3rem; } }
   </style>
 </head>
 <body>
-  <div class="ambient">
-    <div class="orb-glow"></div>
-    <div class="noise"></div>
-  </div>
-
+  <div class="ambient"><div class="orb-glow"></div><div class="noise"></div></div>
   <nav class="nav glass">
     <a href="index.html" class="logo">NEXI</a>
     <div class="nav-links">
@@ -255,53 +60,25 @@
       <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
     </div>
   </nav>
-
   <main class="sample-shell">
     <div class="sample-stage">
       <div class="sample-card glass" id="sample-root">
-        <div class="status-bar">
-          <span class="pulse-dot"></span>
-          <span>Diagnosis locked · sample</span>
-        </div>
+        <div class="status-bar"><span class="pulse-dot"></span><span>Diagnosis locked · sample</span></div>
         <p class="phase-label">Diagnosis complete</p>
         <h1 class="sample-title">Ship the first paid AI prototype</h1>
         <p class="sample-sub">A concrete north star pressure-tested against Prestige, Wealth, and Soul. One next move sized for today.</p>
-
         <div class="diag-grid" id="diag-grid">
-          <div class="diag-cell span2" data-delay="0">
-            <div class="k">Want</div>
-            <div class="v">A live, paid AI side project that generates its first $1k in revenue within 90 days.</div>
-          </div>
-          <div class="diag-cell span2" data-delay="120">
-            <div class="k">What's going on</div>
-            <div class="v">Strong technical ability, zero customer contact. The bottleneck is not code quality — it is the missing first paying user and the avoidance of direct outreach.</div>
-          </div>
-          <div class="diag-cell" data-delay="240">
-            <div class="k">Primary lens</div>
-            <div class="v">Wealth (cash + distribution)</div>
-          </div>
-          <div class="diag-cell" data-delay="300">
-            <div class="k">Not doing today</div>
-            <div class="v">Another architecture rewrite or feature list expansion.</div>
-          </div>
-          <div class="diag-cell span2" data-delay="380">
-            <div class="k">Where it collapses</div>
-            <div class="v">Building in isolation until “ready.” Ready is a moving target that protects ego and delays evidence.</div>
-          </div>
-          <div class="diag-cell span2" data-delay="460">
-            <div class="k">Better path</div>
-            <div class="v">Sell the outcome first. One narrow problem, one specific buyer, one conversation this week.</div>
-          </div>
+          <div class="diag-cell span2" data-delay="0"><div class="k">Want</div><div class="v">A live, paid AI side project that generates its first $1k in revenue within 90 days.</div></div>
+          <div class="diag-cell span2" data-delay="120"><div class="k">What's going on</div><div class="v">Strong technical ability, zero customer contact. The bottleneck is not code quality — it is the missing first paying user and the avoidance of direct outreach.</div></div>
+          <div class="diag-cell" data-delay="240"><div class="k">Primary lens</div><div class="v">Wealth (cash + distribution)</div></div>
+          <div class="diag-cell" data-delay="300"><div class="k">Not doing today</div><div class="v">Another architecture rewrite or feature list expansion.</div></div>
+          <div class="diag-cell span2" data-delay="380"><div class="k">Where it collapses</div><div class="v">Building in isolation until “ready.” Ready is a moving target that protects ego and delays evidence.</div></div>
+          <div class="diag-cell span2" data-delay="460"><div class="k">Better path</div><div class="v">Sell the outcome first. One narrow problem, one specific buyer, one conversation this week.</div></div>
         </div>
-
         <div class="mission-card" id="mission-card">
           <h3>Message 5 people who already feel the pain</h3>
           <p>Direct outreach is the shortest legitimate route to a paying user. Code quality is secondary until someone pays.</p>
-          <div class="mission-meta">
-            <span class="chip">execute</span>
-            <span class="chip">35 min</span>
-            <span class="chip">Done when: 5 personal messages sent</span>
-          </div>
+          <div class="mission-meta"><span class="chip">execute</span><span class="chip">35 min</span><span class="chip">Done when: 5 personal messages sent</span></div>
           <ul class="mission-steps" id="mission-steps">
             <li data-delay="0"><span>1</span><div>List 5 people or small teams who already complain about the problem you solve.</div></li>
             <li data-delay="90"><span>2</span><div>Write one 3-sentence note per person: problem you noticed, what you built, one question.</div></li>
@@ -309,60 +86,22 @@
             <li data-delay="270"><span>4</span><div>Log replies or silence. Both are data.</div></li>
           </ul>
         </div>
-
-        <div class="belief-line" id="belief-line">
-          “I ship evidence, not potential.” · Tomorrow: review replies and book one call.
-        </div>
-
+        <div class="belief-line" id="belief-line">“I ship evidence, not potential.” · Tomorrow: review replies and book one call.</div>
         <div class="result-actions" id="result-actions">
           <a href="experience.html" class="btn primary">Run your own diagnosis</a>
           <a href="index.html#waitlist" class="btn secondary">Join the waitlist</a>
         </div>
       </div>
-
-      <p class="sample-note">
-        This is a static product sample. Live engine: <a href="experience.html">Experience Nexi</a>
-      </p>
+      <p class="sample-note">This is a static product sample. Live engine: <a href="experience.html">Experience Nexi</a></p>
     </div>
   </main>
-
   <footer class="footer glass">
     <p>© 2026 Nexi. All rights reserved.</p>
     <div class="footer-links">
-      <a href="why.html">Why</a>
-      <a href="how.html">How</a>
-      <a href="experience.html">Experience</a>
-      <a href="sample-result.html">Sample</a>
-      <a href="referral.html">Referral</a>
-      <a href="leaderboard.html">Leaderboard</a>
+      <a href="why.html">Why</a><a href="how.html">How</a><a href="experience.html">Experience</a><a href="sample-result.html">Sample</a><a href="referral.html">Referral</a><a href="leaderboard.html">Leaderboard</a>
     </div>
   </footer>
-
   <script src="app.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const cells = document.querySelectorAll('.diag-cell');
-      const mission = document.getElementById('mission-card');
-      const steps = document.querySelectorAll('#mission-steps li');
-      const belief = document.getElementById('belief-line');
-      const actions = document.getElementById('result-actions');
-
-      // Staggered card assembly — feels like the live engine locking in
-      cells.forEach((cell) => {
-        const d = parseInt(cell.dataset.delay || '0', 10);
-        setTimeout(() => cell.classList.add('assembled'), 180 + d);
-      });
-
-      setTimeout(() => mission.classList.add('assembled'), 780);
-
-      steps.forEach((li) => {
-        const d = parseInt(li.dataset.delay || '0', 10);
-        setTimeout(() => li.classList.add('assembled'), 980 + d);
-      });
-
-      setTimeout(() => belief.classList.add('assembled'), 1480);
-      setTimeout(() => actions.classList.add('assembled'), 1650);
-    });
-  </script>
+  <script src="sample-hydrate.js"></script>
 </body>
 </html>
