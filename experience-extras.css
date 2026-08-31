@@ -46,3 +46,8 @@
 @media (max-width:640px){
   .lens-collision{grid-template-columns:1fr}
 }
+
+.protocol{display:flex;gap:.45rem;margin:0 0 1.1rem;flex-wrap:wrap}
+.protocol span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.32rem .7rem;border-radius:999px;border:1px solid var(--glass-border);color:var(--muted)}
+.protocol span.on{color:var(--teal);border-color:rgba(45,212,191,.4);background:rgba(45,212,191,.08);box-shadow:0 0 16px rgba(45,212,191,.12)}
+.turn-chip{margin-left:auto;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}

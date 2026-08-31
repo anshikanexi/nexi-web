@@ -4,31 +4,30 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (30 Aug 2026)
+## Status (31 Aug 2026)
 
 ### Live
 GitHub Pages is active. Every push to `main` deploys automatically.
 
-### Today (30 Aug)
-Highest-priority unfinished piece: **Experience extras advertised result assembly but only shipped starter chips. Sample Result was a static mock, disconnected from the live engine.**
+### Today (31 Aug)
+Highest-priority unfinished piece: **Experience engine still ran a thin Mission Zero prompt, so diagnoses could sound generic. Home still shipped Features / Testimonials copy in source.**
 
-- Experience diagnosis now assembles like a product lock: lens collision meters, staggered diag cells, mission steps, belief line
-- Last live diagnosis persists on-device and hydrates Sample Result
-- Sample Result remains a crafted default when no live run exists
-- Waitlist rule unchanged: name + email only
+- `onboarding-decision` v10: sharper system prompt (Life OS voice, triple-lens collision, anti-generic diagnosis, one 15–45 min proof mission)
+- Experience protocol rail (North star → Investigate → Lock) assembled with the live engine
+- Home source now points to Why / How / Experience and the waitlist — not a generic SaaS nav
+- Referral `?ref=` captured on-device only. Waitlist still stores **name + email** only
 
 ### Product surface
-- **Home** — 5-panel cinematic (silk, orb, glass dashboard) + waitlist (name + email)
-- **Why Nexi** — doctrine surface
-- **How It Works** — operating loop + decision protocol
-- **Experience Nexi** — live `onboarding-decision` + guest auth + starter wants + result assembly
-- **Sample Result** — static masterpiece or last live diagnosis
-- **Referral / Leaderboard / Blueprint / Intelligence / Journey**
+- **Home** — 5-panel cinematic (silk, orb, glass dashboard) + waitlist
+- **Why Nexi / How It Works / Intelligence / Blueprint / Journey**
+- **Experience Nexi** — live `onboarding-decision` + guest auth + starters + protocol + result assembly
+- **Sample Result** — crafted default or last live diagnosis
+- **Referral / Leaderboard**
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
 - Waitlist: name + email only
-- Experience engine: `onboarding-decision` (Mission Zero)
+- Experience engine: `onboarding-decision` v10 (Mission Zero)
 
 ## Waitlist rule
 
