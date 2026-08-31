@@ -15,12 +15,33 @@
     { label: 'Energy + one artifact this week', want: 'Recover energy and ship one real artifact this week' }
   ];
 
+  function setProtocol(step) {
+    const map = { gate: 0, star: 1, ask: 2, lock: 3 };
+    const n = map[step] || 0;
+    document.querySelectorAll('[data-protocol]').forEach((rail) => {
+      rail.querySelectorAll('span[data-step]').forEach((el) => {
+        el.classList.toggle('on', Number(el.dataset.step) <= n && n > 0);
+      });
+    });
+  }
+  window.NexiExperience = window.NexiExperience || {};
+  window.NexiExperience.setProtocol = setProtocol;
+
+  function paintProtocol(host) {
+    if (!host || host.querySelector('[data-protocol]')) return;
+    const rail = document.createElement('div');
+    rail.className = 'protocol';
+    rail.setAttribute('data-protocol', '1');
+    rail.innerHTML = '<span data-step="1">North star</span><span data-step="2">Investigate</span><span data-step="3">Lock</span>';
+    host.insertBefore(rail, host.firstChild);
+  }
   function bootStarters() {
     const gate = document.getElementById('phase-gate');
     const start = document.getElementById('btn-start');
     const input = document.getElementById('user-input');
     const composer = document.getElementById('composer');
     if (!gate || !start || document.getElementById('gate-starters')) return;
+    paintProtocol(gate);
 
     const hint = document.createElement('p');
     hint.className = 'exp-sub';
@@ -62,6 +83,9 @@
       chatBox.id = 'chat-starters';
       composer.insertAdjacentElement('afterend', chatBox);
       start.addEventListener('click', () => {
+        setProtocol('star');
+        const chat = document.getElementById('phase-chat');
+        if (chat) paintProtocol(chat);
         chatBox.innerHTML = '';
         WANTS.forEach((w) => {
           const b = document.createElement('button');
@@ -211,7 +235,10 @@
       const url = String(arguments[0] || '');
       if (url.indexOf('onboarding-decision') !== -1) {
         const data = await res.clone().json();
-        if (data && data.mode !== 'ask' && window.NexiExperience.onDiagnosis) {
+        if (data && data.mode === 'ask') {
+          setProtocol('ask');
+        } else if (data && data.mode !== 'ask' && window.NexiExperience.onDiagnosis) {
+          setProtocol('lock');
           window.NexiExperience.onDiagnosis(data);
         }
       }
