@@ -1,7 +1,6 @@
 (function () {
   injectCinematicNavCss();
   bootExperienceExtras();
-  reconnectHome();
 
   function injectCinematicNavCss() {
     if (document.getElementById('cinematic-nav-css')) return;
@@ -27,31 +26,5 @@
     const s = document.createElement('script');
     s.src = 'experience-extras.js';
     document.body.appendChild(s);
-  }
-
-  function reconnectHome() {
-    if (!document.querySelector('link[href="cinematic.css"]')) return;
-    const links = document.querySelector('.nav-links');
-    if (links && /Features|Testimonials/.test(links.textContent)) {
-      links.innerHTML = '<a href="why.html">Why Nexi</a><a href="how.html">How It Works</a><a href="experience.html">Experience</a><a href="#waitlist" class="cta-nav">Join Waitlist</a>';
-    }
-    const lead = document.querySelector('#hero .lead');
-    if (lead && /companion that helps you grow/i.test(lead.textContent)) {
-      lead.textContent = 'One intelligence reads Prestige, Wealth, and Soul \u2014 then names the bottleneck and gives you one move.';
-    }
-    const actions = document.querySelector('#hero .actions');
-    if (actions) {
-      const primary = actions.querySelector('.btn');
-      const ghost = actions.querySelector('.ghost');
-      if (primary) { primary.href = 'experience.html'; primary.textContent = 'Experience Nexi \u2192'; }
-      if (ghost) { ghost.href = '#waitlist'; ghost.textContent = 'Join the waitlist'; }
-    }
-    document.querySelectorAll('a.ghost').forEach(function (a) {
-      if (/See How It Works/.test(a.textContent)) a.href = 'how.html';
-    });
-    const stats = document.querySelector('#waitlist .stats');
-    if (stats && /10,000/.test(stats.textContent)) {
-      stats.innerHTML = '<div><b class="gold">3 lenses</b><span>Prestige \u00b7 Wealth \u00b7 Soul</span></div><div><b>Live engine</b><span>Experience Nexi</span></div><div><b>Name + email</b><span>Waitlist only</span></div>';
-    }
   }
 })();
