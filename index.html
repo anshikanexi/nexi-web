@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexi OS — Your Life. Engineered.</title>
-  <meta name="description" content="Nexi OS is your AI-powered companion that helps you grow in every area of life." />
+  <meta name="description" content="Nexi reads Prestige, Wealth, and Soul — names the bottleneck, then gives you one move." />
   <meta name="theme-color" content="#050A12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="cinematic.css" />
+  <link rel="stylesheet" href="cinematic-patch.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -31,9 +32,9 @@
       NEXI OS
     </a>
     <nav class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#benefits">Benefits</a>
-      <a href="#how">Testimonials</a>
+      <a href="why.html">Why Nexi</a>
+      <a href="how.html">How It Works</a>
+      <a href="experience.html">Experience</a>
       <a href="#waitlist" class="cta-nav">Join Waitlist</a>
     </nav>
   </header>
@@ -61,15 +62,16 @@
     <div class="panel-inner split">
       <div>
         <h1>Your life.<br/><span class="line2">Engineered.</span></h1>
-        <p class="lead">Nexi OS is your AI-powered companion that helps you grow in every area of life.</p>
+        <p class="lead">One intelligence reads Prestige, Wealth, and Soul — then names the bottleneck and gives you one move.</p>
         <div class="actions">
-          <a class="btn" href="#waitlist">Begin the Journey →</a>
-          <a class="ghost" href="#features"><span class="play">▶</span> Watch Video</a>
+          <a class="btn" href="experience.html">Experience Nexi →</a>
+          <a class="ghost" href="#waitlist">Join the waitlist</a>
         </div>
       </div>
       <div class="orb-wrap" id="nexi-orb">
         <div class="orb-glow"></div>
         <div class="orb">
+          <canvas id="nexi-orb-canvas" width="360" height="360" aria-hidden="true"></canvas>
           <svg viewBox="0 0 200 200" aria-hidden="true">
             <defs>
               <linearGradient id="ring1" x1="0" y1="0" x2="1" y2="1">
@@ -99,7 +101,7 @@
     <p class="scroll-cue">↓ SCROLL TO EXPLORE</p>
   </section>
 
-  <section class="panel" id="features">
+  <section class="panel" id="system">
     <span class="section-idx">02</span>
     <svg class="silk" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
@@ -114,9 +116,9 @@
     </svg>
     <div class="panel-inner split">
       <div>
-        <p class="eyebrow">One System.</p>
-        <h2 style="margin-top:0.6rem">Every Area<br/>of Your Life.</h2>
-        <p class="lead">Career, Health, Finance, Learning and more — all connected, all personalized.</p>
+        <p class="eyebrow">Three lenses.</p>
+        <h2 style="margin-top:0.6rem">One system<br/>for the collision.</h2>
+        <p class="lead">Prestige is proof. Wealth is demand. Soul is capacity. Nexi picks the primary constraint — not three competing priorities.</p>
       </div>
       <div class="dash-stage">
         <div class="pedestal"></div>
@@ -126,7 +128,7 @@
             <div>
               <p class="muted">Good Evening,</p>
               <h3>Anshika <span class="gold">+</span></h3>
-              <p class="tiny">Let's engineer your best day.</p>
+              <p class="tiny">Constraint named. One move locked.</p>
             </div>
             <div class="dash-icons"><span>🔔</span><span>⌕</span></div>
           </div>
@@ -134,7 +136,7 @@
             <div class="cell">
               <p class="label">Nexi Balance</p>
               <p class="pct">82%</p>
-              <p class="note">You're aligned and progressing beautifully.</p>
+              <p class="note">Aligned on the primary lens. Secondary held.</p>
             </div>
             <div class="mini-orb">
               <svg viewBox="0 0 200 200" aria-hidden="true">
@@ -167,11 +169,11 @@
           </div>
           <div class="mission">
             <p class="label">Today's Mission</p>
-            <div class="mission-title">Build Nexi MVP <span>72%</span></div>
-            <p class="note">You're doing amazing, keep going.</p>
+            <div class="mission-title">Ship one proof artifact <span>72%</span></div>
+            <p class="note">15–45 minutes. Observable when done.</p>
             <div class="mission-bar"><i></i></div>
             <div class="tags">
-              <span>Focus Deep</span><span>High Impact</span><span>Long Term</span>
+              <span>Primary lens</span><span>Time-to-evidence</span><span>One move</span>
             </div>
           </div>
           <div class="quad">
@@ -185,19 +187,19 @@
     </div>
   </section>
 
-  <section class="panel" id="benefits">
+  <section class="panel" id="intelligence">
     <span class="section-idx">03</span>
     <div class="panel-inner split">
       <div>
-        <h2>AI-Powered.<br/>Just for You.</h2>
-        <p class="lead">Nexi learns what matters to you and helps you make smarter decisions every day.</p>
-        <div class="chips"><span>Personalized</span><span>Real-time</span></div>
-        <p class="quote glass">Nexi doesn't just track your life. It understands it.</p>
+        <h2>Diagnosis.<br/>Then a move.</h2>
+        <p class="lead">Nexi does not collect preferences. It investigates only what changes today's strategy — then locks one intervention.</p>
+        <div class="chips"><span>Adaptive</span><span>Evidence-first</span></div>
+        <p class="quote glass">ChatGPT answers. Nexi runs a life: constraint → today's action → tomorrow adapts.</p>
       </div>
       <div class="head-stage">
-        <span class="float-chip c1">Understands you</span>
-        <span class="float-chip c2">Adapts to your goals</span>
-        <span class="float-chip c3">Guides your next step</span>
+        <span class="float-chip c1">Names the bottleneck</span>
+        <span class="float-chip c2">Scores three lenses</span>
+        <span class="float-chip c3">Locks one mission</span>
         <svg viewBox="0 0 280 320" width="260" height="300" aria-hidden="true">
           <defs>
             <linearGradient id="head-g" x1="0" y1="0" x2="1" y2="1">
@@ -225,7 +227,7 @@
     </div>
   </section>
 
-  <section class="panel" id="how">
+  <section class="panel" id="loop">
     <span class="section-idx">04</span>
     <svg class="silk" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
@@ -241,19 +243,19 @@
     </svg>
     <div class="panel-inner split">
       <div>
-        <h2>Track. Focus.<br/>Transform.</h2>
-        <p class="lead">Stay on track with intelligent missions, deep insights and beautiful progress.</p>
+        <h2>Investigate.<br/>Lock. Adapt.</h2>
+        <p class="lead">Same loop the product uses. Sharp questions only when the answer changes today's move.</p>
         <ul class="feature-list">
-          <li>Smart Missions for real progress</li>
-          <li>Deep Insights that drive change</li>
-          <li>Visible Progress that motivates</li>
+          <li>Mission Zero — first consequential diagnosis</li>
+          <li>One 15–45 minute proof action</li>
+          <li>Tomorrow updates from evidence</li>
         </ul>
-        <a class="ghost" href="#waitlist" style="margin-top:1.5rem;display:inline-flex">See How It Works →</a>
+        <a class="ghost" href="how.html" style="margin-top:1.5rem;display:inline-flex">See How It Works →</a>
       </div>
       <div class="path-stage">
-        <span class="float-chip c1">1% Better Everyday</span>
-        <span class="float-chip c2">Build Habits That Last</span>
-        <span class="float-chip c3">Unlock Your Best Self</span>
+        <span class="float-chip c1">North star</span>
+        <span class="float-chip c2">Investigate</span>
+        <span class="float-chip c3">Lock the move</span>
         <div class="path-orb">
           <svg viewBox="0 0 200 200" aria-hidden="true">
             <defs>
@@ -296,18 +298,18 @@
     </svg>
     <div class="panel-inner split">
       <div>
-        <h2>Your Journey<br/>Starts Now.</h2>
-        <p class="lead">Be the first to experience Nexi OS and shape the future of living.</p>
+        <h2>Reserve<br/>the first wave.</h2>
+        <p class="lead">Name and email only. Run a live diagnosis while you wait.</p>
         <form id="waitlist-form" class="wait-form">
           <input name="name" placeholder="Your name" required autocomplete="name" />
           <input name="email" type="email" placeholder="Enter your email" required autocomplete="email" />
-          <button class="btn" type="submit">Join the Waitlist →</button>
+          <button class="btn" type="submit">Reserve my spot</button>
         </form>
         <p id="waitlist-status" hidden></p>
         <div class="stats glass">
-          <div><b class="gold">10,000+</b><span>Early Believers</span></div>
-          <div><b>AI-Powered</b><span>Personal Companion</span></div>
-          <div><b>Launching</b><span>January 1, 2027</span></div>
+          <div><b class="gold">3 lenses</b><span>Prestige · Wealth · Soul</span></div>
+          <div><b>Live engine</b><span>Experience Nexi</span></div>
+          <div><b>Name + email</b><span>Waitlist only</span></div>
         </div>
       </div>
       <div class="orb-wrap">
@@ -340,13 +342,22 @@
     </div>
   </section>
 
+  <footer class="site-foot">
+    <p>© 2026 Nexi. All rights reserved.</p>
+    <div>
+      <a href="why.html">Why</a>
+      <a href="how.html">How</a>
+      <a href="experience.html">Experience</a>
+      <a href="sample-result.html">Sample</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="intelligence.html">Intelligence</a>
+      <a href="journey.html">Journey</a>
+      <a href="referral.html">Referral</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-  </script>
 </body>
 </html>
