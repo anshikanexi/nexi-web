@@ -4,18 +4,19 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (31 Aug 2026)
+## Status (1 Sep 2026)
 
 ### Live
-GitHub Pages is active. Every push to `main` deploys automatically.
+GitHub Pages deploys on every push to `main`.
 
-### Today (31 Aug)
-Highest-priority unfinished piece: **Experience engine still ran a thin Mission Zero prompt, so diagnoses could sound generic. Home still shipped Features / Testimonials copy in source.**
+### Today (1 Sep)
+Highest-priority unfinished piece: **Home still shipped generic SaaS copy in source** (Features / Testimonials / Watch Video / 10,000+ believers). Product voice lived only in a JS patch.
 
-- `onboarding-decision` v10: sharper system prompt (Life OS voice, triple-lens collision, anti-generic diagnosis, one 15–45 min proof mission)
-- Experience protocol rail (North star → Investigate → Lock) assembled with the live engine
-- Home source now points to Why / How / Experience and the waitlist — not a generic SaaS nav
-- Referral `?ref=` captured on-device only. Waitlist still stores **name + email** only
+- Home source is now the product: Why / How / Experience nav, triple-lens thesis, Experience CTA, waitlist stats without fake social proof
+- Official four-fold orb mark stays visible; canvas is aura-only so the mark is not painted over
+- Site footer lists every page
+- `?ref=` captured on-device. Waitlist still stores **name + email** only
+- Experience engine remains `onboarding-decision` v10 (Mission Zero)
 
 ### Product surface
 - **Home** — 5-panel cinematic (silk, orb, glass dashboard) + waitlist
