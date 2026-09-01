@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bridge.src = 'product-bridge.js';
     document.body.appendChild(bridge);
   }
+  captureReferral();
   initMobileNav();
   initScrollNav();
   initWaitlist();
@@ -18,6 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductOrb();
   initReveals();
 });
+
+function captureReferral() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const ref = (params.get('ref') || '').trim();
+    if (ref) localStorage.setItem('nexi.ref', ref.slice(0, 40));
+  } catch (err) {}
+}
 
 function initMobileNav() {
   const nav = document.querySelector('.nav');
@@ -222,40 +231,27 @@ function initProductOrb() {
     const elapsed = (now - t0) / 1000;
     const phase = elapsed * ((Math.PI * 2) / 8);
     const breath = 0.5 + 0.5 * Math.sin((elapsed * Math.PI * 2) / 3.4);
-    const intensity = 0.4 + breath * 0.28;
+    const intensity = 0.55 + breath * 0.35;
 
     ctx.clearRect(0, 0, size, size);
     const c = size / 2;
-    const r = (size / 2) * 0.78;
 
-    const aura = ctx.createRadialGradient(c, c, r * 0.2, c, c, size / 2);
-    aura.addColorStop(0, rgba(champagne, 0.12 * intensity + 0.04 * Math.sin(phase)));
-    aura.addColorStop(0.45, rgba(teal, 0.1 * intensity + 0.03 * Math.cos(phase * 0.7)));
+    const aura = ctx.createRadialGradient(c, c, size * 0.12, c, c, size / 2);
+    aura.addColorStop(0, rgba(champagne, 0.08 * intensity));
+    aura.addColorStop(0.42, rgba(teal, 0.16 * intensity + 0.04 * Math.cos(phase * 0.7)));
     aura.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = aura;
     ctx.beginPath();
-    ctx.arc(c, c, (size / 2) * 0.98, 0, Math.PI * 2);
+    ctx.arc(c, c, size / 2, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(c, c, r, 0, Math.PI * 2);
-    ctx.clip();
-
-    const base = ctx.createRadialGradient(c - r * 0.2, c - r * 0.3, r * 0.1, c, c, r);
-    base.addColorStop(0, 'rgba(28,42,60,0.92)');
-    base.addColorStop(0.55, 'rgba(10,18,28,0.96)');
-    base.addColorStop(1, '#05080F');
-    ctx.fillStyle = base;
-    ctx.fillRect(0, 0, size, size);
-
-    function blob(ax, ay, color, alpha, rf) {
-      const bx = c + ax * r * 0.55;
-      const by = c + ay * r * 0.55;
-      const br = r * rf;
+    function halo(ax, ay, color, alpha, rf) {
+      const bx = c + ax * size * 0.22;
+      const by = c + ay * size * 0.22;
+      const br = size * rf;
       const g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
       g.addColorStop(0, rgba(color, alpha));
-      g.addColorStop(0.45, rgba(color, alpha * 0.35));
+      g.addColorStop(0.5, rgba(color, alpha * 0.28));
       g.addColorStop(1, rgba(color, 0));
       ctx.fillStyle = g;
       ctx.beginPath();
@@ -263,29 +259,8 @@ function initProductOrb() {
       ctx.fill();
     }
 
-    blob(-0.45 + 0.35 * Math.sin(phase * 0.7), -0.4 + 0.25 * Math.cos(phase * 0.5), champagne, (0.28 + breath * 0.18) * intensity, 0.55 + 0.08 * Math.sin(phase));
-    blob(0.4 + 0.3 * Math.cos(phase * 0.6), 0.35 + 0.28 * Math.sin(phase * 0.8), teal, (0.22 + breath * 0.16) * intensity, 0.5 + 0.1 * Math.cos(phase * 0.9));
-    blob(0.05 * Math.sin(phase * 0.4), -0.1 + 0.08 * Math.cos(phase * 0.3), [255, 255, 255], (0.12 + breath * 0.14) * intensity, 0.4 + breath * 0.12);
-
-    ctx.restore();
-
-    const rim = ctx.createConicGradient(0, c, c);
-    rim.addColorStop(0, rgba(champagne, 0.55));
-    rim.addColorStop(0.33, 'rgba(200,200,208,0.2)');
-    rim.addColorStop(0.66, rgba(teal, 0.25));
-    rim.addColorStop(1, rgba(champagne, 0.4));
-    ctx.strokeStyle = rim;
-    ctx.lineWidth = size * 0.012;
-    ctx.beginPath();
-    ctx.arc(c, c, r, 0, Math.PI * 2);
-    ctx.stroke();
-
-    ctx.strokeStyle = `rgba(255,255,255,${0.28 + breath * 0.08})`;
-    ctx.lineWidth = size * 0.018;
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.arc(c, c, r - size * 0.01, -2.5 + 0.08 * Math.sin(phase * 0.3), -1.55, false);
-    ctx.stroke();
+    halo(-0.35 + 0.2 * Math.sin(phase * 0.7), -0.32 + 0.16 * Math.cos(phase * 0.5), champagne, 0.18 * intensity, 0.28);
+    halo(0.32 + 0.18 * Math.cos(phase * 0.6), 0.28 + 0.16 * Math.sin(phase * 0.8), teal, 0.2 * intensity, 0.3);
 
     requestAnimationFrame(paint);
   }
