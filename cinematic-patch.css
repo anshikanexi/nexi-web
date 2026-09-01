@@ -1,0 +1,26 @@
+/* Orb aura overlay + home footer */
+.orb { position: relative; }
+.orb canvas {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+.orb svg { position: relative; z-index: 1; }
+.site-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 1.4rem 5.5% 2.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.site-foot div { display: flex; flex-wrap: wrap; gap: 0.85rem 1.15rem; }
+.site-foot a { color: var(--muted); text-decoration: none; }
+.site-foot a:hover { color: var(--gold); }
