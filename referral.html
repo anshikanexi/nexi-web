@@ -10,165 +10,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .ref-shell {
-      padding: 9rem 5% 5rem;
-      max-width: 920px;
-      margin: 0 auto;
-    }
-    .ref-hero h1 {
-      font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-      line-height: 1.12;
-      margin-bottom: 1.1rem;
-    }
-    .ref-hero .lead {
-      color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 34rem;
-      margin-bottom: 2.75rem;
-    }
-    .ref-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-    @media (max-width: 820px) {
-      .ref-grid { grid-template-columns: 1fr; }
-    }
-    .share-card {
-      padding: 2rem 2rem 1.75rem;
-      border-radius: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-    .share-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 15% 0%, rgba(45,212,191,0.1), transparent 55%);
-      pointer-events: none;
-    }
-    .share-card h2 {
-      font-size: 1.65rem;
-      margin-bottom: 0.5rem;
-    }
-    .share-card > p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-    .code-block {
-      display: flex;
-      gap: 0.65rem;
-      align-items: stretch;
-      margin-bottom: 1rem;
-    }
-    .code-block input {
-      flex: 1;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid var(--glass-border);
-      border-radius: 14px;
-      padding: 0.95rem 1.1rem;
-      color: var(--champagne);
-      font-family: inherit;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-      outline: none;
-    }
-    .code-block button {
-      border-radius: 14px;
-      padding: 0 1.25rem;
-      white-space: nowrap;
-    }
-    .gen-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 0.5rem;
-    }
-    .gen-row input {
-      background: rgba(0,0,0,0.35);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 0.9rem 1.1rem;
-      color: var(--text);
-      font-size: 0.95rem;
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .gen-row input:focus {
-      border-color: rgba(232, 213, 181, 0.45);
-      box-shadow: 0 0 0 3px rgba(232, 213, 181, 0.08);
-    }
-    .status-line {
-      font-size: 0.88rem;
-      margin-top: 0.85rem;
-      min-height: 1.25rem;
-      color: var(--teal);
-    }
+    .ref-shell { padding: 9rem 5% 5rem; max-width: 920px; margin: 0 auto; }
+    .ref-hero h1 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); line-height: 1.12; margin-bottom: 1.1rem; }
+    .ref-hero .lead { color: var(--muted); font-size: 1.1rem; max-width: 34rem; margin-bottom: 2.75rem; }
+    .ref-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.5rem; align-items: start; }
+    @media (max-width: 820px) { .ref-grid { grid-template-columns: 1fr; } }
+    .share-card { padding: 2rem 2rem 1.75rem; border-radius: 24px; position: relative; overflow: hidden; }
+    .share-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 0%, rgba(45,212,191,0.1), transparent 55%); pointer-events: none; }
+    .share-card h2 { font-size: 1.65rem; margin-bottom: 0.5rem; }
+    .share-card > p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .code-block { display: flex; gap: 0.65rem; align-items: stretch; margin-bottom: 1rem; }
+    .code-block input { flex: 1; background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 14px; padding: 0.95rem 1.1rem; color: var(--champagne); font-family: inherit; font-size: 0.95rem; letter-spacing: 0.04em; outline: none; }
+    .code-block button { border-radius: 14px; padding: 0 1.25rem; white-space: nowrap; }
+    .gen-row { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
+    .gen-row input { background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border); border-radius: 12px; padding: 0.9rem 1.1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; outline: none; transition: border-color 0.3s, box-shadow 0.3s; }
+    .gen-row input:focus { border-color: rgba(232, 213, 181, 0.45); box-shadow: 0 0 0 3px rgba(232, 213, 181, 0.08); }
+    .status-line { font-size: 0.88rem; margin-top: 0.85rem; min-height: 1.25rem; color: var(--teal); }
     .status-line.err { color: #FF8A8A; }
-    .perk-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .perk {
-      padding: 1.35rem 1.4rem;
-      border-radius: 18px;
-      transition: transform 0.4s var(--ease), border-color 0.3s;
-    }
-    .perk:hover {
-      transform: translateY(-3px);
-      border-color: rgba(45, 212, 191, 0.22);
-    }
-    .perk .num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.75rem;
-      color: var(--champagne);
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    .perk h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.35rem;
-    }
-    .perk p {
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-    .rules {
-      margin-top: 3.5rem;
-      padding: 1.75rem 2rem;
-      border-radius: 20px;
-    }
-    .rules h3 {
-      font-size: 1.35rem;
-      margin-bottom: 1rem;
-    }
-    .rules ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-    .rules li {
-      display: grid;
-      grid-template-columns: 10px 1fr;
-      gap: 0.85rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-      align-items: start;
-    }
-    .rules li::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      margin-top: 0.4rem;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 10px rgba(45, 212, 191, 0.45);
-    }
+    .perk-stack { display: flex; flex-direction: column; gap: 1rem; }
+    .perk { padding: 1.35rem 1.4rem; border-radius: 18px; transition: transform 0.4s var(--ease), border-color 0.3s; }
+    .perk:hover { transform: translateY(-3px); border-color: rgba(45, 212, 191, 0.22); }
+    .perk .num { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; color: var(--champagne); display: block; margin-bottom: 0.25rem; }
+    .perk h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+    .perk p { color: var(--muted); font-size: 0.88rem; }
+    .rules { margin-top: 3.5rem; padding: 1.75rem 2rem; border-radius: 20px; }
+    .rules h3 { font-size: 1.35rem; margin-bottom: 1rem; }
+    .rules ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .rules li { display: grid; grid-template-columns: 10px 1fr; gap: 0.85rem; color: var(--muted); font-size: 0.92rem; align-items: start; }
+    .rules li::before { content: ''; width: 8px; height: 8px; margin-top: 0.4rem; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px rgba(45, 212, 191, 0.45); }
+    .live-count { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
+    .live-count b { color: var(--teal); font-weight: 500; }
   </style>
 </head>
 <body>
@@ -198,17 +69,19 @@
     <div class="ref-grid">
       <div class="share-card glass reveal-ready">
         <h2>Your invite link</h2>
-        <p>Generate a personal code from the email you used on the waitlist. Share the link. When they join, your circle rank moves.</p>
+        <p>Generate a personal code from the email you used on the waitlist. Only a display alias is stored with the code — never the email on this board.</p>
 
         <div class="code-block">
-          <input type="text" id="ref-link" readonly value="https://anshikanexi.github.io/nexi-web/?ref=NEXI-EARLY" aria-label="Referral link" />
+          <input type="text" id="ref-link" readonly value="https://anshikanexi.github.io/nexi-web/?ref=NX-EARLY" aria-label="Referral link" />
           <button type="button" class="btn primary" id="btn-copy">Copy</button>
         </div>
 
         <div class="gen-row">
+          <input type="text" id="ref-name" placeholder="First name for your public alias" autocomplete="given-name" />
           <input type="email" id="ref-email" placeholder="Email you used on waitlist" autocomplete="email" />
-          <button type="button" class="btn secondary" id="btn-gen">Generate my code</button>
+          <button type="button" class="btn secondary" id="btn-gen">Claim my live code</button>
         </div>
+        <p class="live-count" id="ref-count" hidden>Verified invites: <b>0</b></p>
         <p class="status-line" id="ref-status"></p>
       </div>
 
@@ -221,7 +94,7 @@
         <article class="perk glass reveal-ready">
           <span class="num">02</span>
           <h3>Visible on Leaderboard</h3>
-          <p>Top referrers appear on the public board once the wave opens. Signal, not spam.</p>
+          <p>Ranks update when someone joins the waitlist through your link. Signal, not spam.</p>
         </article>
         <article class="perk glass reveal-ready">
           <span class="num">03</span>
@@ -235,7 +108,7 @@
       <h3>Rules of the circle</h3>
       <ul>
         <li>One code per waitlist email. No bulk scraping or paid traffic farms.</li>
-        <li>Only name + email is stored for invites that convert. Nothing else.</li>
+        <li>Waitlist stores name + email only. The board stores a code, alias, and count.</li>
         <li>Self-referrals and duplicate emails do not count.</li>
         <li>We reserve the right to reset ranks that look like abuse.</li>
       </ul>
@@ -259,29 +132,20 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
   <script>
 (function () {
   const linkEl = document.getElementById('ref-link');
+  const nameEl = document.getElementById('ref-name');
   const emailEl = document.getElementById('ref-email');
   const statusEl = document.getElementById('ref-status');
+  const countEl = document.getElementById('ref-count');
   const btnCopy = document.getElementById('btn-copy');
   const btnGen = document.getElementById('btn-gen');
-
   const base = 'https://anshikanexi.github.io/nexi-web/?ref=';
 
-  function hashCode(str) {
-    let h = 0;
-    for (let i = 0; i < str.length; i++) {
-      h = ((h << 5) - h) + str.charCodeAt(i);
-      h |= 0;
-    }
-    return Math.abs(h).toString(36).toUpperCase().slice(0, 6);
-  }
-
-  function setLink(code) {
-    linkEl.value = base + code;
-  }
+  function setLink(code) { linkEl.value = base + code; }
 
   btnCopy.addEventListener('click', async () => {
     try {
@@ -297,34 +161,36 @@
     }
   });
 
-  btnGen.addEventListener('click', () => {
+  btnGen.addEventListener('click', async () => {
     const email = (emailEl.value || '').trim().toLowerCase();
+    const name = (nameEl.value || '').trim();
     if (!email || !email.includes('@')) {
       statusEl.classList.add('err');
       statusEl.textContent = 'Enter the email you used on the waitlist.';
       return;
     }
-    const code = 'NX-' + hashCode(email);
+    const code = typeof circleCodeFromEmail === 'function' ? circleCodeFromEmail(email) : ('NX-' + email.length);
+    const alias = typeof aliasFromName === 'function' ? aliasFromName(name, email) : 'Builder';
     setLink(code);
+    btnGen.disabled = true;
     statusEl.classList.remove('err');
-    statusEl.textContent = 'Code locked to your email. Share the link.';
+    statusEl.textContent = 'Claiming your code on the live board…';
+    try {
+      if (!supabase) throw new Error('offline');
+      const { data, error } = await supabase.rpc('claim_circle_code', { p_code: code, p_alias: alias });
+      if (error) throw error;
+      const row = data || {};
+      countEl.hidden = false;
+      countEl.querySelector('b').textContent = String(row.invites || 0);
+      statusEl.textContent = 'Code live. Share the link — conversions land on the leaderboard.';
+    } catch (err) {
+      console.error(err);
+      statusEl.classList.add('err');
+      statusEl.textContent = 'Could not claim the code. Copy still works on-device.';
+    } finally {
+      btnGen.disabled = false;
+    }
   });
-
-  // Reveal
-  const cards = document.querySelectorAll('.reveal-ready');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          en.target.classList.add('revealed');
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    cards.forEach((el) => io.observe(el));
-  } else {
-    cards.forEach((el) => el.classList.add('revealed'));
-  }
 })();
   </script>
 </body>

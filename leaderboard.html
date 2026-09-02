@@ -10,149 +10,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .lb-shell {
-      padding: 9rem 5% 5rem;
-      max-width: 780px;
-      margin: 0 auto;
-    }
-    .lb-hero h1 {
-      font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-      line-height: 1.12;
-      margin-bottom: 1.1rem;
-    }
-    .lb-hero .lead {
-      color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 32rem;
-      margin-bottom: 2.5rem;
-    }
-    .lb-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
-    .chip-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
-      background: rgba(45, 212, 191, 0.1);
-      border: 1px solid rgba(45, 212, 191, 0.28);
-      color: var(--teal);
-    }
-    .chip-live .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 10px var(--teal);
-      animation: soft-pulse 2.5s ease-in-out infinite;
-    }
-    .chip-muted {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--glass-border);
-      color: var(--muted);
-    }
-    .board {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-    .row {
-      display: grid;
-      grid-template-columns: 56px 1fr auto;
-      gap: 1rem;
-      align-items: center;
-      padding: 1.1rem 1.35rem;
-      border-radius: 16px;
-      transition: transform 0.4s var(--ease), border-color 0.3s, background 0.3s;
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    .row.revealed {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), border-color 0.3s, background 0.3s;
-    }
-    .row:hover {
-      transform: translateY(-2px);
-      border-color: rgba(45, 212, 191, 0.2);
-    }
-    .row.top {
-      background: linear-gradient(135deg, rgba(232,213,181,0.08), rgba(45,212,191,0.05));
-      border-color: rgba(232, 213, 181, 0.22);
-    }
-    .rank {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.65rem;
-      color: var(--titanium);
-      text-align: center;
-    }
+    .lb-shell { padding: 9rem 5% 5rem; max-width: 780px; margin: 0 auto; }
+    .lb-hero h1 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); line-height: 1.12; margin-bottom: 1.1rem; }
+    .lb-hero .lead { color: var(--muted); font-size: 1.1rem; max-width: 32rem; margin-bottom: 2.5rem; }
+    .lb-meta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+    .chip-live { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 0.85rem; border-radius: 999px; background: rgba(45, 212, 191, 0.1); border: 1px solid rgba(45, 212, 191, 0.28); color: var(--teal); }
+    .chip-live .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px var(--teal); animation: soft-pulse 2.5s ease-in-out infinite; }
+    .chip-muted { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.85rem; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); color: var(--muted); }
+    .board { display: flex; flex-direction: column; gap: 0.65rem; }
+    .row { display: grid; grid-template-columns: 56px 1fr auto; gap: 1rem; align-items: center; padding: 1.1rem 1.35rem; border-radius: 16px; transition: transform 0.4s var(--ease), border-color 0.3s, background 0.3s; opacity: 0; transform: translateY(18px); }
+    .row.revealed { opacity: 1; transform: translateY(0); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), border-color 0.3s, background 0.3s; }
+    .row:hover { transform: translateY(-2px); border-color: rgba(45, 212, 191, 0.2); }
+    .row.top { background: linear-gradient(135deg, rgba(232,213,181,0.08), rgba(45,212,191,0.05)); border-color: rgba(232, 213, 181, 0.22); }
+    .rank { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; color: var(--titanium); text-align: center; }
     .row.top .rank { color: var(--champagne); }
-    .who {
-      min-width: 0;
-    }
-    .who .name {
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.15rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .who .tag {
-      font-size: 0.78rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-    .score {
-      text-align: right;
-    }
-    .score .n {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      color: var(--teal);
-      display: block;
-      line-height: 1;
-    }
-    .score .l {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .empty-state {
-      text-align: center;
-      padding: 3rem 1.5rem;
-      border-radius: 20px;
-    }
-    .empty-state h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.65rem;
-    }
-    .empty-state p {
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      max-width: 26rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .footnote {
-      margin-top: 2.5rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-align: center;
-    }
+    .who { min-width: 0; }
+    .who .name { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .who .tag { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em; }
+    .score { text-align: right; }
+    .score .n { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--teal); display: block; line-height: 1; }
+    .score .l { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .empty-state { text-align: center; padding: 3rem 1.5rem; border-radius: 20px; }
+    .empty-state h2 { font-size: 1.6rem; margin-bottom: 0.65rem; }
+    .empty-state p { color: var(--muted); margin-bottom: 1.5rem; max-width: 26rem; margin-left: auto; margin-right: auto; }
+    .footnote { margin-top: 2.5rem; font-size: 0.85rem; color: var(--muted); text-align: center; }
   </style>
 </head>
 <body>
@@ -176,18 +57,16 @@
     <section class="lb-hero">
       <p class="eyebrow champagne">Signal</p>
       <h1>Early circle<br/><span class="accent">Leaderboard</span></h1>
-      <p class="lead">Ranks by verified invites that join the waitlist. Updated as the wave fills. Not a vanity contest — a map of who is compounding the right network.</p>
+      <p class="lead">Ranks by verified waitlist conversions from a unique invite code. Aliases only. No emails on this board.</p>
       <div class="lb-meta">
-        <span class="chip-live"><span class="dot"></span> Preview mode</span>
-        <span class="chip-muted">Live ranks at launch</span>
+        <span class="chip-live"><span class="dot"></span> Live ranks</span>
+        <span class="chip-muted" id="lb-meta-note">Waiting on first conversion</span>
       </div>
     </section>
 
-    <div class="board" id="board">
-      <!-- rows injected -->
-    </div>
+    <div class="board" id="board"></div>
 
-    <p class="footnote">Names are display aliases only. Scores = verified waitlist conversions from a unique referral code. Abuse resets rank.</p>
+    <p class="footnote">Display aliases only. Scores = verified waitlist conversions from a unique referral code. Abuse resets rank.</p>
 
     <section class="section-cta" style="padding-top: 2.5rem;">
       <a href="referral.html" class="btn primary">Get your invite link</a>
@@ -207,48 +86,69 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
   <script>
 (function () {
-  // Preview ranks — replaced by live data when referral tracking ships
-  const ranks = [
-    { rank: 1, name: 'A. Rao', tag: 'Founding signal', score: 14 },
-    { rank: 2, name: 'M. Chen', tag: 'Builder circle', score: 11 },
-    { rank: 3, name: 'S. Okonkwo', tag: 'Builder circle', score: 9 },
-    { rank: 4, name: 'J. Park', tag: 'Early wave', score: 7 },
-    { rank: 5, name: 'L. Vargas', tag: 'Early wave', score: 6 },
-    { rank: 6, name: 'R. Nair', tag: 'Early wave', score: 5 },
-    { rank: 7, name: 'T. Berg', tag: 'Scout', score: 4 },
-    { rank: 8, name: 'K. Adeyemi', tag: 'Scout', score: 3 },
-  ];
-
   const board = document.getElementById('board');
+  const note = document.getElementById('lb-meta-note');
 
-  ranks.forEach((r, i) => {
-    const row = document.createElement('article');
-    row.className = 'row glass' + (r.rank <= 3 ? ' top' : '');
-    row.style.transitionDelay = (i * 0.07) + 's';
-    row.innerHTML =
-      '<div class="rank">' + String(r.rank).padStart(2, '0') + '</div>' +
-      '<div class="who"><div class="name">' + r.name + '</div><div class="tag">' + r.tag + '</div></div>' +
-      '<div class="score"><span class="n">' + r.score + '</span><span class="l">invites</span></div>';
-    board.appendChild(row);
-  });
-
-  const rows = board.querySelectorAll('.row');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          en.target.classList.add('revealed');
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    rows.forEach((el) => io.observe(el));
-  } else {
-    rows.forEach((el) => el.classList.add('revealed'));
+  function paint(ranks) {
+    board.innerHTML = '';
+    if (!ranks.length) {
+      const empty = document.createElement('div');
+      empty.className = 'empty-state glass revealed';
+      empty.innerHTML = '<h2>The board is live. Empty on purpose.</h2><p>No fabricated ranks. The first verified invite that joins the waitlist writes row one.</p>';
+      board.appendChild(empty);
+      return;
+    }
+    note.textContent = ranks.length + ' live ' + (ranks.length === 1 ? 'rank' : 'ranks');
+    ranks.forEach((r, i) => {
+      const row = document.createElement('article');
+      row.className = 'row glass' + (r.rank <= 3 ? ' top' : '');
+      row.style.transitionDelay = (i * 0.07) + 's';
+      row.innerHTML =
+        '<div class="rank">' + String(r.rank).padStart(2, '0') + '</div>' +
+        '<div class="who"><div class="name">' + escapeHtml(r.alias) + '</div><div class="tag">' + escapeHtml(r.tag) + '</div></div>' +
+        '<div class="score"><span class="n">' + r.invites + '</span><span class="l">invites</span></div>';
+      board.appendChild(row);
+    });
+    const rows = board.querySelectorAll('.row');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.classList.add('revealed');
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      rows.forEach((el) => io.observe(el));
+    } else {
+      rows.forEach((el) => el.classList.add('revealed'));
+    }
   }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  async function load() {
+    if (!supabase) {
+      paint([]);
+      return;
+    }
+    const { data, error } = await supabase.rpc('get_circle_leaderboard', { p_limit: 16 });
+    if (error) {
+      console.error(error);
+      paint([]);
+      return;
+    }
+    paint(data || []);
+  }
+
+  load();
 })();
   </script>
 </body>
