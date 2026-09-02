@@ -23,9 +23,31 @@ document.addEventListener('DOMContentLoaded', () => {
 function captureReferral() {
   try {
     const params = new URLSearchParams(window.location.search);
-    const ref = (params.get('ref') || '').trim();
+    const ref = (params.get('ref') || '').trim().toUpperCase();
     if (ref) localStorage.setItem('nexi.ref', ref.slice(0, 40));
   } catch (err) {}
+}
+
+function circleCodeFromEmail(email) {
+  const raw = String(email || '').trim().toLowerCase();
+  let h = 0;
+  for (let i = 0; i < raw.length; i++) {
+    h = ((h << 5) - h) + raw.charCodeAt(i);
+    h |= 0;
+  }
+  return 'NX-' + Math.abs(h).toString(36).toUpperCase().slice(0, 6);
+}
+
+function aliasFromName(name, email) {
+  const n = String(name || '').trim();
+  if (n) {
+    const parts = n.split(/\s+/);
+    const first = parts[0].slice(0, 1).toUpperCase();
+    const last = parts.length > 1 ? parts[parts.length - 1].slice(0, 1).toUpperCase() + '.' : '';
+    return (first + (last ? '. ' + last : '.')).trim();
+  }
+  const local = String(email || '').split('@')[0] || 'B';
+  return local.slice(0, 1).toUpperCase() + '.';
 }
 
 function initMobileNav() {
@@ -115,14 +137,16 @@ function initWaitlist() {
       if (error) {
         if (error.code === '23505') {
           status.textContent = 'You are already on the list. We will be in touch.';
-          status.style.color = 'var(--teal)';
+          status.style.color = 'var(--teal, #2dd4bf)';
         } else {
           throw error;
         }
       } else {
         status.textContent = 'You are on the list. We will be in touch.';
-        status.style.color = 'var(--teal)';
+        status.style.color = 'var(--teal, #2dd4bf)';
         form.reset();
+        await creditInviteIfAny(email);
+        await claimOwnCircle(name, email);
       }
     } catch (err) {
       console.error(err);
@@ -135,6 +159,31 @@ function initWaitlist() {
       }
     }
   });
+}
+
+async function creditInviteIfAny(joinerEmail) {
+  if (!supabase) return;
+  let ref = '';
+  try {
+    ref = (localStorage.getItem('nexi.ref') || '').toUpperCase();
+  } catch (err) {}
+  if (!ref) return;
+  if (ref === circleCodeFromEmail(joinerEmail)) return;
+  try {
+    await supabase.rpc('credit_circle_invite', { p_code: ref });
+  } catch (err) {
+    console.warn('circle credit skipped', err);
+  }
+}
+
+async function claimOwnCircle(name, email) {
+  if (!supabase) return;
+  try {
+    await supabase.rpc('claim_circle_code', {
+      p_code: circleCodeFromEmail(email),
+      p_alias: aliasFromName(name, email),
+    });
+  } catch (err) {}
 }
 
 function initOrbParallax() {
