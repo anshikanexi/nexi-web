@@ -4,25 +4,24 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (2 Sep 2026)
+## Status (3 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (2 Sep)
-Highest-priority unfinished piece: **Referral + Leaderboard were preview theatre** (hashed codes on-device, fake ranks).
+### Today (3 Sep)
+Highest-priority unfinished piece: **Experience Nexi was a generic inner-page shell** while Home was cinematic.
 
+- Experience now shares Home’s product language: NEXI OS nav, silk ribbons, vesica orb, Outfit + Cormorant, site footer
+- Protocol rail + starter wants are source, not JS patches
+- Live engine unchanged: guest auth → `onboarding-decision` v10 (Mission Zero)
+- Result assembly + device persist still hydrate Sample Result
 - Waitlist still stores **name + email only**
-- New `circle_ranks` table: public code + display alias + invite count. No emails.
-- Joining the waitlist with `?ref=` credits the inviter (self-referrals ignored)
-- Referral page claims a live code against Supabase
-- Leaderboard reads `get_circle_leaderboard` — empty state until first verified conversion
-- Experience engine remains `onboarding-decision` v10 (Mission Zero)
 
 ### Product surface
 - **Home** — 5-panel cinematic + waitlist
 - **Why Nexi / How It Works / Intelligence / Blueprint / Journey**
-- **Experience Nexi** — live `onboarding-decision` + guest auth + starters + protocol + result assembly
+- **Experience Nexi** — cinematic console + live Mission Zero
 - **Sample Result** — crafted default or last live diagnosis
 - **Referral / Leaderboard** — live early-circle ranks
 

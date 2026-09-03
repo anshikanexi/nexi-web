@@ -1,3 +1,9 @@
+:root {
+  --glass-border: var(--line, rgba(255,255,255,0.12));
+  --titanium: var(--fg, #f4f1ea);
+  --champagne: var(--gold, #e8d5b5);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
 .starters{display:flex;flex-wrap:wrap;gap:.45rem;margin:.85rem 0 0;justify-content:center}
 .starter{font-size:.72rem;letter-spacing:.02em;padding:.42rem .75rem;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);color:var(--titanium);cursor:pointer;font-family:inherit;transition:border-color .3s,background .3s,transform .3s}
 .starter:hover{border-color:rgba(45,212,191,.4);background:rgba(45,212,191,.08);transform:translateY(-1px)}
