@@ -5,121 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Why Nexi — Life Operating System</title>
   <meta name="description" content="Why Nexi exists: one intelligence across Prestige, Soul & Wealth. Diagnosis first. One next move. Memory that compounds." />
+  <meta name="theme-color" content="#050A12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .why-hero { padding: 9rem 5% 2.5rem; max-width: 920px; margin: 0 auto; }
-    .why-hero h1 { font-size: clamp(2.5rem, 4.8vw, 3.8rem); line-height: 1.1; margin-bottom: 1.25rem; }
-    .why-hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 38rem; }
-    .contrast { max-width: 980px; margin: 0 auto 5rem; padding: 0 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 1.15rem; }
-    .contrast-card { padding: 1.7rem 1.55rem; border-radius: 20px; position: relative; overflow: hidden; }
-    .contrast-card.old::before, .contrast-card.new::before { content: ''; position: absolute; inset: 0; pointer-events: none; }
-    .contrast-card.old::before { background: radial-gradient(ellipse at 12% 0%, rgba(200,200,208,0.06), transparent 55%); }
-    .contrast-card.new::before { background: radial-gradient(ellipse at 12% 0%, rgba(45,212,191,0.12), transparent 55%); }
-    .contrast-card h3 { font-size: 1.45rem; margin-bottom: 1rem; }
-    .contrast-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-    .contrast-card li { color: var(--muted); font-size: 0.93rem; padding-left: 1rem; position: relative; }
-    .contrast-card.old li::before { content: ''; position: absolute; left: 0; top: 0.55rem; width: 6px; height: 1px; background: rgba(200,200,208,0.45); }
-    .contrast-card.new li::before { content: ''; position: absolute; left: 0; top: 0.45rem; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px rgba(45,212,191,0.5); }
-    .manifesto { max-width: 820px; margin: 0 auto 5rem; padding: 0 5%; }
-    .manifesto-card { border-radius: 24px; padding: 2.1rem 2rem 1.9rem; position: relative; overflow: hidden; }
-    .manifesto-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 18% 0%, rgba(232,213,181,0.1), transparent 55%); pointer-events: none; }
-    .manifesto-card h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-bottom: 0.7rem; }
-    .manifesto-card p { color: var(--muted); margin-bottom: 1.4rem; max-width: 36rem; }
-    .thesis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
-    .thesis { padding: 1.1rem 1.15rem; border-radius: 14px; background: rgba(0,0,0,0.28); border: 1px solid var(--glass-border); opacity: 0; transform: translateY(16px) scale(0.98); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease), border-color 0.3s; }
-    .thesis.assembled { opacity: 1; transform: none; }
-    .thesis:hover { border-color: rgba(45,212,191,0.28); }
-    .thesis .k { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--champagne); margin-bottom: 0.35rem; }
-    .thesis .v { font-size: 1rem; line-height: 1.35; }
-    .collision { max-width: 980px; margin: 0 auto 5rem; padding: 0 5%; }
-    .collision h2 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 0.6rem; }
-    .collision > p { color: var(--muted); max-width: 36rem; margin-bottom: 1.6rem; }
-    .engine-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .engine { padding: 1.5rem 1.35rem; border-radius: var(--radius); transition: transform 0.4s var(--ease), border-color 0.3s; }
-    .engine:hover { transform: translateY(-4px); border-color: rgba(45,212,191,0.28); }
-    .engine h3 { font-size: 1.35rem; margin-bottom: 0.45rem; }
-    .engine p { color: var(--muted); font-size: 0.9rem; }
-    .quote-line { max-width: 820px; margin: 0 auto 4.5rem; padding: 0 5%; }
-    .quote-line blockquote { border-left: 2px solid rgba(232,213,181,0.5); background: rgba(232,213,181,0.04); border-radius: 0 16px 16px 0; padding: 1.2rem 1.4rem; color: var(--champagne); font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.2rem, 2.4vw, 1.55rem); font-style: italic; line-height: 1.35; }
-    @media (max-width: 760px) { .contrast, .thesis-grid, .engine-row { grid-template-columns: 1fr; } }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="cinematic.css" />
+  <link rel="stylesheet" href="cinematic-patch.css" />
+  <link rel="stylesheet" href="inner.css" />
 </head>
 <body>
-  <div class="ambient"><div class="orb-glow"></div><div class="noise"></div></div>
-  <nav class="nav glass">
-    <a href="index.html" class="logo">NEXI</a>
-    <div class="nav-links">
+  <header class="nav" id="nav">
+    <a class="logo" href="index.html">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+        <defs>
+          <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#F3E6C8"/>
+            <stop offset="50%" stop-color="#7EEAE0"/>
+            <stop offset="100%" stop-color="#C9A86C"/>
+          </linearGradient>
+        </defs>
+        <circle cx="16" cy="16" r="14" fill="none" stroke="url(#logo-g)" stroke-width="1.2"/>
+        <path d="M16 7.2c2.5 2.3 4 3.7 4 5.8A4 4 0 0 1 16 17a4 4 0 0 1-4-4c0-2.1 1.5-3.5 4-5.8z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+        <path d="M16 24.8c-2.5-2.3-4-3.7-4-5.8A4 4 0 0 1 16 15a4 4 0 0 1 4 4c0 2.1-1.5 3.5-4 5.8z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+        <path d="M7.2 16c2.3-2.5 3.7-4 5.8-4A4 4 0 0 1 17 16a4 4 0 0 1-4 4c-2.1 0-3.5-1.5-5.8-4z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+        <path d="M24.8 16c-2.3 2.5-3.7 4-5.8 4A4 4 0 0 1 15 16a4 4 0 0 1 4-4c2.1 0 3.5 1.5 5.8 4z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+      </svg>
+      NEXI OS
+    </a>
+    <nav class="nav-links">
       <a href="why.html" class="active">Why Nexi</a>
       <a href="how.html">How It Works</a>
-      <a href="intelligence.html">Intelligence</a>
-      <a href="experience.html">Experience Nexi</a>
+      <a href="experience.html">Experience</a>
       <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
-    </div>
-  </nav>
-  <main>
-    <section class="why-hero">
-      <p class="eyebrow champagne">The gap</p>
-      <h1>You don’t need another tracker.<br/><span class="accent">You need a diagnosis.</span></h1>
+    </nav>
+  </header>
+
+  <main class="inner">
+    <svg class="silk" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="silk-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#F4E4C1" stop-opacity="0.04"/>
+          <stop offset="35%" stop-color="#E8D5B5" stop-opacity="0.42"/>
+          <stop offset="100%" stop-color="#8A6A3A" stop-opacity="0.06"/>
+        </linearGradient>
+        <linearGradient id="silk-teal" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7EEAE0" stop-opacity="0.06"/>
+          <stop offset="45%" stop-color="#2DD4BF" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#0A3A38" stop-opacity="0.08"/>
+        </linearGradient>
+        <filter id="silk-soft"><feGaussianBlur stdDeviation="10"/></filter>
+      </defs>
+      <path d="M520 60 C 700 -60, 880 140, 1080 60 S 1420 220, 1300 400 S 1000 600, 1220 820" fill="none" stroke="url(#silk-gold)" stroke-width="130" filter="url(#silk-soft)"/>
+      <path d="M420 240 C 640 40, 920 280, 1140 160 S 1440 360, 1240 560" fill="none" stroke="url(#silk-teal)" stroke-width="78" filter="url(#silk-soft)" opacity="0.8"/>
+    </svg>
+
+    <div class="inner-wrap">
+      <p class="kicker">The gap</p>
+      <h1>You don’t need another tracker.<br/><em>You need a diagnosis.</em></h1>
       <p class="lead">Goals, notes, and habit apps already exist. What does not exist is a single intelligence that sees how Prestige, Soul, and Wealth collide — then refuses the path that wastes a year.</p>
-    </section>
-    <div class="contrast">
-      <article class="contrast-card glass old reveal-ready">
-        <h3>The usual stack</h3>
-        <ul>
-          <li>Trackers that reward activity, not leverage</li>
-          <li>Chatbots that plan endlessly and never lock a move</li>
-          <li>Coaches that guess the bottleneck from one lens</li>
-          <li>Vision-board language with no constraint check</li>
-        </ul>
-      </article>
-      <article class="contrast-card glass new reveal-ready">
-        <h3>The Nexi standard</h3>
-        <ul>
-          <li>Facts first. Then a named diagnosis</li>
-          <li>One mission sized for today — done-when clear</li>
-          <li>Three engines, one bottleneck, one primary lens</li>
-          <li>Memory that retires failed strategies on purpose</li>
-        </ul>
-      </article>
-    </div>
-    <div class="manifesto">
-      <div class="manifesto-card glass" id="manifesto">
-        <p class="eyebrow champagne">Thesis</p>
-        <h2>The product is the shortest legitimate route.</h2>
-        <p>Nexi is calibrated against two failures: shortcuts that look productive, and slow paths that feel safe while the real constraint sits unused. Ambition is protected. Mediocrity is not.</p>
-        <div class="thesis-grid" id="thesis-grid">
+
+      <div class="inner-grid">
+        <article class="tile glass old reveal-ready">
+          <h3>The usual stack</h3>
+          <ul>
+            <li>Trackers that reward activity, not leverage</li>
+            <li>Chatbots that plan endlessly and never lock a move</li>
+            <li>Coaches that guess the bottleneck from one lens</li>
+            <li>Vision-board language with no constraint check</li>
+          </ul>
+        </article>
+        <article class="tile glass new reveal-ready">
+          <h3>The Nexi standard</h3>
+          <ul>
+            <li>Facts first. Then a named diagnosis</li>
+            <li>One mission sized for today — done-when clear</li>
+            <li>Three engines, one bottleneck, one primary lens</li>
+            <li>Memory that retires failed strategies on purpose</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="tile glass reveal-ready" style="margin-top:1.2rem;padding:1.8rem 1.55rem">
+        <p class="kicker">Thesis</p>
+        <h2 style="font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:.55rem">The product is the shortest legitimate route.</h2>
+        <p class="lead" style="margin-top:0;margin-bottom:1.3rem">Nexi is calibrated against two failures: shortcuts that look productive, and slow paths that feel safe while the real constraint sits unused.</p>
+        <div class="inner-grid" id="thesis-grid">
           <div class="thesis" data-delay="0"><div class="k">Diagnosis before advice</div><div class="v">Name what is actually going on. Encouragement without a bottleneck is noise.</div></div>
           <div class="thesis" data-delay="90"><div class="k">One move, not a dump</div><div class="v">Verb-first. 15–45 minutes. Evidence from a finished action, not a longer list.</div></div>
-          <div class="thesis" data-delay="180"><div class="k">Triple lens, one collapse</div><div class="v">Prestige, Wealth, Soul scored together. Only one engine is allowed to be primary today.</div></div>
+          <div class="thesis" data-delay="180"><div class="k">Triple lens, one collapse</div><div class="v">Prestige, Wealth, Soul scored together. Only one engine is primary today.</div></div>
           <div class="thesis" data-delay="270"><div class="k">Memory that compounds</div><div class="v">Tomorrow already knows what failed, what worked, and which belief is still unproven.</div></div>
         </div>
       </div>
-    </div>
-    <section class="collision">
-      <p class="eyebrow champagne">Where systems break</p>
+
+      <p class="kicker" style="margin-top:3rem">Where systems break</p>
       <h2>The bottleneck is almost never where you are looking.</h2>
-      <p>Prestige without Wealth becomes unpaid proof. Wealth without Soul becomes a schedule that dies on Tuesday. Soul without Prestige becomes reflection with no optionality.</p>
-      <div class="engine-row">
-        <article class="engine glass reveal-ready"><div class="icon-dot"></div><h3>Prestige</h3><p>Skill, artifacts, reputation. The evidence that compounds into optionality — not the appearance of being busy.</p></article>
-        <article class="engine glass reveal-ready"><div class="icon-dot"></div><h3>Wealth</h3><p>Cash, leverage, this week’s real constraints. What is actually possible — not what a vision board pretends.</p></article>
-        <article class="engine glass reveal-ready"><div class="icon-dot"></div><h3>Soul</h3><p>Energy, meaning, recovery. The identity load that decides whether execution survives contact with the calendar.</p></article>
+      <p class="lead">Prestige without Wealth becomes unpaid proof. Wealth without Soul becomes a schedule that dies on Tuesday. Soul without Prestige becomes reflection with no optionality.</p>
+      <div class="inner-grid three" style="margin-top:1.6rem">
+        <article class="tile glass reveal-ready"><span class="pulse-dot" style="margin-bottom:.8rem"></span><h3>Prestige</h3><p>Skill, artifacts, reputation. The evidence that compounds into optionality — not the appearance of being busy.</p></article>
+        <article class="tile glass reveal-ready"><span class="pulse-dot" style="margin-bottom:.8rem"></span><h3>Wealth</h3><p>Cash, leverage, this week’s real constraints. What is actually possible — not what a vision board pretends.</p></article>
+        <article class="tile glass reveal-ready"><span class="pulse-dot" style="margin-bottom:.8rem"></span><h3>Soul</h3><p>Energy, meaning, recovery. The identity load that decides whether execution survives the calendar.</p></article>
       </div>
-    </section>
-    <div class="quote-line reveal-ready"><blockquote>The interface is secondary. The operating model is the product.</blockquote></div>
-    <section class="section-cta">
-      <a href="experience.html" class="btn primary">Experience the diagnosis</a>
-      <a href="how.html" class="btn secondary" style="margin-left:0.75rem">See how it works</a>
-    </section>
+
+      <blockquote class="quote-card glass reveal-ready">The interface is secondary. The operating model is the product.</blockquote>
+
+      <div class="inner-cta">
+        <a href="experience.html" class="btn">Experience the diagnosis</a>
+        <a href="how.html" class="btn secondary">See how it works</a>
+      </div>
+    </div>
   </main>
-  <footer class="footer glass">
+
+  <footer class="site-foot">
     <p>© 2026 Nexi. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="why.html">Why</a><a href="how.html">How</a><a href="intelligence.html">Intelligence</a><a href="blueprint.html">Blueprint</a><a href="journey.html">Journey</a><a href="experience.html">Experience</a><a href="sample-result.html">Sample</a><a href="referral.html">Referral</a><a href="leaderboard.html">Leaderboard</a>
+    <div>
+      <a href="why.html">Why</a>
+      <a href="how.html">How</a>
+      <a href="experience.html">Experience</a>
+      <a href="sample-result.html">Sample</a>
+      <a href="blueprint.html">Blueprint</a>
+      <a href="intelligence.html">Intelligence</a>
+      <a href="journey.html">Journey</a>
+      <a href="referral.html">Referral</a>
+      <a href="leaderboard.html">Leaderboard</a>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
