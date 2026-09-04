@@ -4,26 +4,27 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (3 Sep 2026)
+## Status (4 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (3 Sep)
-Highest-priority unfinished piece: **Experience Nexi was a generic inner-page shell** while Home was cinematic.
+### Today (4 Sep)
+Highest-priority unfinished piece: **inner pages still used the old purple NEXI shell** while Home + Experience were cinematic.
 
-- Experience now shares Home’s product language: NEXI OS nav, silk ribbons, vesica orb, Outfit + Cormorant, site footer
-- Protocol rail + starter wants are source, not JS patches
+- Why Nexi, How It Works, Intelligence now share Home’s product language: NEXI OS nav, silk ribbons, vesica mark, Outfit + Cormorant, site footer
+- Shared `inner.css` for glass tiles, protocol flow, thesis assembly, mobile nav
 - Live engine unchanged: guest auth → `onboarding-decision` v10 (Mission Zero)
-- Result assembly + device persist still hydrate Sample Result
 - Waitlist still stores **name + email only**
+
+### Still on old shell (tomorrow)
+Blueprint, Journey, Sample Result, Referral, Leaderboard
 
 ### Product surface
 - **Home** — 5-panel cinematic + waitlist
-- **Why Nexi / How It Works / Intelligence / Blueprint / Journey**
+- **Why Nexi / How It Works / Intelligence** — cinematic inner
 - **Experience Nexi** — cinematic console + live Mission Zero
-- **Sample Result** — crafted default or last live diagnosis
-- **Referral / Leaderboard** — live early-circle ranks
+- **Sample Result / Referral / Leaderboard / Blueprint / Journey** — content live, chrome pending
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
