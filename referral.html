@@ -5,133 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Referral — Nexi</title>
   <meta name="description" content="Invite builders into Nexi. Share your link. Climb the early circle." />
+  <meta name="theme-color" content="#050A12" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .ref-shell { padding: 9rem 5% 5rem; max-width: 920px; margin: 0 auto; }
-    .ref-hero h1 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); line-height: 1.12; margin-bottom: 1.1rem; }
-    .ref-hero .lead { color: var(--muted); font-size: 1.1rem; max-width: 34rem; margin-bottom: 2.75rem; }
-    .ref-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.5rem; align-items: start; }
-    @media (max-width: 820px) { .ref-grid { grid-template-columns: 1fr; } }
-    .share-card { padding: 2rem 2rem 1.75rem; border-radius: 24px; position: relative; overflow: hidden; }
-    .share-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 0%, rgba(45,212,191,0.1), transparent 55%); pointer-events: none; }
-    .share-card h2 { font-size: 1.65rem; margin-bottom: 0.5rem; }
-    .share-card > p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-    .code-block { display: flex; gap: 0.65rem; align-items: stretch; margin-bottom: 1rem; }
-    .code-block input { flex: 1; background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 14px; padding: 0.95rem 1.1rem; color: var(--champagne); font-family: inherit; font-size: 0.95rem; letter-spacing: 0.04em; outline: none; }
-    .code-block button { border-radius: 14px; padding: 0 1.25rem; white-space: nowrap; }
-    .gen-row { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
-    .gen-row input { background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border); border-radius: 12px; padding: 0.9rem 1.1rem; color: var(--text); font-size: 0.95rem; font-family: inherit; outline: none; transition: border-color 0.3s, box-shadow 0.3s; }
-    .gen-row input:focus { border-color: rgba(232, 213, 181, 0.45); box-shadow: 0 0 0 3px rgba(232, 213, 181, 0.08); }
-    .status-line { font-size: 0.88rem; margin-top: 0.85rem; min-height: 1.25rem; color: var(--teal); }
-    .status-line.err { color: #FF8A8A; }
-    .perk-stack { display: flex; flex-direction: column; gap: 1rem; }
-    .perk { padding: 1.35rem 1.4rem; border-radius: 18px; transition: transform 0.4s var(--ease), border-color 0.3s; }
-    .perk:hover { transform: translateY(-3px); border-color: rgba(45, 212, 191, 0.22); }
-    .perk .num { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; color: var(--champagne); display: block; margin-bottom: 0.25rem; }
-    .perk h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
-    .perk p { color: var(--muted); font-size: 0.88rem; }
-    .rules { margin-top: 3.5rem; padding: 1.75rem 2rem; border-radius: 20px; }
-    .rules h3 { font-size: 1.35rem; margin-bottom: 1rem; }
-    .rules ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-    .rules li { display: grid; grid-template-columns: 10px 1fr; gap: 0.85rem; color: var(--muted); font-size: 0.92rem; align-items: start; }
-    .rules li::before { content: ''; width: 8px; height: 8px; margin-top: 0.4rem; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px rgba(45, 212, 191, 0.45); }
-    .live-count { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
-    .live-count b { color: var(--teal); font-weight: 500; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="cinematic.css" />
+  <link rel="stylesheet" href="cinematic-patch.css" />
+  <link rel="stylesheet" href="inner.css" />
 </head>
 <body>
-  <div class="ambient">
-    <div class="orb-glow"></div>
-    <div class="noise"></div>
-  </div>
-
-  <nav class="nav glass">
-    <a href="index.html" class="logo">NEXI</a>
-    <div class="nav-links">
+  <header class="nav" id="nav">
+    <a class="logo" href="index.html">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+        <defs>
+          <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#F3E6C8"/>
+            <stop offset="50%" stop-color="#7EEAE0"/>
+            <stop offset="100%" stop-color="#C9A86C"/>
+          </linearGradient>
+        </defs>
+        <circle cx="16" cy="16" r="14" fill="none" stroke="url(#logo-g)" stroke-width="1.2"/>
+        <path d="M16 7.2c2.5 2.3 4 3.7 4 5.8A4 4 0 0 1 16 17a4 4 0 0 1-4-4c0-2.1 1.5-3.5 4-5.8z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+        <path d="M16 24.8c-2.5-2.3-4-3.7-4-5.8A4 4 0 0 1 16 15a4 4 0 0 1 4 4c0 2.1-1.5 3.5-4 5.8z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+        <path d="M7.2 16c2.3-2.5 3.7-4 5.8-4A4 4 0 0 1 17 16a4 4 0 0 1-4 4c-2.1 0-3.5-1.5-5.8-4z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+        <path d="M24.8 16c-2.3 2.5-3.7 4-5.8 4A4 4 0 0 1 15 16a4 4 0 0 1 4-4c2.1 0 3.5 1.5 5.8 4z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
+      </svg>
+      NEXI OS
+    </a>
+    <nav class="nav-links">
       <a href="why.html">Why Nexi</a>
       <a href="how.html">How It Works</a>
-      <a href="experience.html">Experience Nexi</a>
-      <a href="sample-result.html">Sample Result</a>
-      <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
-    </div>
-  </nav>
-
-  <main class="ref-shell">
-    <section class="ref-hero">
-      <p class="eyebrow champagne">Early circle</p>
-      <h1>Invite the right people.<br/><span class="accent">Compound the network.</span></h1>
-      <p class="lead">Nexi opens in waves. Referrals accelerate access for people who will actually use the OS — not collect another login.</p>
-    </section>
-
-    <div class="ref-grid">
-      <div class="share-card glass reveal-ready">
-        <h2>Your invite link</h2>
-        <p>Generate a personal code from the email you used on the waitlist. Only a display alias is stored with the code — never the email on this board.</p>
-
-        <div class="code-block">
-          <input type="text" id="ref-link" readonly value="https://anshikanexi.github.io/nexi-web/?ref=NX-EARLY" aria-label="Referral link" />
-          <button type="button" class="btn primary" id="btn-copy">Copy</button>
-        </div>
-
-        <div class="gen-row">
-          <input type="text" id="ref-name" placeholder="First name for your public alias" autocomplete="given-name" />
-          <input type="email" id="ref-email" placeholder="Email you used on waitlist" autocomplete="email" />
-          <button type="button" class="btn secondary" id="btn-gen">Claim my live code</button>
-        </div>
-        <p class="live-count" id="ref-count" hidden>Verified invites: <b>0</b></p>
-        <p class="status-line" id="ref-status"></p>
-      </div>
-
-      <div class="perk-stack">
-        <article class="perk glass reveal-ready">
-          <span class="num">01</span>
-          <h3>Priority lane</h3>
-          <p>Successful invites move you forward in the launch sequence. Quality over volume.</p>
-        </article>
-        <article class="perk glass reveal-ready">
-          <span class="num">02</span>
-          <h3>Visible on Leaderboard</h3>
-          <p>Ranks update when someone joins the waitlist through your link. Signal, not spam.</p>
-        </article>
-        <article class="perk glass reveal-ready">
-          <span class="num">03</span>
-          <h3>Founding context</h3>
-          <p>Early circle members shape doctrine feedback before the product hardens.</p>
-        </article>
-      </div>
-    </div>
-
-    <section class="rules glass reveal-ready">
-      <h3>Rules of the circle</h3>
-      <ul>
-        <li>One code per waitlist email. No bulk scraping or paid traffic farms.</li>
-        <li>Waitlist stores name + email only. The board stores a code, alias, and count.</li>
-        <li>Self-referrals and duplicate emails do not count.</li>
-        <li>We reserve the right to reset ranks that look like abuse.</li>
-      </ul>
-    </section>
-
-    <section class="section-cta" style="padding-top: 3rem;">
-      <a href="leaderboard.html" class="btn primary">View Leaderboard</a>
-      <a href="index.html#waitlist" class="btn secondary" style="margin-left:0.75rem">Join Waitlist</a>
-    </section>
-  </main>
-
-  <footer class="footer glass">
-    <p>© 2026 Nexi. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="why.html">Why</a>
-      <a href="how.html">How</a>
       <a href="experience.html">Experience</a>
-      <a href="sample-result.html">Sample</a>
-      <a href="referral.html">Referral</a>
-      <a href="leaderboard.html">Leaderboard</a>
+      <a href="referral.html" class="active">Referral</a>
+      <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
+    </nav>
+  </header>
+  <main class="inner">
+    <svg class="silk" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="silk-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#F4E4C1" stop-opacity="0.04"/>
+          <stop offset="35%" stop-color="#E8D5B5" stop-opacity="0.42"/>
+          <stop offset="100%" stop-color="#8A6A3A" stop-opacity="0.06"/>
+        </linearGradient>
+        <linearGradient id="silk-teal" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7EEAE0" stop-opacity="0.06"/>
+          <stop offset="45%" stop-color="#2DD4BF" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#0A3A38" stop-opacity="0.08"/>
+        </linearGradient>
+        <filter id="silk-soft"><feGaussianBlur stdDeviation="10"/></filter>
+      </defs>
+      <path d="M520 60 C 700 -60, 880 140, 1080 60 S 1420 220, 1300 400 S 1000 600, 1220 820" fill="none" stroke="url(#silk-gold)" stroke-width="130" filter="url(#silk-soft)"/>
+      <path d="M420 240 C 640 40, 920 280, 1140 160 S 1440 360, 1240 560" fill="none" stroke="url(#silk-teal)" stroke-width="78" filter="url(#silk-soft)" opacity="0.8"/>
+    </svg>
+    <div class="inner-wrap">
+      <p class="kicker">Early circle</p>
+      <h1>Invite the right people.<br/><em>Compound the network.</em></h1>
+      <p class="lead">Nexi opens in waves. Referrals accelerate access for people who will actually use the OS — not collect another login.</p>
+      <div class="ref-grid">
+        <div class="share-card glass reveal-ready">
+          <h2>Your invite link</h2>
+          <p class="lead" style="margin-top:.4rem;margin-bottom:1.2rem">Generate a personal code from the email you used on the waitlist. Only a display alias is stored with the code.</p>
+          <div class="code-block">
+            <input type="text" id="ref-link" readonly value="https://anshikanexi.github.io/nexi-web/?ref=NX-EARLY" aria-label="Referral link" />
+            <button type="button" class="btn" id="btn-copy">Copy</button>
+          </div>
+          <div class="gen-row">
+            <input type="text" id="ref-name" placeholder="First name for your public alias" autocomplete="given-name" />
+            <input type="email" id="ref-email" placeholder="Email you used on waitlist" autocomplete="email" />
+            <button type="button" class="btn secondary" id="btn-gen">Claim my live code</button>
+          </div>
+          <p class="live-count" id="ref-count" hidden>Verified invites: <b>0</b></p>
+          <p class="status-line" id="ref-status"></p>
+        </div>
+        <div class="perk-stack">
+          <article class="perk tile glass reveal-ready"><span class="num">01</span><h3>Priority lane</h3><p>Successful invites move you forward in the launch sequence. Quality over volume.</p></article>
+          <article class="perk tile glass reveal-ready"><span class="num">02</span><h3>Visible on Leaderboard</h3><p>Ranks update when someone joins the waitlist through your link.</p></article>
+          <article class="perk tile glass reveal-ready"><span class="num">03</span><h3>Founding context</h3><p>Early circle members shape doctrine feedback before the product hardens.</p></article>
+        </div>
+      </div>
+      <section class="rules glass reveal-ready" style="margin-top:2rem">
+        <h3>Rules of the circle</h3>
+        <ul class="tile new" style="margin-top:.8rem">
+          <li>One code per waitlist email. No bulk scraping or paid traffic farms.</li>
+          <li>Waitlist stores name + email only. The board stores a code, alias, and count.</li>
+          <li>Self-referrals and duplicate emails do not count.</li>
+          <li>We reserve the right to reset ranks that look like abuse.</li>
+        </ul>
+      </section>
+      <div class="inner-cta">
+        <a href="leaderboard.html" class="btn">View Leaderboard</a>
+        <a href="index.html#waitlist" class="btn secondary">Join Waitlist</a>
+      </div>
+    </div>
+  </main>
+  <footer class="site-foot">
+    <p>© 2026 Nexi. All rights reserved.</p>
+    <div>
+      <a href="why.html">Why</a><a href="how.html">How</a><a href="experience.html">Experience</a><a href="sample-result.html">Sample</a><a href="blueprint.html">Blueprint</a><a href="intelligence.html">Intelligence</a><a href="journey.html">Journey</a><a href="referral.html">Referral</a><a href="leaderboard.html">Leaderboard</a>
     </div>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
   <script>
@@ -144,9 +117,7 @@
   const btnCopy = document.getElementById('btn-copy');
   const btnGen = document.getElementById('btn-gen');
   const base = 'https://anshikanexi.github.io/nexi-web/?ref=';
-
   function setLink(code) { linkEl.value = base + code; }
-
   btnCopy.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(linkEl.value);
@@ -156,11 +127,9 @@
       setTimeout(() => { btnCopy.textContent = 'Copy'; }, 1800);
     } catch {
       linkEl.select();
-      statusEl.classList.remove('err');
       statusEl.textContent = 'Select and copy manually.';
     }
   });
-
   btnGen.addEventListener('click', async () => {
     const email = (emailEl.value || '').trim().toLowerCase();
     const name = (nameEl.value || '').trim();
