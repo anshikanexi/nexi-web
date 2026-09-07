@@ -109,6 +109,48 @@ function initScrollNav() {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
+function paintCircleHandoff(host, name, email, already) {
+  if (!host) return;
+  const code = circleCodeFromEmail(email);
+  const origin = window.location.origin + window.location.pathname.replace(/[^/]+$/, '');
+  const share = origin + 'referral.html?ref=' + encodeURIComponent(code);
+  try {
+    localStorage.setItem('nexi.circle', JSON.stringify({ code, name, email, at: Date.now() }));
+  } catch (err) {}
+
+  let card = host.querySelector('[data-circle-handoff]');
+  if (!card) {
+    card = document.createElement('div');
+    card.className = 'circle-handoff glass';
+    card.setAttribute('data-circle-handoff', '1');
+    host.appendChild(card);
+  }
+  card.innerHTML =
+    '<p class="phase-label">Early circle</p>' +
+    '<h3>' + (already ? 'You already hold a code.' : 'Your circle is live.') + '</h3>' +
+    '<p class="handoff-lead">Name and email only. Invites credit the hashed code — never the address.</p>' +
+    '<div class="circle-code" data-code="' + code + '">' + code + '</div>' +
+    '<p class="handoff-share">' + share + '</p>' +
+    '<div class="result-actions">' +
+      '<button type="button" class="btn" data-copy-circle>Copy invite</button>' +
+      '<a class="btn secondary" href="referral.html?ref=' + encodeURIComponent(code) + '">Open referral</a>' +
+      '<a class="btn secondary" href="leaderboard.html">Leaderboard</a>' +
+    '</div>';
+
+  const copyBtn = card.querySelector('[data-copy-circle]');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(share);
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => { copyBtn.textContent = 'Copy invite'; }, 1600);
+      } catch (err) {
+        copyBtn.textContent = code;
+      }
+    });
+  }
+}
+
 function initWaitlist() {
   const form = document.getElementById('waitlist-form');
   const status = document.getElementById('waitlist-status');
@@ -116,8 +158,10 @@ function initWaitlist() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = form.name.value.trim();
-    const email = form.email.value.trim().toLowerCase();
+    const nameField = form.elements.namedItem('name') || form.querySelector('[name="name"]');
+    const emailField = form.elements.namedItem('email') || form.querySelector('[name="email"]');
+    const name = (nameField && nameField.value || '').trim();
+    const email = (emailField && emailField.value || '').trim().toLowerCase();
 
     if (!name || !email) return;
 
@@ -133,21 +177,26 @@ function initWaitlist() {
 
     try {
       const { error } = await supabase.from('waitlist').insert({ name, email });
+      let already = false;
 
       if (error) {
         if (error.code === '23505') {
-          status.textContent = 'You are already on the list. We will be in touch.';
-          status.style.color = 'var(--teal, #2dd4bf)';
+          already = true;
         } else {
           throw error;
         }
       } else {
-        status.textContent = 'You are on the list. We will be in touch.';
-        status.style.color = 'var(--teal, #2dd4bf)';
         form.reset();
         await creditInviteIfAny(email);
-        await claimOwnCircle(name, email);
       }
+      await claimOwnCircle(name, email);
+      status.textContent = already
+        ? 'Already reserved. Your circle code is below.'
+        : 'Reserved. Your circle code is live.';
+      status.style.color = 'var(--teal, #2dd4bf)';
+      const host = form.closest('#phase-result, #waitlist, .waitlist-card, .exp-card') || form.parentElement;
+      paintCircleHandoff(host, name, email, already);
+      form.hidden = true;
     } catch (err) {
       console.error(err);
       status.textContent = 'Something went wrong. Try again in a moment.';
