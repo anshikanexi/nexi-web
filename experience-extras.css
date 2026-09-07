@@ -51,6 +51,8 @@
 
 @media (max-width:640px){
   .lens-collision{grid-template-columns:1fr}
+  .protocol{gap:.35rem}
+  .protocol span{padding:.28rem .55rem;letter-spacing:.1em}
 }
 
 .protocol{display:flex;gap:.45rem;margin:0 0 1.1rem;flex-wrap:wrap}
