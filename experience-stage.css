@@ -63,4 +63,27 @@
 .btn.secondary{background:transparent;color:var(--fg);border:1px solid var(--line);box-shadow:none}
 .btn.secondary:hover{background:rgba(255,255,255,.04)}
 .btn:disabled{opacity:.6;cursor:not-allowed}
-@media (max-width:900px){.exp-layout{grid-template-columns:1fr;gap:1.6rem}.side-orb{display:none}.diag-grid{grid-template-columns:1fr}.exp-card{padding:1.35rem 1.15rem}.composer{flex-direction:column}.composer button{width:100%;padding:.9rem}}
+.exp-claim{margin-top:1.35rem;padding:1.2rem 1.2rem 1.1rem;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));backdrop-filter:blur(18px)}
+.exp-claim h3{font-size:1.35rem;margin:.15rem 0 .35rem}
+.exp-claim .exp-sub{margin-bottom:.9rem}
+.claim-row{display:grid;grid-template-columns:1fr 1fr auto;gap:.5rem}
+.claim-row input{height:48px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.38);color:var(--fg);padding:0 1rem;font:inherit;outline:none}
+.claim-row input:focus{border-color:rgba(45,212,191,.42);box-shadow:0 0 0 3px rgba(45,212,191,.08)}
+.circle-handoff{margin-top:1.1rem;padding:1.2rem 1.25rem;border-radius:18px}
+.circle-handoff h3{font-size:1.4rem;margin:.2rem 0 .4rem}
+.handoff-lead,.handoff-share{color:var(--muted);font-size:.86rem;margin-bottom:.75rem;word-break:break-all}
+.circle-code{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(2rem,5vw,2.8rem);letter-spacing:.12em;color:var(--gold);margin:.2rem 0 .7rem}
+@media (max-width:900px){
+  .exp-page{padding:6.2rem 5% 3.2rem}
+  .exp-layout{grid-template-columns:1fr;gap:1.25rem}
+  .exp-copy h1{font-size:clamp(2.15rem,9vw,3.2rem)}
+  .side-orb{display:block;width:92px;margin:1rem 0 0;animation:breathe 5.8s ease-in-out infinite}
+  .diag-grid{grid-template-columns:1fr}
+  .exp-card{padding:1.2rem 1rem 1.1rem}
+  .composer{flex-direction:column}
+  .composer button{width:100%;padding:.9rem}
+  .thread{max-height:min(42vh,320px);min-height:160px}
+  .claim-row{grid-template-columns:1fr}
+  .result-actions .btn{width:100%;text-align:center}
+  .site-foot{padding:1.2rem 5% 2rem}
+}
