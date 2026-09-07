@@ -117,8 +117,18 @@
             <div class="result-actions">
               <button type="button" class="btn" id="btn-again">Run another diagnosis</button>
               <a href="sample-result.html" class="btn secondary">Open assembled sample</a>
-              <a href="index.html#waitlist" class="btn secondary">Join the waitlist</a>
             </div>
+            <form id="waitlist-form" class="exp-claim" autocomplete="on">
+              <p class="phase-label">Lock the seat</p>
+              <h3>Reserve the early circle</h3>
+              <p class="exp-sub">Name and email only. After reserve, Nexi issues a hashed invite code — the same surface Referral and Leaderboard use.</p>
+              <div class="claim-row">
+                <input type="text" name="name" placeholder="Your name" required maxlength="80" />
+                <input type="email" name="email" placeholder="Email" required maxlength="120" />
+                <button type="submit" class="btn">Reserve my spot</button>
+              </div>
+              <p id="waitlist-status" hidden></p>
+            </form>
           </div>
         </div>
       </section>
