@@ -4,20 +4,20 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (7 Sep 2026)
+## Status (8 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (7 Sep)
-Highest-priority unfinished piece: **mobile Experience + waitlist / circle-code handoff after diagnosis**.
+### Today (8 Sep)
+Highest-priority unfinished piece from 7 Sep plan: **Sample Result hydration against the live diagnosis payload + referral share preview**.
 
-- Experience result now includes an in-console reserve form (name + email only)
-- Successful reserve claims the hashed circle code and paints a copyable invite + Referral / Leaderboard handoff
-- Same confirmation card is used on Home waitlist
-- Cinematic chrome now has a working mobile nav (hamburger + glass drawer) — Experience was previously losing links under 900px
-- Side-orb stays visible on small screens at compact size; claim row / composer / diagnosis grid stack cleanly
-- Inner pages: tighter hero + leaderboard rows on ≤820px
+- Sample Result now has matching IDs (`sample-root`, title/sub/note/status) so `sample-hydrate.js` actually paints
+- Live Experience diagnosis stored in `nexi.lastDiagnosis` hydrates want / bottleneck / lens / mission / belief / tomorrow
+- Triple-lens collision meters assemble on Sample Result the same way they do after Experience lock
+- Static sample remains the fallback when this device has no live run
+- Referral reads stored circle code, paints a glass share preview, copies a crafted invite message
+- Inbound `?ref=` still captured; claimed codes persist to `nexi.circle`
 - Waitlist still stores **name + email only**
 - Existing Supabase project only (`wzygcmsikopblntwdqsv`)
 
@@ -27,7 +27,7 @@ Highest-priority unfinished piece: **mobile Experience + waitlist / circle-code 
 - **Experience Nexi** — cinematic console + live Mission Zero + post-diagnosis reserve
 
 ### Tomorrow
-Pixel-pass Sample Result hydration against the live diagnosis payload; tighten referral share preview; verify `claim_circle_code` / `credit_circle_invite` RPCs against a real reserve.
+Verify `claim_circle_code` / `credit_circle_invite` / `get_circle_leaderboard` against a real reserve on production; polish Home waitlist confirmation to match Sample assembly motion; optional OG image asset for share cards.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)

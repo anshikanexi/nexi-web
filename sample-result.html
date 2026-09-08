@@ -6,12 +6,15 @@
   <title>Sample Result — Nexi Diagnosis</title>
   <meta name="description" content="See a completed Nexi diagnosis: triple-lens read, one next move, belief line." />
   <meta name="theme-color" content="#050A12" />
+  <meta property="og:title" content="Nexi diagnosis — one constraint, one move" />
+  <meta property="og:description" content="Prestige, Wealth, Soul scored. Bottleneck named. Mission locked." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="cinematic.css" />
   <link rel="stylesheet" href="cinematic-patch.css" />
   <link rel="stylesheet" href="inner.css" />
+  <link rel="stylesheet" href="experience-extras.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -40,7 +43,7 @@
       <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
     </nav>
   </header>
-  <main class="inner">
+  <main class="inner" id="sample-root">
     <svg class="silk" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <linearGradient id="silk-gold" x1="0" y1="0" x2="1" y2="1">
@@ -59,10 +62,19 @@
       <path d="M420 240 C 640 40, 920 280, 1140 160 S 1440 360, 1240 560" fill="none" stroke="url(#silk-teal)" stroke-width="78" filter="url(#silk-soft)" opacity="0.8"/>
     </svg>
     <div class="inner-wrap">
-      <p class="kicker">Diagnosis locked · sample</p>
-      <h1>Ship the first<br/><em>paid AI prototype.</em></h1>
-      <p class="lead">A concrete north star pressure-tested against Prestige, Wealth, and Soul. One next move sized for today.</p>
-      <div class="sample-card glass" style="margin-top:2rem">
+      <p class="kicker" id="sample-kicker">Diagnosis locked · sample</p>
+      <h1 class="sample-title">Ship the first<br/><em>paid AI prototype.</em></h1>
+      <p class="lead sample-sub">A concrete north star pressure-tested against Prestige, Wealth, and Soul. One next move sized for today.</p>
+      <div class="status-bar sample-status">
+        <span class="pulse-dot"></span>
+        <span>Assembled product sample</span>
+      </div>
+      <div class="sample-card glass" style="margin-top:1.4rem">
+        <div class="lens-collision" id="lens-collision">
+          <div class="lens-meter" style="--w:54%"><div class="lm-k">Secondary</div><div class="lm-v">Prestige</div><div class="lm-bar"><i></i></div></div>
+          <div class="lens-meter primary" style="--w:88%"><div class="lm-k">Primary lens</div><div class="lm-v">Wealth</div><div class="lm-bar"><i></i></div></div>
+          <div class="lens-meter" style="--w:48%"><div class="lm-k">Secondary</div><div class="lm-v">Soul</div><div class="lm-bar"><i></i></div></div>
+        </div>
         <div class="diag-grid" id="diag-grid">
           <div class="diag-cell span2" data-delay="0"><div class="k">Want</div><div class="v">A live, paid AI side project that generates its first $1k in revenue within 90 days.</div></div>
           <div class="diag-cell span2" data-delay="120"><div class="k">What's going on</div><div class="v">Strong technical ability, zero customer contact. The bottleneck is not code quality — it is the missing first paying user.</div></div>
@@ -74,7 +86,7 @@
         <div class="mission-card" id="mission-card">
           <h3>Message 5 people who already feel the pain</h3>
           <p>Direct outreach is the shortest legitimate route to a paying user.</p>
-          <div class="inner-cta" style="margin:.85rem 0 1rem">
+          <div class="mission-meta">
             <span class="chip">execute</span><span class="chip">35 min</span><span class="chip">Done when: 5 personal messages sent</span>
           </div>
           <ul class="mission-steps" id="mission-steps">
@@ -85,12 +97,12 @@
           </ul>
         </div>
         <div class="belief-line" id="belief-line">“I ship evidence, not potential.” · Tomorrow: review replies and book one call.</div>
-        <div class="inner-cta" id="result-actions">
+        <div class="inner-cta result-actions" id="result-actions">
           <a href="experience.html" class="btn">Run your own diagnosis</a>
           <a href="index.html#waitlist" class="btn secondary">Join the waitlist</a>
         </div>
       </div>
-      <p class="lead" style="margin-top:1.6rem">This is a static product sample. Live engine: Experience Nexi.</p>
+      <p class="lead sample-note" style="margin-top:1.6rem">This is a static product sample until you run Experience Nexi on this device. Then this page becomes your last live diagnosis.</p>
     </div>
   </main>
   <footer class="site-foot">

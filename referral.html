@@ -6,6 +6,9 @@
   <title>Referral — Nexi</title>
   <meta name="description" content="Invite builders into Nexi. Share your link. Climb the early circle." />
   <meta name="theme-color" content="#050A12" />
+  <meta property="og:title" content="Join the Nexi early circle" />
+  <meta property="og:description" content="One intelligence. Prestige, Wealth, Soul. Invite-only waitlist." />
+  <meta property="og:url" content="https://anshikanexi.github.io/nexi-web/referral.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -77,6 +80,13 @@
           </div>
           <p class="live-count" id="ref-count" hidden>Verified invites: <b>0</b></p>
           <p class="status-line" id="ref-status"></p>
+          <article class="share-preview glass" id="share-preview" hidden>
+            <p class="preview-kicker">Share preview</p>
+            <h3 id="preview-title">Join the Nexi early circle</h3>
+            <p id="preview-body">One intelligence reads Prestige, Wealth, and Soul — then names the bottleneck and locks one move.</p>
+            <div class="preview-code" id="preview-code">NX-EARLY</div>
+            <button type="button" class="btn" id="btn-copy-msg">Copy invite message</button>
+          </article>
         </div>
         <div class="perk-stack">
           <article class="perk tile glass reveal-ready"><span class="num">01</span><h3>Priority lane</h3><p>Successful invites move you forward in the launch sequence. Quality over volume.</p></article>
@@ -116,21 +126,62 @@
   const countEl = document.getElementById('ref-count');
   const btnCopy = document.getElementById('btn-copy');
   const btnGen = document.getElementById('btn-gen');
+  const preview = document.getElementById('share-preview');
+  const previewCode = document.getElementById('preview-code');
+  const btnMsg = document.getElementById('btn-copy-msg');
+  const params = new URLSearchParams(window.location.search);
+  const inbound = (params.get('ref') || '').trim().toUpperCase();
   const base = 'https://anshikanexi.github.io/nexi-web/?ref=';
-  function setLink(code) { linkEl.value = base + code; }
-  btnCopy.addEventListener('click', async () => {
+
+  function setLink(code) {
+    const c = String(code || 'NX-EARLY').toUpperCase();
+    linkEl.value = base + c;
+    preview.hidden = false;
+    previewCode.textContent = c;
+    preview.classList.add('assembled');
+  }
+
+  function shareText() {
+    return 'Nexi early circle — one intelligence, one bottleneck, one move.\n' + linkEl.value;
+  }
+
+  try {
+    const saved = JSON.parse(localStorage.getItem('nexi.circle') || 'null');
+    if (saved && saved.code) {
+      setLink(saved.code);
+      if (saved.name && !nameEl.value) nameEl.value = saved.name;
+      if (saved.email && !emailEl.value) emailEl.value = saved.email;
+    } else if (inbound) {
+      setLink(inbound);
+    }
+  } catch (e) {
+    if (inbound) setLink(inbound);
+  }
+
+  btnCopy.addEventListener('click', async function () {
     try {
       await navigator.clipboard.writeText(linkEl.value);
       statusEl.classList.remove('err');
       statusEl.textContent = 'Copied. Send it to someone who will actually use Nexi.';
       btnCopy.textContent = 'Copied';
-      setTimeout(() => { btnCopy.textContent = 'Copy'; }, 1800);
+      setTimeout(function () { btnCopy.textContent = 'Copy'; }, 1800);
     } catch {
       linkEl.select();
       statusEl.textContent = 'Select and copy manually.';
     }
   });
-  btnGen.addEventListener('click', async () => {
+
+  btnMsg.addEventListener('click', async function () {
+    try {
+      await navigator.clipboard.writeText(shareText());
+      btnMsg.textContent = 'Message copied';
+      setTimeout(function () { btnMsg.textContent = 'Copy invite message'; }, 1800);
+    } catch {
+      statusEl.textContent = 'Copy the link above.';
+    }
+  });
+
+  btnGen.addEventListener('click', async function () {
     const email = (emailEl.value || '').trim().toLowerCase();
     const name = (nameEl.value || '').trim();
     if (!email || !email.includes('@')) {
@@ -151,7 +202,10 @@
       const row = data || {};
       countEl.hidden = false;
       countEl.querySelector('b').textContent = String(row.invites || 0);
-      statusEl.textContent = 'Code live. Share the link — conversions land on the leaderboard.';
+      statusEl.textContent = 'Code live. Share the preview below — conversions land on the leaderboard.';
+      try {
+        localStorage.setItem('nexi.circle', JSON.stringify({ code: code, name: name, email: email, at: Date.now() }));
+      } catch (err) {}
     } catch (err) {
       console.error(err);
       statusEl.classList.add('err');
