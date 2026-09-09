@@ -107,15 +107,52 @@ body.nav-open .nav-backdrop { display: block; }
 body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
 body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
 body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-4.5px) rotate(-45deg); }
-.circle-handoff { margin-top: 1.1rem; padding: 1.2rem 1.25rem; border-radius: 18px; }
+.circle-handoff {
+  margin-top: 1.1rem;
+  padding: 1.35rem 1.4rem 1.3rem;
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+  filter: blur(8px);
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1), filter .7s ease, border-color .3s;
+}
+.circle-handoff.assembled {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.circle-handoff .phase-label {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .35rem;
+}
+.circle-handoff h3 {
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  margin-bottom: .35rem;
+}
+.handoff-count {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 .55rem;
+}
 .circle-code {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(2rem, 5vw, 2.8rem);
   letter-spacing: .12em;
   color: var(--gold);
-  margin: .2rem 0 .7rem;
+  margin: .15rem 0 .55rem;
+  text-shadow: 0 0 24px rgba(232,213,181,.18);
 }
-.handoff-lead, .handoff-share { color: var(--muted); font-size: .86rem; margin-bottom: .75rem; word-break: break-all; }
+.handoff-lead, .handoff-share {
+  color: var(--muted);
+  font-size: .86rem;
+  margin-bottom: .75rem;
+  word-break: break-all;
+}
 @media (max-width: 900px) {
   .nav-toggle { display: grid; place-items: center; }
   body.nav-open .nav-links {
