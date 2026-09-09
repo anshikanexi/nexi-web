@@ -4,20 +4,19 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (8 Sep 2026)
+## Status (9 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (8 Sep)
-Highest-priority unfinished piece from 7 Sep plan: **Sample Result hydration against the live diagnosis payload + referral share preview**.
+### Today (9 Sep)
+Highest-priority unfinished piece from 8 Sep plan: **Home waitlist confirmation assembly + live circle RPC grants**.
 
-- Sample Result now has matching IDs (`sample-root`, title/sub/note/status) so `sample-hydrate.js` actually paints
-- Live Experience diagnosis stored in `nexi.lastDiagnosis` hydrates want / bottleneck / lens / mission / belief / tomorrow
-- Triple-lens collision meters assemble on Sample Result the same way they do after Experience lock
-- Static sample remains the fallback when this device has no live run
-- Referral reads stored circle code, paints a glass share preview, copies a crafted invite message
-- Inbound `?ref=` still captured; claimed codes persist to `nexi.circle`
+- Waitlist confirmation card now assembles like Sample Result (blur → lock)
+- Returning visitors on this device restore the hashed circle code without re-submitting
+- Claim response paints live invite count (Scout until first conversion)
+- Share URLs resolve correctly under `/nexi-web/` on GitHub Pages
+- `claim_circle_code` / `credit_circle_invite` / `get_circle_leaderboard` granted to `anon` + `authenticated` on the existing project
 - Waitlist still stores **name + email only**
 - Existing Supabase project only (`wzygcmsikopblntwdqsv`)
 
@@ -27,7 +26,7 @@ Highest-priority unfinished piece from 7 Sep plan: **Sample Result hydration aga
 - **Experience Nexi** — cinematic console + live Mission Zero + post-diagnosis reserve
 
 ### Tomorrow
-Verify `claim_circle_code` / `credit_circle_invite` / `get_circle_leaderboard` against a real reserve on production; polish Home waitlist confirmation to match Sample assembly motion; optional OG image asset for share cards.
+Experience diagnosis card: persist last run across Sample / Journey more tightly; add a lightweight OG share card asset; smoke-test a real inbound `?ref=` conversion against `credit_circle_invite` once a second waitlist email is available.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
