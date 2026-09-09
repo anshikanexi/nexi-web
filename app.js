@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initScrollNav();
   initWaitlist();
+  restoreCircleHandoff();
   initOrbParallax();
   initProductOrb();
   initReveals();
@@ -109,13 +110,22 @@ function initScrollNav() {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
-function paintCircleHandoff(host, name, email, already) {
+function publicOrigin() {
+  if (/anshikanexi\.github\.io/i.test(window.location.host)) {
+    return window.location.origin + '/nexi-web/';
+  }
+  return window.location.origin + window.location.pathname.replace(/[^/]+$/, '');
+}
+
+function paintCircleHandoff(host, name, email, already, invites) {
   if (!host) return;
   const code = circleCodeFromEmail(email);
-  const origin = window.location.origin + window.location.pathname.replace(/[^/]+$/, '');
-  const share = origin + 'referral.html?ref=' + encodeURIComponent(code);
+  const origin = publicOrigin();
+  const share = origin.replace(/\/?$/, '/') + 'referral.html?ref=' + encodeURIComponent(code);
   try {
-    localStorage.setItem('nexi.circle', JSON.stringify({ code, name, email, at: Date.now() }));
+    localStorage.setItem('nexi.circle', JSON.stringify({
+      code, name, email, invites: invites || 0, at: Date.now(),
+    }));
   } catch (err) {}
 
   let card = host.querySelector('[data-circle-handoff]');
@@ -125,17 +135,24 @@ function paintCircleHandoff(host, name, email, already) {
     card.setAttribute('data-circle-handoff', '1');
     host.appendChild(card);
   }
+  const inviteLabel = invites > 0
+    ? (invites + ' verified ' + (invites === 1 ? 'invite' : 'invites'))
+    : 'Scout \u00b7 waiting on first conversion';
+
   card.innerHTML =
     '<p class="phase-label">Early circle</p>' +
     '<h3>' + (already ? 'You already hold a code.' : 'Your circle is live.') + '</h3>' +
-    '<p class="handoff-lead">Name and email only. Invites credit the hashed code — never the address.</p>' +
+    '<p class="handoff-lead">Name and email only. Invites credit the hashed code \u2014 never the address.</p>' +
     '<div class="circle-code" data-code="' + code + '">' + code + '</div>' +
+    '<p class="handoff-count">' + inviteLabel + '</p>' +
     '<p class="handoff-share">' + share + '</p>' +
-    '<div class="result-actions">' +
+    '<div class="result-actions assembled">' +
       '<button type="button" class="btn" data-copy-circle>Copy invite</button>' +
       '<a class="btn secondary" href="referral.html?ref=' + encodeURIComponent(code) + '">Open referral</a>' +
       '<a class="btn secondary" href="leaderboard.html">Leaderboard</a>' +
     '</div>';
+
+  requestAnimationFrame(() => card.classList.add('assembled'));
 
   const copyBtn = card.querySelector('[data-copy-circle]');
   if (copyBtn) {
@@ -149,6 +166,25 @@ function paintCircleHandoff(host, name, email, already) {
       }
     });
   }
+}
+
+function restoreCircleHandoff() {
+  const form = document.getElementById('waitlist-form');
+  if (!form) return;
+  let saved = null;
+  try {
+    saved = JSON.parse(localStorage.getItem('nexi.circle') || 'null');
+  } catch (err) {}
+  if (!saved || !saved.email) return;
+  const host = form.closest('#phase-result, #waitlist, .waitlist-card, .exp-card') || form.parentElement;
+  const status = document.getElementById('waitlist-status');
+  if (status) {
+    status.hidden = false;
+    status.textContent = 'Reserved on this device. Your circle code is below.';
+    status.style.color = 'var(--teal, #2dd4bf)';
+  }
+  form.hidden = true;
+  paintCircleHandoff(host, saved.name, saved.email, true, saved.invites || 0);
 }
 
 function initWaitlist() {
@@ -189,13 +225,13 @@ function initWaitlist() {
         form.reset();
         await creditInviteIfAny(email);
       }
-      await claimOwnCircle(name, email);
+      const claimed = await claimOwnCircle(name, email);
       status.textContent = already
         ? 'Already reserved. Your circle code is below.'
         : 'Reserved. Your circle code is live.';
       status.style.color = 'var(--teal, #2dd4bf)';
       const host = form.closest('#phase-result, #waitlist, .waitlist-card, .exp-card') || form.parentElement;
-      paintCircleHandoff(host, name, email, already);
+      paintCircleHandoff(host, name, email, already, claimed && claimed.invites);
       form.hidden = true;
     } catch (err) {
       console.error(err);
@@ -226,13 +262,17 @@ async function creditInviteIfAny(joinerEmail) {
 }
 
 async function claimOwnCircle(name, email) {
-  if (!supabase) return;
+  if (!supabase) return null;
   try {
-    await supabase.rpc('claim_circle_code', {
+    const { data, error } = await supabase.rpc('claim_circle_code', {
       p_code: circleCodeFromEmail(email),
       p_alias: aliasFromName(name, email),
     });
-  } catch (err) {}
+    if (error) throw error;
+    return data || null;
+  } catch (err) {
+    return null;
+  }
 }
 
 function initOrbParallax() {
