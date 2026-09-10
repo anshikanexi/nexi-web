@@ -4,29 +4,28 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (9 Sep 2026)
+## Status (10 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (9 Sep)
-Highest-priority unfinished piece from 8 Sep plan: **Home waitlist confirmation assembly + live circle RPC grants**.
+### Today (10 Sep)
+Highest-priority unfinished piece from 9 Sep plan: **persist last diagnosis across Sample / Journey + OG share card**.
 
-- Waitlist confirmation card now assembles like Sample Result (blur → lock)
-- Returning visitors on this device restore the hashed circle code without re-submitting
-- Claim response paints live invite count (Scout until first conversion)
-- Share URLs resolve correctly under `/nexi-web/` on GitHub Pages
-- `claim_circle_code` / `credit_circle_invite` / `get_circle_leaderboard` granted to `anon` + `authenticated` on the existing project
+- Last Experience lock hydrates Sample Result *and* a live chapter card on Journey (same `nexi.lastDiagnosis` store)
+- Experience gate shows **Open last lock** when a diagnosis exists on this device
+- Canonical share art at `assets/og-share.svg` + `og.html` preview
+- OG / Twitter image tags on Home, Experience, Sample, Referral
 - Waitlist still stores **name + email only**
 - Existing Supabase project only (`wzygcmsikopblntwdqsv`)
 
 ### Product surface
 - **Home** — 5-panel cinematic + waitlist + circle-code confirmation
 - **Why / How / Intelligence / Blueprint / Journey / Sample / Referral / Leaderboard** — cinematic inner
-- **Experience Nexi** — cinematic console + live Mission Zero + post-diagnosis reserve
+- **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Experience diagnosis card: persist last run across Sample / Journey more tightly; add a lightweight OG share card asset; smoke-test a real inbound `?ref=` conversion against `credit_circle_invite` once a second waitlist email is available.
+Smoke-test inbound `?ref=` against `credit_circle_invite` with a second waitlist email; convert OG SVG to a raster PNG if social crawlers refuse SVG; tighten leaderboard empty/live states.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
