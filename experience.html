@@ -6,6 +6,11 @@
   <title>Experience Nexi — Live Diagnosis</title>
   <meta name="description" content="Same loop the product uses: sharp questions, triple-lens read, one next move." />
   <meta name="theme-color" content="#050A12" />
+  <meta property="og:title" content="Experience Nexi — diagnosis then a move" />
+  <meta property="og:description" content="Same loop the product uses. Prestige, Wealth, Soul. One 15–45 minute mission." />
+  <meta property="og:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,6 +18,7 @@
   <link rel="stylesheet" href="cinematic-patch.css" />
   <link rel="stylesheet" href="experience-stage.css" />
   <link rel="stylesheet" href="experience-extras.css" />
+  <link rel="stylesheet" href="journey-live.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -83,6 +89,7 @@
             <h2 class="exp-title">Experience the diagnosis</h2>
             <p class="exp-sub">Name one outcome. Nexi reads Prestige, Wealth, and Soul — then locks one 15–45 minute move.</p>
             <button type="button" class="btn" id="btn-start">Start diagnosis</button>
+            <button type="button" class="btn secondary" id="btn-resume" hidden>Open last lock</button>
             <p class="exp-sub" style="margin:1.2rem auto 0;font-size:0.82rem">Or start from a concrete want</p>
             <div class="starters" id="gate-starters">
               <button type="button" class="starter" data-want="Ship a paid AI side project in 90 days">Paid side project in 90 days</button>
@@ -117,6 +124,7 @@
             <div class="result-actions">
               <button type="button" class="btn" id="btn-again">Run another diagnosis</button>
               <a href="sample-result.html" class="btn secondary">Open assembled sample</a>
+              <a href="journey.html" class="btn secondary">See it on Journey</a>
             </div>
             <form id="waitlist-form" class="exp-claim" autocomplete="on">
               <p class="phase-label">Lock the seat</p>
@@ -154,5 +162,6 @@
   <script src="app.js"></script>
   <script src="experience-extras.js"></script>
   <script src="experience-engine.js"></script>
+  <script src="experience-resume.js"></script>
 </body>
 </html>
