@@ -1,0 +1,6 @@
+.journey-live.live {
+  background: linear-gradient(145deg, rgba(45,212,191,.1), rgba(232,213,181,.05));
+  border: 1px solid rgba(45,212,191,.28);
+}
+.journey-live.empty { border-style: dashed; }
+#btn-resume[hidden] { display: none; }
