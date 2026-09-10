@@ -15,23 +15,7 @@
 </head>
 <body>
   <header class="nav" id="nav">
-    <a class="logo" href="index.html">
-      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
-        <defs>
-          <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#F3E6C8"/>
-            <stop offset="50%" stop-color="#7EEAE0"/>
-            <stop offset="100%" stop-color="#C9A86C"/>
-          </linearGradient>
-        </defs>
-        <circle cx="16" cy="16" r="14" fill="none" stroke="url(#logo-g)" stroke-width="1.2"/>
-        <path d="M16 7.2c2.5 2.3 4 3.7 4 5.8A4 4 0 0 1 16 17a4 4 0 0 1-4-4c0-2.1 1.5-3.5 4-5.8z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
-        <path d="M16 24.8c-2.5-2.3-4-3.7-4-5.8A4 4 0 0 1 16 15a4 4 0 0 1 4 4c0 2.1-1.5 3.5-4 5.8z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
-        <path d="M7.2 16c2.3-2.5 3.7-4 5.8-4A4 4 0 0 1 17 16a4 4 0 0 1-4 4c-2.1 0-3.5-1.5-5.8-4z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
-        <path d="M24.8 16c-2.3 2.5-3.7 4-5.8 4A4 4 0 0 1 15 16a4 4 0 0 1 4-4c2.1 0 3.5 1.5 5.8 4z" fill="none" stroke="url(#logo-g)" stroke-width="1.3"/>
-      </svg>
-      NEXI OS
-    </a>
+    <a class="logo" href="index.html">NEXI OS</a>
     <nav class="nav-links">
       <a href="why.html">Why Nexi</a>
       <a href="how.html">How It Works</a>
@@ -41,23 +25,6 @@
     </nav>
   </header>
   <main class="inner">
-    <svg class="silk" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="silk-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#F4E4C1" stop-opacity="0.04"/>
-          <stop offset="35%" stop-color="#E8D5B5" stop-opacity="0.42"/>
-          <stop offset="100%" stop-color="#8A6A3A" stop-opacity="0.06"/>
-        </linearGradient>
-        <linearGradient id="silk-teal" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#7EEAE0" stop-opacity="0.06"/>
-          <stop offset="45%" stop-color="#2DD4BF" stop-opacity="0.28"/>
-          <stop offset="100%" stop-color="#0A3A38" stop-opacity="0.08"/>
-        </linearGradient>
-        <filter id="silk-soft"><feGaussianBlur stdDeviation="10"/></filter>
-      </defs>
-      <path d="M520 60 C 700 -60, 880 140, 1080 60 S 1420 220, 1300 400 S 1000 600, 1220 820" fill="none" stroke="url(#silk-gold)" stroke-width="130" filter="url(#silk-soft)"/>
-      <path d="M420 240 C 640 40, 920 280, 1140 160 S 1440 360, 1240 560" fill="none" stroke="url(#silk-teal)" stroke-width="78" filter="url(#silk-soft)" opacity="0.8"/>
-    </svg>
     <div class="inner-wrap">
       <p class="kicker">The arc</p>
       <h1>From first contact<br/><em>to compound identity.</em></h1>
@@ -68,7 +35,8 @@
         <span class="phase-chip">Day-one mission</span>
         <span class="phase-chip">Compound loops</span>
       </div>
-      <div id="path-stage" style="margin-top:2.2rem">
+      <div id="journey-live" style="margin-top:2.2rem"></div>
+      <div id="path-stage" style="margin-top:1.2rem">
         <article class="path-card glass" data-delay="0"><p class="path-num">01 · Entry</p><h2>Join the waitlist</h2><p>Name and email only. Early members get launch prioritization and referral standing.</p><div class="inner-cta" style="margin-top:.8rem"><span class="chip teal">name + email</span><span class="chip">priority access</span><span class="chip">referral code</span></div></article>
         <article class="path-card glass" data-delay="120"><p class="path-num">02 · First contact</p><h2>Run the live diagnosis</h2><p>State one concrete north star. Nexi asks only for facts that matter, then locks one mission sized for today.</p><div class="inner-cta" style="margin-top:.8rem"><span class="chip teal">triple lens</span><span class="chip">one next move</span><span class="chip">15–45 min</span></div></article>
         <article class="path-card glass" data-delay="240"><p class="path-num">03 · Day one</p><h2>Execute the mission</h2><p>Verb-first action with a clear done-when. Evidence lands in the life model.</p><div class="inner-cta" style="margin-top:.8rem"><span class="chip teal">done-when clear</span><span class="chip">evidence logged</span></div></article>
@@ -102,6 +70,7 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
+  <script src="journey-hydrate.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('#path-stage .path-card').forEach((card) => {
