@@ -44,7 +44,7 @@ function paintInboundBanner() {
   banner.setAttribute('data-inbound-ref', ref);
   banner.innerHTML =
     '<span class="dot"></span>' +
-    '<span>Invited by <b>' + ref.replace(/</g, '') + '</b> · waitlist join credits their circle</span>' +
+    '<span>Invited by <b>' + ref.replace(/</g, '') + '</b> \u00b7 waitlist join credits their circle</span>' +
     '<a href="index.html#waitlist">Reserve with this code</a>';
 
   const nav = document.querySelector('.nav');
@@ -72,4 +72,375 @@ function aliasFromName(name, email) {
   }
   const local = String(email || '').split('@')[0] || 'B';
   return local.slice(0, 1).toUpperCase() + '.';
+}
+
+function initMobileNav() {
+  const nav = document.querySelector('.nav');
+  const links = document.querySelector('.nav-links');
+  if (!nav || !links) return;
+  if (nav.querySelector('.nav-toggle')) return;
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'nav-toggle';
+  toggle.setAttribute('aria-label', 'Open menu');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  backdrop.setAttribute('aria-hidden', 'true');
+
+  nav.appendChild(toggle);
+  document.body.appendChild(backdrop);
+
+  function close() {
+    document.body.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+  }
+
+  function open() {
+    document.body.classList.add('nav-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+  }
+
+  toggle.addEventListener('click', () => {
+    if (document.body.classList.contains('nav-open')) close();
+    else open();
+  });
+
+  backdrop.addEventListener('click', close);
+
+  links.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', close);
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+}
+
+function initScrollNav() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 24);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+function publicOrigin() {
+  if (/anshikanexi\.github\.io/i.test(window.location.host)) {
+    return window.location.origin + '/nexi-web/';
+  }
+  return window.location.origin + window.location.pathname.replace(/[^/]+$/, '');
+}
+
+function paintCircleHandoff(host, name, email, already, invites) {
+  if (!host) return;
+  const code = circleCodeFromEmail(email);
+  const origin = publicOrigin();
+  const share = origin.replace(/\/?$/, '/') + 'referral.html?ref=' + encodeURIComponent(code);
+  try {
+    localStorage.setItem('nexi.circle', JSON.stringify({
+      code, name, email, invites: invites || 0, at: Date.now(),
+    }));
+  } catch (err) {}
+
+  let card = host.querySelector('[data-circle-handoff]');
+  if (!card) {
+    card = document.createElement('div');
+    card.className = 'circle-handoff glass';
+    card.setAttribute('data-circle-handoff', '1');
+    host.appendChild(card);
+  }
+  const inviteLabel = invites > 0
+    ? (invites + ' verified ' + (invites === 1 ? 'invite' : 'invites'))
+    : 'Scout \u00b7 waiting on first conversion';
+
+  card.innerHTML =
+    '<p class="phase-label">Early circle</p>' +
+    '<h3>' + (already ? 'You already hold a code.' : 'Your circle is live.') + '</h3>' +
+    '<p class="handoff-lead">Name and email only. Invites credit the hashed code \u2014 never the address.</p>' +
+    '<div class="circle-code" data-code="' + code + '">' + code + '</div>' +
+    '<p class="handoff-count">' + inviteLabel + '</p>' +
+    '<p class="handoff-share">' + share + '</p>' +
+    '<div class="result-actions assembled">' +
+      '<button type="button" class="btn" data-copy-circle>Copy invite</button>' +
+      '<a class="btn secondary" href="referral.html?ref=' + encodeURIComponent(code) + '">Open referral</a>' +
+      '<a class="btn secondary" href="leaderboard.html">Leaderboard</a>' +
+    '</div>';
+
+  requestAnimationFrame(() => card.classList.add('assembled'));
+
+  const copyBtn = card.querySelector('[data-copy-circle]');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(share);
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => { copyBtn.textContent = 'Copy invite'; }, 1600);
+      } catch (err) {
+        copyBtn.textContent = code;
+      }
+    });
+  }
+}
+
+function restoreCircleHandoff() {
+  const form = document.getElementById('waitlist-form');
+  if (!form) return;
+  let saved = null;
+  try {
+    saved = JSON.parse(localStorage.getItem('nexi.circle') || 'null');
+  } catch (err) {}
+  if (!saved || !saved.email) return;
+  const host = form.closest('#phase-result, #waitlist, .waitlist-card, .exp-card') || form.parentElement;
+  const status = document.getElementById('waitlist-status');
+  if (status) {
+    status.hidden = false;
+    status.textContent = 'Reserved on this device. Your circle code is below.';
+    status.style.color = 'var(--teal, #2dd4bf)';
+  }
+  form.hidden = true;
+  paintCircleHandoff(host, saved.name, saved.email, true, saved.invites || 0);
+}
+
+function initWaitlist() {
+  const form = document.getElementById('waitlist-form');
+  const status = document.getElementById('waitlist-status');
+  if (!form || !status || !supabase) return;
+  try {
+    const ref = (localStorage.getItem('nexi.ref') || '').toUpperCase();
+    if (ref && status.hidden) {
+      status.hidden = false;
+      status.textContent = 'Circle ' + ref + ' is attached to this join.';
+      status.style.color = 'var(--teal, #2dd4bf)';
+    }
+  } catch (err) {}
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nameField = form.elements.namedItem('name') || form.querySelector('[name="name"]');
+    const emailField = form.elements.namedItem('email') || form.querySelector('[name="email"]');
+    const name = (nameField && nameField.value || '').trim();
+    const email = (emailField && emailField.value || '').trim().toLowerCase();
+
+    if (!name || !email) return;
+
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Reserving\u2026';
+    }
+
+    status.hidden = false;
+    status.textContent = 'Reserving your spot\u2026';
+    status.style.color = 'var(--muted)';
+
+    try {
+      const { error } = await supabase.from('waitlist').insert({ name, email });
+      let already = false;
+
+      if (error) {
+        if (error.code === '23505') {
+          already = true;
+        } else {
+          throw error;
+        }
+      } else {
+        form.reset();
+        await creditInviteIfAny(email);
+      }
+      const claimed = await claimOwnCircle(name, email);
+      status.textContent = already
+        ? 'Already reserved. Your circle code is below.'
+        : 'Reserved. Your circle code is live.';
+      status.style.color = 'var(--teal, #2dd4bf)';
+      const host = form.closest('#phase-result, #waitlist, .waitlist-card, .exp-card') || form.parentElement;
+      paintCircleHandoff(host, name, email, already, claimed && claimed.invites);
+      form.hidden = true;
+    } catch (err) {
+      console.error(err);
+      status.textContent = 'Something went wrong. Try again in a moment.';
+      status.style.color = '#FF6B6B';
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Reserve my spot';
+      }
+    }
+  });
+}
+
+async function creditInviteIfAny(joinerEmail) {
+  if (!supabase) return;
+  let ref = '';
+  try {
+    ref = (localStorage.getItem('nexi.ref') || '').toUpperCase();
+  } catch (err) {}
+  if (!ref) return;
+  if (ref === circleCodeFromEmail(joinerEmail)) return;
+  try {
+    await supabase.rpc('credit_circle_invite', { p_code: ref });
+  } catch (err) {
+    console.warn('circle credit skipped', err);
+  }
+}
+
+async function claimOwnCircle(name, email) {
+  if (!supabase) return null;
+  try {
+    const { data, error } = await supabase.rpc('claim_circle_code', {
+      p_code: circleCodeFromEmail(email),
+      p_alias: aliasFromName(name, email),
+    });
+    if (error) throw error;
+    return data || null;
+  } catch (err) {
+    return null;
+  }
+}
+
+function initOrbParallax() {
+  const orb = document.getElementById('nexi-orb');
+  if (!orb) return;
+
+  let raf = null;
+  window.addEventListener(
+    'pointermove',
+    (e) => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 14;
+        const y = (e.clientY / window.innerHeight - 0.5) * 14;
+        orb.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+    },
+    { passive: true },
+  );
+}
+
+function initReveals() {
+  const selectors = [
+    '.glass-panel',
+    '.waitlist-card',
+    '.proof',
+    '.feature-card',
+    '.page-hero',
+    '.section-cta',
+    '.loop-card',
+    '.preview-card',
+    '.section-intro',
+    '.contrast-card',
+    '.engine',
+    '.quote-line',
+    '.principle-card',
+    '.lens-card',
+    '.flow-body',
+    '.dash',
+  ];
+  const reveal = document.querySelectorAll(selectors.join(', '));
+  if (!reveal.length) return;
+
+  document.querySelectorAll('.card-grid').forEach((grid) => {
+    grid.querySelectorAll('.feature-card').forEach((card, i) => {
+      card.style.setProperty('--stagger', `${i * 70}ms`);
+    });
+  });
+  document.querySelectorAll('.loop-row').forEach((grid) => {
+    grid.querySelectorAll('.loop-card').forEach((card, i) => {
+      card.style.setProperty('--stagger', `${i * 80}ms`);
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.classList.add('revealed');
+            io.unobserve(en.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+    );
+    reveal.forEach((el) => {
+      el.classList.add('reveal-ready');
+      io.observe(el);
+    });
+  } else {
+    reveal.forEach((el) => el.classList.add('revealed'));
+  }
+}
+
+function initProductOrb() {
+  const canvas = document.getElementById('nexi-orb-canvas');
+  if (!canvas || !canvas.getContext) return;
+
+  const ctx = canvas.getContext('2d');
+  const size = canvas.width;
+  let t0 = performance.now();
+  let running = true;
+
+  const champagne = [232, 213, 181];
+  const teal = [45, 212, 191];
+
+  function rgba(c, a) {
+    return `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  }
+
+  function paint(now) {
+    if (!running) return;
+    const elapsed = (now - t0) / 1000;
+    const phase = elapsed * ((Math.PI * 2) / 8);
+    const breath = 0.5 + 0.5 * Math.sin((elapsed * Math.PI * 2) / 3.4);
+    const intensity = 0.55 + breath * 0.35;
+
+    ctx.clearRect(0, 0, size, size);
+    const c = size / 2;
+
+    const aura = ctx.createRadialGradient(c, c, size * 0.12, c, c, size / 2);
+    aura.addColorStop(0, rgba(champagne, 0.08 * intensity));
+    aura.addColorStop(0.42, rgba(teal, 0.16 * intensity + 0.04 * Math.cos(phase * 0.7)));
+    aura.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = aura;
+    ctx.beginPath();
+    ctx.arc(c, c, size / 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    function halo(ax, ay, color, alpha, rf) {
+      const bx = c + ax * size * 0.22;
+      const by = c + ay * size * 0.22;
+      const br = size * rf;
+      const g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
+      g.addColorStop(0, rgba(color, alpha));
+      g.addColorStop(0.5, rgba(color, alpha * 0.28));
+      g.addColorStop(1, rgba(color, 0));
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(bx, by, br, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    halo(-0.35 + 0.2 * Math.sin(phase * 0.7), -0.32 + 0.16 * Math.cos(phase * 0.5), champagne, 0.18 * intensity, 0.28);
+    halo(0.32 + 0.18 * Math.cos(phase * 0.6), 0.28 + 0.16 * Math.sin(phase * 0.8), teal, 0.2 * intensity, 0.3);
+
+    requestAnimationFrame(paint);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    running = !document.hidden;
+    if (running) {
+      t0 = performance.now();
+      requestAnimationFrame(paint);
+    }
+  });
+
+  requestAnimationFrame(paint);
 }
