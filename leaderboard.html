@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="cinematic.css" />
   <link rel="stylesheet" href="cinematic-patch.css" />
   <link rel="stylesheet" href="inner.css" />
+  <link rel="stylesheet" href="leaderboard-live.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -64,9 +65,9 @@
       <p class="lead">Ranks by verified waitlist conversions from a unique invite code. Aliases only. No emails on this board.</p>
       <div class="lb-meta">
         <span class="chip-live"><span class="dot"></span> Live ranks</span>
-        <span class="chip-muted" id="lb-meta-note">Waiting on first conversion</span>
+        <span class="chip-muted" id="lb-meta-note">Reading the circle…</span>
       </div>
-      <div class="board" id="board"></div>
+      <div class="board" id="board" aria-live="polite"></div>
       <p class="lead" style="margin-top:2rem">Display aliases only. Scores = verified waitlist conversions from a unique referral code. Abuse resets rank.</p>
       <div class="inner-cta">
         <a href="referral.html" class="btn">Get your invite link</a>
@@ -82,54 +83,6 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
-  <script>
-(function () {
-  const board = document.getElementById('board');
-  const note = document.getElementById('lb-meta-note');
-  function paint(ranks) {
-    board.innerHTML = '';
-    if (!ranks.length) {
-      const empty = document.createElement('div');
-      empty.className = 'empty-state glass revealed';
-      empty.innerHTML = '<h2>The board is live. Empty on purpose.</h2><p>No fabricated ranks. The first verified invite that joins the waitlist writes row one.</p>';
-      board.appendChild(empty);
-      return;
-    }
-    note.textContent = ranks.length + ' live ' + (ranks.length === 1 ? 'rank' : 'ranks');
-    ranks.forEach((r, i) => {
-      const row = document.createElement('article');
-      row.className = 'row glass' + (r.rank <= 3 ? ' top' : '');
-      row.style.transitionDelay = (i * 0.07) + 's';
-      row.innerHTML =
-        '<div class="rank">' + String(r.rank).padStart(2, '0') + '</div>' +
-        '<div class="who"><div class="name">' + escapeHtml(r.alias) + '</div><div class="tag">' + escapeHtml(r.tag) + '</div></div>' +
-        '<div class="score"><span class="n">' + r.invites + '</span><span class="l">invites</span></div>';
-      board.appendChild(row);
-    });
-    const rows = board.querySelectorAll('.row');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((en) => {
-          if (en.isIntersecting) { en.target.classList.add('revealed'); io.unobserve(en.target); }
-        });
-      }, { threshold: 0.08 });
-      rows.forEach((el) => io.observe(el));
-    } else {
-      rows.forEach((el) => el.classList.add('revealed'));
-    }
-  }
-  function escapeHtml(s) {
-    return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-  async function load() {
-    if (!supabase) { paint([]); return; }
-    const { data, error } = await supabase.rpc('get_circle_leaderboard', { p_limit: 16 });
-    if (error) { console.error(error); paint([]); return; }
-    paint(data || []);
-  }
-  load();
-})();
-  </script>
+  <script src="leaderboard-live.js"></script>
 </body>
 </html>
