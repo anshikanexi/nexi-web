@@ -83,7 +83,7 @@
   to { opacity: 1; transform: none; filter: none; }
 }
 
-/* Mobile cinematic nav — Experience/Home were dropping links under 900px */
+/* Mobile cinematic nav */
 .nav-toggle {
   display: none;
   width: 42px; height: 42px;
@@ -172,4 +172,30 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-4.5px) rota
   }
   .wait-form { flex-direction: column; }
   .wait-form .btn { width: 100%; }
+}
+
+/* Inbound circle invite */
+.has-inbound .nav { top: 42px; }
+.inbound-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+  display: flex; align-items: center; justify-content: center; gap: .75rem;
+  padding: .55rem 1.2rem;
+  font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(246,241,230,.82);
+  background: linear-gradient(90deg, rgba(8,18,24,.92), rgba(12,28,32,.94), rgba(18,16,10,.92));
+  border-bottom: 1px solid rgba(45,212,191,.22);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+.inbound-banner .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #2DD4BF;
+  box-shadow: 0 0 10px #2DD4BF; animation: breathe 2.4s ease-in-out infinite;
+}
+.inbound-banner b { color: #E8D5B5; font-weight: 500; letter-spacing: .14em; }
+.inbound-banner a {
+  color: #2DD4BF; text-decoration: none; border-bottom: 1px solid rgba(45,212,191,.35);
+}
+@media (max-width: 720px) {
+  .inbound-banner { font-size: .62rem; gap: .45rem; letter-spacing: .06em; }
+  .has-inbound .nav { top: 48px; }
 }
