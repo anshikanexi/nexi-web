@@ -4,28 +4,27 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (10 Sep 2026)
+## Status (11 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (10 Sep)
-Highest-priority unfinished piece from 9 Sep plan: **persist last diagnosis across Sample / Journey + OG share card**.
+### Today (11 Sep)
+Highest-priority unfinished piece from 10 Sep plan: **inbound `?ref=` credit path + leaderboard live/empty/error states**.
 
-- Last Experience lock hydrates Sample Result *and* a live chapter card on Journey (same `nexi.lastDiagnosis` store)
-- Experience gate shows **Open last lock** when a diagnosis exists on this device
-- Canonical share art at `assets/og-share.svg` + `og.html` preview
-- OG / Twitter image tags on Home, Experience, Sample, Referral
-- Waitlist still stores **name + email only**
-- Existing Supabase project only (`wzygcmsikopblntwdqsv`)
+- `?ref=` is captured site-wide, painted as a glass inbound banner, and attached to waitlist join (`credit_circle_invite`)
+- Self-referrals still skipped; waitlist still stores **name + email only**
+- Leaderboard: skeleton while reading, honest empty state with CTAs, distinct error state (no fake ranks)
+- Referral page explains inbound codes before the visitor claims their own
+- Home now carries OG / Twitter share tags (SVG card — raster PNG still blocked by GitHub file-tool text-only push)
 
 ### Product surface
-- **Home** — 5-panel cinematic + waitlist + circle-code confirmation
+- **Home** — 5-panel cinematic + waitlist + circle-code confirmation + inbound banner
 - **Why / How / Intelligence / Blueprint / Journey / Sample / Referral / Leaderboard** — cinematic inner
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Smoke-test inbound `?ref=` against `credit_circle_invite` with a second waitlist email; convert OG SVG to a raster PNG if social crawlers refuse SVG; tighten leaderboard empty/live states.
+Generate and commit a 1200×630 PNG share card (binary push), then smoke a second waitlist email through a live `?ref=` against `credit_circle_invite`. Pixel-pass Experience console on mobile.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
