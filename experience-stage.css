@@ -74,16 +74,28 @@
 .handoff-lead,.handoff-share{color:var(--muted);font-size:.86rem;margin-bottom:.75rem;word-break:break-all}
 .circle-code{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(2rem,5vw,2.8rem);letter-spacing:.12em;color:var(--gold);margin:.2rem 0 .7rem}
 @media (max-width:900px){
-  .exp-page{padding:6.2rem 5% 3.2rem}
-  .exp-layout{grid-template-columns:1fr;gap:1.25rem}
-  .exp-copy h1{font-size:clamp(2.15rem,9vw,3.2rem)}
-  .side-orb{display:block;width:92px;margin:1rem 0 0;animation:breathe 5.8s ease-in-out infinite}
+  .exp-page{padding:calc(5.6rem + env(safe-area-inset-top)) 4.5% calc(2.4rem + env(safe-area-inset-bottom))}
+  .exp-layout{grid-template-columns:1fr;gap:1.05rem}
+  .exp-copy h1{font-size:clamp(2.05rem,8.6vw,3rem)}
+  .exp-copy .lead{font-size:.95rem;max-width:none}
+  .side-orb{display:none}
   .diag-grid{grid-template-columns:1fr}
-  .exp-card{padding:1.2rem 1rem 1.1rem}
-  .composer{flex-direction:column}
-  .composer button{width:100%;padding:.9rem}
-  .thread{max-height:min(42vh,320px);min-height:160px}
+  .exp-card{padding:1.15rem .95rem 1.05rem;border-radius:22px}
+  .composer{flex-direction:column;position:sticky;bottom:calc(.4rem + env(safe-area-inset-bottom));z-index:4}
+  .composer textarea{min-height:56px;font-size:16px}
+  .composer button{width:100%;padding:.95rem;justify-content:center}
+  .thread{max-height:min(46vh,340px);min-height:148px}
   .claim-row{grid-template-columns:1fr}
-  .result-actions .btn{width:100%;text-align:center}
+  .claim-row input{font-size:16px}
+  .result-actions{flex-direction:column}
+  .result-actions .btn{width:100%;text-align:center;justify-content:center}
+  .starters{flex-direction:column;align-items:stretch}
+  .starter{width:100%;text-align:center;padding:.7rem .9rem;font-size:.8rem}
+  .protocol{justify-content:center}
+  .gate .btn{min-width:min(100%,280px)}
   .site-foot{padding:1.2rem 5% 2rem}
+}
+@media (max-width:900px) and (max-height:780px){
+  .exp-copy h1{font-size:clamp(1.7rem,7vw,2.4rem)}
+  .exp-copy .lead{display:none}
 }

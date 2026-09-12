@@ -4,27 +4,26 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (11 Sep 2026)
+## Status (12 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (11 Sep)
-Highest-priority unfinished piece from 10 Sep plan: **inbound `?ref=` credit path + leaderboard live/empty/error states**.
+### Today (12 Sep)
+Highest-priority unfinished piece from 11 Sep plan: **Experience mobile pixel-pass + 1200×630 share card**.
 
-- `?ref=` is captured site-wide, painted as a glass inbound banner, and attached to waitlist join (`credit_circle_invite`)
-- Self-referrals still skipped; waitlist still stores **name + email only**
-- Leaderboard: skeleton while reading, honest empty state with CTAs, distinct error state (no fake ranks)
-- Referral page explains inbound codes before the visitor claims their own
-- Home now carries OG / Twitter share tags (SVG card — raster PNG still blocked by GitHub file-tool text-only push)
+- Experience console is the product surface on phone: safe-area padding, hidden side orb, full-width starter chips, 16px inputs (no iOS zoom), sticky composer, stacked result actions
+- Nav toggle is a visible champagne glass control (not a ghost button)
+- Home + Experience + Referral + OG preview point at `assets/og-share.png` (1200×630)
+- Waitlist still stores **name + email only**
 
 ### Product surface
-- **Home** — 5-panel cinematic + waitlist + circle-code confirmation + inbound banner
+- **Home** — 5-panel cinematic + waitlist + circle-code confirmation + inbound banner + share tags
 - **Why / How / Intelligence / Blueprint / Journey / Sample / Referral / Leaderboard** — cinematic inner
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Generate and commit a 1200×630 PNG share card (binary push), then smoke a second waitlist email through a live `?ref=` against `credit_circle_invite`. Pixel-pass Experience console on mobile.
+Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite`. Pixel-pass Sample Result + Journey on mobile. Confirm OG crawlers pick up the PNG after Pages cache.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
