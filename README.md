@@ -10,20 +10,20 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 GitHub Pages deploys on every push to `main`.
 
 ### Today (12 Sep)
-Highest-priority unfinished piece from 11 Sep plan: **Experience mobile pixel-pass + 1200×630 share card**.
+Highest-priority unfinished piece from 11 Sep plan: **Experience mobile pixel-pass**.
 
-- Experience console is the product surface on phone: safe-area padding, hidden side orb, full-width starter chips, 16px inputs (no iOS zoom), sticky composer, stacked result actions
-- Nav toggle is a visible champagne glass control (not a ghost button)
-- Home + Experience + Referral + OG preview point at `assets/og-share.png` (1200×630)
+- Experience console on phone: safe-area padding, hidden side orb, full-width starter chips, 16px inputs (no iOS zoom), sticky composer, stacked result actions
+- Nav toggle is a visible champagne glass control
+- 1200×630 PNG was rasterized locally from `og-share.svg`. GitHub file tools are text-only, so live OG tags stay on the SVG until a binary push lands
 - Waitlist still stores **name + email only**
 
 ### Product surface
-- **Home** — 5-panel cinematic + waitlist + circle-code confirmation + inbound banner + share tags
+- **Home** — 5-panel cinematic + waitlist + circle-code confirmation + inbound banner
 - **Why / How / Intelligence / Blueprint / Journey / Sample / Referral / Leaderboard** — cinematic inner
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite`. Pixel-pass Sample Result + Journey on mobile. Confirm OG crawlers pick up the PNG after Pages cache.
+Binary-push `assets/og-share.png`. Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite`. Pixel-pass Sample Result + Journey on mobile.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
