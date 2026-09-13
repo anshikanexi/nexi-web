@@ -1,0 +1,87 @@
+/* Shared inner-page mobile pixel-pass — Sample, Journey, and cinematic inners */
+@media (max-width: 820px) {
+  .inner {
+    padding: calc(6.6rem + env(safe-area-inset-top, 0px)) 5.2% calc(3.4rem + env(safe-area-inset-bottom, 0px));
+  }
+  .inner-wrap { max-width: 100%; }
+  .inner .silk { opacity: 0.55; }
+  .sample-card,
+  .path-card,
+  .assembly-card,
+  .mission-card {
+    padding: 1.25rem 1.1rem 1.35rem;
+    border-radius: 20px;
+  }
+  .lens-collision {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .diag-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    margin: 1.05rem 0 1rem;
+  }
+  .diag-cell,
+  .lens-meter {
+    padding: 0.95rem 1rem;
+  }
+  .mission-meta {
+    gap: 0.35rem;
+  }
+  .chip {
+    font-size: 0.64rem;
+    padding: 0.28rem 0.58rem;
+  }
+  .belief-line {
+    font-size: 0.9rem;
+    padding: 0.9rem 1rem;
+    margin: 1rem 0 1.2rem;
+  }
+  .inner-cta,
+  .result-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    margin-top: 1.35rem;
+  }
+  .inner-cta .btn,
+  .result-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .path-card .inner-cta {
+    margin-top: 0.85rem;
+  }
+  .phase-chips,
+  .doctrine-strip {
+    gap: 0.4rem;
+  }
+  .phase-chip,
+  .doctrine-chip {
+    font-size: 0.64rem;
+    padding: 0.32rem 0.7rem;
+  }
+  .site-foot {
+    padding: 1.2rem 5.2% calc(1.6rem + env(safe-area-inset-bottom, 0px));
+    align-items: flex-start;
+  }
+  .site-foot div {
+    gap: 0.55rem 0.9rem;
+  }
+  .sample-note {
+    font-size: 0.88rem;
+    max-width: none;
+  }
+  .sample-title {
+    font-size: clamp(2.05rem, 11vw, 3rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .inner h1 {
+    font-size: clamp(1.95rem, 12vw, 2.55rem);
+  }
+  .inner .lead {
+    font-size: 0.95rem;
+  }
+}
