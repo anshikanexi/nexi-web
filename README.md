@@ -4,17 +4,18 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (13 Sep 2026)
+## Status (14 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (13 Sep)
-Highest-priority unfinished piece from 12 Sep plan: **Sample Result + Journey mobile pixel-pass**.
+### Today (14 Sep)
+Highest-priority unfinished piece from 13 Sep plan: **Referral + Leaderboard mobile pixel-pass**.
 
-- Sample diagnosis card: stacked lens meters, single-column diag cells, full-width result actions, tighter glass padding, safe-area inset
-- Journey path + live chapter: stacked CTAs, dashed empty-state still intact, timeline rail unchanged on desktop
-- Shared `inner-mobile.css` so Why / How / Blueprint / Intelligence inherit the same inner chrome on phone
+- Referral share card, claim row, preview code, perk stack, and circle rules inherit the shared inner mobile chrome
+- Invite inputs + copy actions go full-width; preview code wraps instead of overflowing the glass
+- Leaderboard rows tighten (rank / alias / invites) with named alias + tag typography; empty/error states left-align and stack CTAs
+- `inner-mobile.css` now covers Sample, Journey, Referral, Leaderboard
 - Waitlist still stores **name + email only**
 - OG raster PNG still blocked (GitHub file tools are text-only); live OG remains `assets/og-share.svg`
 
@@ -24,7 +25,7 @@ Highest-priority unfinished piece from 12 Sep plan: **Sample Result + Journey mo
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Pixel-pass Referral + Leaderboard on mobile. Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
+Why / How / Blueprint / Intelligence mobile consistency pass (typography, tile padding, doctrine chips). Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
