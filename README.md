@@ -4,18 +4,18 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (14 Sep 2026)
+## Status (15 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (14 Sep)
-Highest-priority unfinished piece from 13 Sep plan: **Referral + Leaderboard mobile pixel-pass**.
+### Today (15 Sep)
+Highest-priority unfinished piece from 14 Sep plan: **Why / How / Blueprint / Intelligence mobile consistency pass**.
 
-- Referral share card, claim row, preview code, perk stack, and circle rules inherit the shared inner mobile chrome
-- Invite inputs + copy actions go full-width; preview code wraps instead of overflowing the glass
-- Leaderboard rows tighten (rank / alias / invites) with named alias + tag typography; empty/error states left-align and stack CTAs
-- `inner-mobile.css` now covers Sample, Journey, Referral, Leaderboard
+- `inner-mobile.css` now covers Sample, Journey, Referral, Leaderboard, Why, How, Blueprint, Intelligence
+- Safe-area inner padding, stacked grids, full-width CTAs, tighter glass tiles
+- Doctrine / intelligence chips wrap instead of overflowing
+- Thesis cells, cap cells, track cells, and flow bodies share the same mobile chrome
 - Waitlist still stores **name + email only**
 - OG raster PNG still blocked (GitHub file tools are text-only); live OG remains `assets/og-share.svg`
 
@@ -25,7 +25,7 @@ Highest-priority unfinished piece from 13 Sep plan: **Referral + Leaderboard mob
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Why / How / Blueprint / Intelligence mobile consistency pass (typography, tile padding, doctrine chips). Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
+Home cinematic mobile polish (hero type, waitlist card, inbound banner, circle handoff). Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
