@@ -1,0 +1,143 @@
+/* Diagnosis lock surface — density, glass, staggered assembly */
+#phase-result {
+  gap: 0.95rem;
+}
+#phase-result .exp-title {
+  font-size: clamp(1.55rem, 2.6vw, 2.05rem);
+  margin-bottom: 0.15rem;
+}
+.lens-collision {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin: 0.15rem 0 0.35rem;
+}
+.lens-meter {
+  padding: 0.8rem 0.85rem 0.9rem;
+  border-radius: 16px;
+  background: linear-gradient(165deg, rgba(255,255,255,.05), rgba(0,0,0,.28));
+  border: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+.lens-meter.primary {
+  box-shadow: 0 0 28px rgba(45,212,191,.12), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.diag-grid {
+  gap: 0.65rem;
+}
+.diag-cell {
+  padding: 0.88rem 0.98rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.32));
+  backdrop-filter: blur(14px);
+}
+.diag-cell .v {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.mission-card {
+  padding: 1.2rem 1.25rem 1.15rem;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.mission-card h3 {
+  font-size: clamp(1.18rem, 2.2vw, 1.42rem);
+}
+.mission-card p {
+  margin: 0;
+}
+.belief-line {
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+.result-actions {
+  gap: 0.5rem;
+}
+.result-actions .btn {
+  min-height: 46px;
+}
+#phase-result .exp-claim,
+#phase-result .persist-note {
+  opacity: 0;
+  transform: translateY(16px) scale(.98);
+}
+#phase-result.is-assembling .exp-claim,
+#phase-result.is-assembling .persist-note {
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+#phase-result.is-assembling .exp-claim.assembled,
+#phase-result.is-assembling .persist-note.assembled {
+  opacity: 1;
+  transform: none;
+}
+.exp-claim {
+  position: relative;
+  overflow: hidden;
+}
+.exp-claim::before {
+  content: "";
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(45,212,191,.16), transparent 68%);
+  pointer-events: none;
+}
+.circle-handoff {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
+}
+.circle-handoff.assembled {
+  opacity: 1;
+  transform: none;
+}
+@media (min-width: 1100px) {
+  .exp-layout {
+    gap: 2.6rem;
+    align-items: stretch;
+  }
+  .exp-card {
+    min-height: 560px;
+  }
+  .diag-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .claim-row {
+    grid-template-columns: 1fr 1.15fr auto;
+  }
+}
+@media (max-width: 900px) {
+  .lens-collision {
+    grid-template-columns: 1fr;
+  }
+  #phase-result {
+    gap: 0.8rem;
+  }
+  .mission-card {
+    padding: 1.1rem 1.05rem 1.05rem;
+  }
+  .exp-claim {
+    padding: 1.05rem 1rem 1rem;
+  }
+  .persist-note {
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+  .circle-code {
+    font-size: clamp(1.7rem, 9vw, 2.4rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #phase-result .diag-cell,
+  #phase-result .mission-card,
+  #phase-result .belief-line,
+  #phase-result .result-actions,
+  #phase-result .exp-claim,
+  #phase-result .persist-note,
+  .lens-meter {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

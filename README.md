@@ -4,20 +4,18 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (16 Sep 2026)
+## Status (17 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (16 Sep)
-Highest-priority unfinished piece from 15 Sep plan: **Home cinematic mobile polish**.
+### Today (17 Sep)
+Highest-priority unfinished piece from 16 Sep plan: **Experience diagnosis-result density**.
 
-- New `home-mobile.css` — hero type scale, safe-area panel padding, stacked CTAs
-- Waitlist form becomes a glass card on phone; stats stack without collision
-- Inbound circle banner wraps instead of overflowing under the nav
-- Circle handoff actions stack full-width with secondary glass buttons
-- Product orb scales down on small viewports; dashboard mid-grid collapses cleanly
-- Home viewport-fit + OG tags now match inner pages
+- New `experience-result.css` — tighter lock surface, glass cells, staggered reserve-form assembly
+- Lens meters, diag grid, mission card, belief, actions, then claim form assemble in sequence
+- Reserve form is part of the assembly choreography (not a sudden drop)
+- Experience now links `inner-mobile.css` + result CSS; Experience nav marked active
 - Waitlist still stores **name + email only**
 - OG raster PNG still blocked (GitHub file tools are text-only); live OG remains `assets/og-share.svg`
 
@@ -27,7 +25,7 @@ Highest-priority unfinished piece from 15 Sep plan: **Home cinematic mobile poli
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Experience desktop/mobile density pass on the diagnosis result (diag-grid assemble, mission card, reserve form). Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
+Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Desktop polish on Sample Result + Journey so the saved diagnosis reads as the same lock surface. Revisit binary OG PNG if a non-text push path appears.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
