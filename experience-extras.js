@@ -180,22 +180,23 @@
     if (actions) {
       actions.classList.remove('assembled');
       setTimeout(() => actions.classList.add('assembled'), 1460);
-      if (!actions.querySelector('[data-sample-link]')) {
-        const a = document.createElement('a');
-        a.href = 'sample-result.html';
-        a.className = 'btn secondary';
-        a.setAttribute('data-sample-link', '1');
-        a.textContent = 'Open assembled sample';
-        actions.appendChild(a);
-      }
     }
 
-    if (!panel.querySelector('.persist-note')) {
-      const note = document.createElement('p');
+    const claim = panel.querySelector('.exp-claim');
+    if (claim) {
+      claim.classList.remove('assembled');
+      setTimeout(() => claim.classList.add('assembled'), 1680);
+    }
+
+    let note = panel.querySelector('.persist-note');
+    if (!note) {
+      note = document.createElement('p');
       note.className = 'persist-note';
       note.innerHTML = 'This diagnosis is saved on this device only. Revisit it on <a href="sample-result.html">Sample Result</a>.';
       panel.appendChild(note);
     }
+    note.classList.remove('assembled');
+    setTimeout(() => note.classList.add('assembled'), 1860);
   }
 
   window.NexiExperience = window.NexiExperience || {};
