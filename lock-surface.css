@@ -1,0 +1,90 @@
+/* Shared lock surface — Sample Result + Journey desktop match Experience */
+.lock-surface {
+  position: relative;
+  overflow: hidden;
+}
+.lock-surface::after {
+  content: "";
+  position: absolute;
+  inset: auto -12% -48% auto;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(45,212,191,.14), transparent 70%);
+  pointer-events: none;
+}
+.sample-card.lock-surface,
+.journey-lock {
+  padding: 1.35rem 1.4rem 1.45rem;
+}
+.sample-card .lens-collision,
+.journey-lock .lens-collision {
+  margin-top: 0.2rem;
+}
+.sample-card .diag-grid,
+.journey-lock .diag-grid {
+  margin: 0.55rem 0 0.7rem;
+  gap: 0.65rem;
+}
+.sample-card .mission-card,
+.journey-lock .mission-card {
+  margin-top: 0.35rem;
+}
+.sample-card .belief-line,
+.journey-lock .belief-line {
+  margin-top: 0.95rem;
+}
+.sample-card .result-actions,
+.journey-lock .result-actions {
+  margin-top: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+@media (min-width: 1100px) {
+  .inner-wrap {
+    max-width: 1080px;
+  }
+  .sample-card.lock-surface,
+  .journey-lock {
+    padding: 1.55rem 1.7rem 1.65rem;
+  }
+  .sample-title {
+    font-size: clamp(2.4rem, 4.2vw, 3.35rem);
+    max-width: 18ch;
+  }
+  .sample-sub {
+    max-width: 52ch;
+  }
+  .sample-card .diag-grid,
+  .journey-lock .diag-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .journey-live.live {
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
+  .journey-lock {
+    background: linear-gradient(165deg, rgba(45,212,191,.08), rgba(8,12,18,.55));
+    border: 1px solid rgba(45,212,191,.22);
+    border-radius: 22px;
+    box-shadow: 0 24px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
+  }
+}
+@media (max-width: 900px) {
+  .sample-card.lock-surface,
+  .journey-lock {
+    padding: 1.15rem 1.05rem 1.25rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lock-surface .lens-meter,
+  .lock-surface .diag-cell,
+  .lock-surface .mission-card,
+  .lock-surface .belief-line,
+  .lock-surface .result-actions {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
