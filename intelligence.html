@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Intelligence — Nexi Life OS</title>
   <meta name="description" content="How Nexi thinks: triple-lens diagnosis, compound memory, adaptive next moves." />
   <meta name="theme-color" content="#050A12" />
+  <meta property="og:title" content="Intelligence — Nexi Life OS" />
+  <meta property="og:description" content="Triple-lens diagnosis. Compound memory. One next move." />
+  <meta property="og:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,6 +18,8 @@
   <link rel="stylesheet" href="cinematic-patch.css" />
   <link rel="stylesheet" href="inner.css" />
   <link rel="stylesheet" href="inner-mobile.css" />
+  <link rel="stylesheet" href="experience-result.css" />
+  <link rel="stylesheet" href="lock-surface.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -36,6 +43,7 @@
     <nav class="nav-links">
       <a href="why.html">Why Nexi</a>
       <a href="how.html">How It Works</a>
+      <a href="intelligence.html" class="active">Intelligence</a>
       <a href="experience.html">Experience</a>
       <a href="index.html#waitlist" class="cta-nav">Join Waitlist</a>
     </nav>
@@ -71,11 +79,33 @@
         <span>Compound memory</span>
       </div>
 
-      <div class="tile glass reveal-ready" style="margin-top:2.2rem;padding:1.8rem 1.55rem">
+      <div class="tile glass lock-surface intel-lock reveal-ready" id="intel-lock">
         <p class="kicker">Operating loop · live</p>
-        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.4rem">How the diagnosis engine thinks</h2>
-        <p class="lead" style="margin-top:0;margin-bottom:1.4rem">Same loop that powers Experience Nexi. Sharp questions. Honest constraints. No terminal dead ends.</p>
-        <div class="flow" id="loop-rail" style="margin-top:0">
+        <h2 class="intel-heading">How the diagnosis engine thinks</h2>
+        <p class="lead intel-lead">Same loop that powers Experience Nexi. Sharp questions. Honest constraints. No terminal dead ends.</p>
+
+        <div class="lens-collision" id="intel-lenses">
+          <div class="lens-meter" data-delay="0">
+            <div class="k">Prestige</div>
+            <div class="v">Proof</div>
+            <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
+            <p>Visible artifacts. Reputation only after evidence.</p>
+          </div>
+          <div class="lens-meter primary" data-delay="80">
+            <div class="k">Wealth · primary</div>
+            <div class="v">Demand</div>
+            <div class="bar-track"><div class="bar-fill" style="width:62%"></div></div>
+            <p>Distribution before polish. Cash is the constraint named here.</p>
+          </div>
+          <div class="lens-meter" data-delay="160">
+            <div class="k">Soul</div>
+            <div class="v">Capacity</div>
+            <div class="bar-track"><div class="bar-fill" style="width:71%"></div></div>
+            <p>Load the day can actually hold. Protect the block that ships.</p>
+          </div>
+        </div>
+
+        <div class="flow" id="loop-rail">
           <div class="flow-step loop-row" data-delay="0">
             <div class="flow-mark"><span class="pulse-dot"></span></div>
             <div><strong>Capture the north star</strong><p>One concrete destination. Vision-board language is pressure-tested into a fact.</p></div>
@@ -98,7 +128,7 @@
           </div>
         </div>
 
-        <div class="inner-grid" id="cap-grid" style="margin-top:1.4rem">
+        <div class="inner-grid cap-grid" id="cap-grid">
           <div class="cap-cell" data-delay="0"><div class="ck">Memory</div><div class="cv">Life model that upgrades</div><p>Beliefs, constraints, retired strategies, and wins stay in the graph. Tomorrow already knows what failed.</p></div>
           <div class="cap-cell" data-delay="100"><div class="ck">Adaptation</div><div class="cv">Strategy that revises</div><p>When a path stalls, Nexi re-diagnoses and preserves intent under new constraints.</p></div>
           <div class="cap-cell" data-delay="200"><div class="ck">Honesty</div><div class="cv">Calibrated directness</div><p>Gentle, balanced, or brutal tone — never soft on path quality. Ambition is protected.</p></div>
@@ -108,10 +138,10 @@
 
       <blockquote class="quote-card glass reveal-ready">The shortest legitimate route is the product. Shortcuts that look productive and paths that quietly waste years are both rejected.</blockquote>
 
-      <div class="inner-grid three" style="margin-top:2.2rem">
-        <article class="tile glass reveal-ready"><h3>Diagnosis before advice</h3><p>Nexi names what is actually going on before it prescribes. Generic encouragement is treated as noise.</p></article>
-        <article class="tile glass reveal-ready"><h3>One move, not a dump</h3><p>Every cycle ends in a single mission. Verb-first. Done-when clear. Sized so it can finish today.</p></article>
-        <article class="tile glass reveal-ready"><h3>No terminal dead ends</h3><p>If the exact destination cannot be guaranteed, Nexi still produces an intent-preserving next step.</p></article>
+      <div class="inner-grid three doctrine-grid">
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Diagnosis before advice</h3><p>Nexi names what is actually going on before it prescribes. Generic encouragement is treated as noise.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>One move, not a dump</h3><p>Every cycle ends in a single mission. Verb-first. Done-when clear. Sized so it can finish today.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>No terminal dead ends</h3><p>If the exact destination cannot be guaranteed, Nexi still produces an intent-preserving next step.</p></article>
       </div>
 
       <div class="inner-cta">
@@ -140,11 +170,14 @@
   <script src="app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('#intel-lenses .lens-meter').forEach((meter) => {
+        setTimeout(() => meter.classList.add('assembled'), 120 + parseInt(meter.dataset.delay || '0', 10));
+      });
       document.querySelectorAll('#loop-rail .loop-row').forEach((row) => {
-        setTimeout(() => row.classList.add('assembled'), 200 + parseInt(row.dataset.delay || '0', 10));
+        setTimeout(() => row.classList.add('assembled'), 420 + parseInt(row.dataset.delay || '0', 10));
       });
       document.querySelectorAll('#cap-grid .cap-cell').forEach((cell) => {
-        setTimeout(() => cell.classList.add('assembled'), 780 + parseInt(cell.dataset.delay || '0', 10));
+        setTimeout(() => cell.classList.add('assembled'), 980 + parseInt(cell.dataset.delay || '0', 10));
       });
     });
   </script>
