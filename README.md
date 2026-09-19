@@ -4,18 +4,17 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (18 Sep 2026)
+## Status (19 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (18 Sep)
-Highest-priority unfinished piece from 17 Sep plan: **Sample Result + Journey desktop lock surface**.
+### Today (19 Sep)
+Highest-priority unfinished piece from 18 Sep plan: **Intelligence desktop density / lock surface**.
 
-- Shared `lock-surface.css` so Sample and Journey use the same glass lock as Experience
-- Sample Result now loads `experience-result.css` + inner-mobile + OG tags + viewport-fit
-- Journey live chapter renders the full diagnosis (lenses, diag grid, mission, belief) instead of a thin summary
-- Same staggered assemble choreography as Experience / Sample
+- Intelligence now loads `lock-surface.css` + `experience-result.css` so doctrine tiles and the operating-loop card match Experience / Sample / Journey
+- Triple-lens collision meters (Prestige · Wealth · Soul) assemble on the Intelligence lock card
+- Viewport-fit, OG tags, active nav on Intelligence
 - Waitlist still stores **name + email only**
 - OG raster PNG still blocked (GitHub file tools are text-only); live OG remains `assets/og-share.svg`
 
@@ -25,7 +24,7 @@ Highest-priority unfinished piece from 17 Sep plan: **Sample Result + Journey de
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Intelligence page desktop density pass so doctrine tiles match the lock surface. Revisit binary OG PNG if a non-text push path appears.
+Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Blueprint doctrine-grid desktop density to match the Intelligence lock. Revisit binary OG PNG if a non-text push path appears.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
