@@ -1,4 +1,4 @@
-/* Shared lock surface — Sample, Journey, Intelligence match Experience */
+/* Shared lock surface — Sample, Journey, Intelligence, Blueprint match Experience */
 .lock-surface {
   position: relative;
   overflow: hidden;
@@ -14,12 +14,14 @@
 }
 .sample-card.lock-surface,
 .journey-lock,
-.intel-lock {
+.intel-lock,
+.blueprint-lock {
   padding: 1.35rem 1.4rem 1.45rem;
 }
 .sample-card .lens-collision,
 .journey-lock .lens-collision,
-.intel-lock .lens-collision {
+.intel-lock .lens-collision,
+.blueprint-lock .lens-collision {
   margin-top: 0.2rem;
 }
 .sample-card .diag-grid,
@@ -43,22 +45,26 @@
   gap: 0.5rem;
 }
 
-.intel-lock {
+.intel-lock,
+.blueprint-lock {
   margin-top: 2.2rem;
   padding: 1.55rem 1.6rem 1.65rem;
   background: linear-gradient(165deg, rgba(45,212,191,.08), rgba(8,12,18,.55));
   border: 1px solid rgba(45,212,191,.22);
   box-shadow: 0 24px 50px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
 }
-.intel-heading {
+.intel-heading,
+.blueprint-heading {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   margin-bottom: .35rem;
 }
-.intel-lead {
+.intel-lead,
+.blueprint-lead {
   margin-top: 0;
   margin-bottom: 1.15rem;
 }
-.intel-lock .flow {
+.intel-lock .flow,
+.blueprint-lock .flow {
   margin-top: 1.15rem;
 }
 .intel-lock .cap-grid {
@@ -70,45 +76,62 @@
   backdrop-filter: blur(14px);
   border-radius: 16px;
 }
-.intel-lock .lens-meter {
+.intel-lock .lens-meter,
+.blueprint-lock .lens-meter {
   opacity: 0;
   transform: translateY(14px) scale(.98);
   transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);
 }
-.intel-lock .lens-meter.assembled {
+.intel-lock .lens-meter.assembled,
+.blueprint-lock .lens-meter.assembled {
   opacity: 1;
   transform: none;
 }
-.intel-lock .lens-meter .k {
+.intel-lock .lens-meter .k,
+.blueprint-lock .lens-meter .k {
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 0.28rem;
 }
-.intel-lock .lens-meter .v {
+.intel-lock .lens-meter .v,
+.blueprint-lock .lens-meter .v {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.35rem;
   color: var(--gold);
   margin-bottom: 0.55rem;
 }
-.intel-lock .lens-meter p {
+.intel-lock .lens-meter p,
+.blueprint-lock .lens-meter p {
   margin-top: 0.55rem;
   font-size: 0.8rem;
   color: var(--muted);
   line-height: 1.45;
 }
-.intel-lock .bar-track {
+.intel-lock .bar-track,
+.blueprint-lock .bar-track {
   height: 3px;
   border-radius: 99px;
   background: rgba(255,255,255,.08);
   overflow: hidden;
 }
-.intel-lock .bar-fill {
+.intel-lock .bar-fill,
+.blueprint-lock .bar-fill {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #7EEAE0, #E8D5B5);
   box-shadow: 0 0 12px rgba(45,212,191,.35);
+}
+.blueprint-lock .track-grid {
+  margin-top: 1.25rem;
+}
+.blueprint-lock .track-cell {
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.32));
+  backdrop-filter: blur(14px);
+}
+.blueprint-lock .first-move {
+  margin-top: 0.35rem;
 }
 .doctrine-grid {
   margin-top: 2.2rem;
@@ -129,7 +152,8 @@
   }
   .sample-card.lock-surface,
   .journey-lock,
-  .intel-lock {
+  .intel-lock,
+  .blueprint-lock {
     padding: 1.55rem 1.7rem 1.65rem;
   }
   .sample-title {
@@ -161,7 +185,8 @@
 @media (max-width: 900px) {
   .sample-card.lock-surface,
   .journey-lock,
-  .intel-lock {
+  .intel-lock,
+  .blueprint-lock {
     padding: 1.15rem 1.05rem 1.25rem;
   }
 }

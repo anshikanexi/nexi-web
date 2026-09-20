@@ -4,17 +4,17 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (19 Sep 2026)
+## Status (20 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (19 Sep)
-Highest-priority unfinished piece from 18 Sep plan: **Intelligence desktop density / lock surface**.
+### Today (20 Sep)
+Highest-priority unfinished piece from 19 Sep plan: **Blueprint desktop density / lock surface**.
 
-- Intelligence now loads `lock-surface.css` + `experience-result.css` so doctrine tiles and the operating-loop card match Experience / Sample / Journey
-- Triple-lens collision meters (Prestige · Wealth · Soul) assemble on the Intelligence lock card
-- Viewport-fit, OG tags, active nav on Intelligence
+- Blueprint now loads `lock-surface.css` + `experience-result.css` so the sample engineering card and doctrine tiles match Intelligence / Experience / Sample / Journey
+- Triple-lens collision meters (Prestige · Wealth · Soul) assemble on the Blueprint lock card before the track grid
+- Viewport-fit, OG tags, active nav on Blueprint
 - Waitlist still stores **name + email only**
 - OG raster PNG still blocked (GitHub file tools are text-only); live OG remains `assets/og-share.svg`
 
@@ -24,7 +24,7 @@ Highest-priority unfinished piece from 18 Sep plan: **Intelligence desktop densi
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Blueprint doctrine-grid desktop density to match the Intelligence lock. Revisit binary OG PNG if a non-text push path appears.
+Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. How It Works desktop density to match Blueprint / Intelligence lock language. Revisit binary OG PNG if a non-text push path appears.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)

@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Blueprint — Nexi Life OS</title>
   <meta name="description" content="Nexi engineers your optimal path from where you are today. Prestige, Wealth, Soul tracks. One executable next step." />
   <meta name="theme-color" content="#050A12" />
+  <meta property="og:title" content="Blueprint — Nexi Life OS" />
+  <meta property="og:description" content="Live engineering document: three tracks, honest constraints, one executable step." />
+  <meta property="og:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,6 +18,8 @@
   <link rel="stylesheet" href="cinematic-patch.css" />
   <link rel="stylesheet" href="inner.css" />
   <link rel="stylesheet" href="inner-mobile.css" />
+  <link rel="stylesheet" href="experience-result.css" />
+  <link rel="stylesheet" href="lock-surface.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -69,14 +76,36 @@
         <span class="doctrine-chip">Intent-preserving paths</span>
         <span class="doctrine-chip">Highest-probability progress</span>
       </div>
-      <div class="assembly-card glass" id="assembly-root" style="margin-top:2.2rem">
+      <div class="assembly-card glass lock-surface blueprint-lock" id="assembly-root">
         <p class="kicker">Sample blueprint · locked</p>
-        <h2 style="font-size:clamp(1.55rem,3vw,1.95rem);margin-bottom:.4rem">Ship a paid AI side project in 90 days</h2>
-        <p class="lead" style="margin-top:0;margin-bottom:1.4rem">Engineered from current skills, hours free, and zero existing customers. Prestige secondary until first revenue proof.</p>
+        <h2 class="blueprint-heading">Ship a paid AI side project in 90 days</h2>
+        <p class="lead blueprint-lead">Engineered from current skills, hours free, and zero existing customers. Prestige secondary until first revenue proof.</p>
+
+        <div class="lens-collision" id="bp-lenses">
+          <div class="lens-meter" data-delay="0">
+            <div class="k">Prestige</div>
+            <div class="v">Proof after pay</div>
+            <div class="bar-track"><div class="bar-fill" style="width:54%"></div></div>
+            <p>Public write-up only after first dollar. Artifacts wait on demand.</p>
+          </div>
+          <div class="lens-meter primary" data-delay="80">
+            <div class="k">Wealth · primary</div>
+            <div class="v">Demand</div>
+            <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+            <p>Zero customers. Distribution is the named bottleneck.</p>
+          </div>
+          <div class="lens-meter" data-delay="160">
+            <div class="k">Soul</div>
+            <div class="v">Sustainable load</div>
+            <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
+            <p>Protect the 90-minute block. No feature rabbit holes.</p>
+          </div>
+        </div>
+
         <div class="flow" id="step-rail">
           <div class="step-row flow-step" data-delay="0"><div class="step-dot"><span></span></div><div class="step-body"><strong>Initialize core goal</strong><span> North star pressure-tested into one concrete destination</span></div></div>
           <div class="step-row flow-step" data-delay="80"><div class="step-dot"><span></span></div><div class="step-body"><strong>Build life areas</strong><span> Prestige · Wealth · Soul scored against the goal</span></div></div>
-          <div class="step-row flow-step" data-delay="160"><div class="step-dot"><span></span></div><div class="step-body"><strong>Map priorities & constraints</strong><span> Time, money, health, support — honest, not aspirational</span></div></div>
+          <div class="step-row flow-step" data-delay="160"><div class="step-dot"><span></span></div><div class="step-body"><strong>Map priorities &amp; constraints</strong><span> Time, money, health, support — honest, not aspirational</span></div></div>
           <div class="step-row flow-step" data-delay="240"><div class="step-dot"><span></span></div><div class="step-body"><strong>Balance the three tracks</strong><span> Concrete steps per engine, ordered from today outward</span></div></div>
           <div class="step-row flow-step" data-delay="320"><div class="step-dot"><span></span></div><div class="step-body"><strong>Design the day</strong><span> Single highest-leverage action finishable before midnight</span></div></div>
         </div>
@@ -96,13 +125,13 @@
         </div>
       </div>
       <p class="kicker" style="margin-top:3rem">Doctrine that runs the engine</p>
-      <div class="inner-grid three">
-        <article class="tile glass reveal-ready"><h3>Never dismiss ambition</h3><p>Nexi never opens with “unrealistic.” It engineers from reality while protecting the intent of the dream.</p></article>
-        <article class="tile glass reveal-ready"><h3>Optimal = honest probability</h3><p>The path chosen is the highest-probability route under actual constraints — time, money, skill, energy.</p></article>
-        <article class="tile glass reveal-ready"><h3>No terminal dead ends</h3><p>If the exact destination cannot be guaranteed, Nexi still produces an intent-preserving next step.</p></article>
-        <article class="tile glass reveal-ready"><h3>One executable today</h3><p>Every blueprint ends in a single action finishable today. Verb-first. Done-when clear.</p></article>
-        <article class="tile glass reveal-ready"><h3>Three engines, one graph</h3><p>Prestige, Wealth, and Soul are scored together. Bottlenecks surface where the engines collide.</p></article>
-        <article class="tile glass reveal-ready"><h3>Memory that upgrades the path</h3><p>Failed strategies and wins land in the life model. Tomorrow’s blueprint already knows what broke.</p></article>
+      <div class="inner-grid three doctrine-grid">
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Never dismiss ambition</h3><p>Nexi never opens with “unrealistic.” It engineers from reality while protecting the intent of the dream.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Optimal = honest probability</h3><p>The path chosen is the highest-probability route under actual constraints — time, money, skill, energy.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>No terminal dead ends</h3><p>If the exact destination cannot be guaranteed, Nexi still produces an intent-preserving next step.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>One executable today</h3><p>Every blueprint ends in a single action finishable today. Verb-first. Done-when clear.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Three engines, one graph</h3><p>Prestige, Wealth, and Soul are scored together. Bottlenecks surface where the engines collide.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Memory that upgrades the path</h3><p>Failed strategies and wins land in the life model. Tomorrow’s blueprint already knows what broke.</p></article>
       </div>
       <div class="inner-cta">
         <a href="experience.html" class="btn">Experience the diagnosis</a>
@@ -128,13 +157,16 @@
   <script src="app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('#bp-lenses .lens-meter').forEach((meter) => {
+        setTimeout(() => meter.classList.add('assembled'), 80 + parseInt(meter.dataset.delay || '0', 10));
+      });
       document.querySelectorAll('#step-rail .step-row').forEach((row) => {
-        setTimeout(() => row.classList.add('assembled'), 220 + parseInt(row.dataset.delay||'0',10));
+        setTimeout(() => row.classList.add('assembled'), 420 + parseInt(row.dataset.delay||'0',10));
       });
       document.querySelectorAll('#track-grid .track-cell').forEach((cell) => {
-        setTimeout(() => cell.classList.add('assembled'), 720 + parseInt(cell.dataset.delay||'0',10));
+        setTimeout(() => cell.classList.add('assembled'), 920 + parseInt(cell.dataset.delay||'0',10));
       });
-      setTimeout(() => document.getElementById('first-move').classList.add('assembled'), 1150);
+      setTimeout(() => document.getElementById('first-move').classList.add('assembled'), 1280);
     });
   </script>
 </body>
