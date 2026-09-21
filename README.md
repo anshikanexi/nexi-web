@@ -4,17 +4,18 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (20 Sep 2026)
+## Status (21 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (20 Sep)
-Highest-priority unfinished piece from 19 Sep plan: **Blueprint desktop density / lock surface**.
+### Today (21 Sep)
+Highest-priority unfinished piece from 20 Sep plan: **How It Works desktop density / lock surface**.
 
-- Blueprint now loads `lock-surface.css` + `experience-result.css` so the sample engineering card and doctrine tiles match Intelligence / Experience / Sample / Journey
-- Triple-lens collision meters (Prestige · Wealth · Soul) assemble on the Blueprint lock card before the track grid
-- Viewport-fit, OG tags, active nav on Blueprint
+- How now loads `lock-surface.css` + `experience-result.css` so the protocol card matches Intelligence / Blueprint / Experience / Sample / Journey
+- Triple-lens collision meters assemble before the Investigate → Lock → Adapt rail
+- Capability cells (Ask / Act / Mission / Graph) assemble after the rail
+- Viewport-fit, OG tags, doctrine tiles, active nav on How
 - Waitlist still stores **name + email only**
 - OG raster PNG still blocked (GitHub file tools are text-only); live OG remains `assets/og-share.svg`
 
@@ -24,7 +25,7 @@ Highest-priority unfinished piece from 19 Sep plan: **Blueprint desktop density 
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. How It Works desktop density to match Blueprint / Intelligence lock language. Revisit binary OG PNG if a non-text push path appears.
+Why Nexi desktop density / lock language to match How + Intelligence. Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
