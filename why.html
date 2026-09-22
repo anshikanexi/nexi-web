@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Why Nexi — Life Operating System</title>
   <meta name="description" content="Why Nexi exists: one intelligence across Prestige, Soul & Wealth. Diagnosis first. One next move. Memory that compounds." />
   <meta name="theme-color" content="#050A12" />
+  <meta property="og:title" content="Why Nexi — Life Operating System" />
+  <meta property="og:description" content="You do not need another tracker. You need a diagnosis that names the bottleneck and locks one move." />
+  <meta property="og:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,6 +18,8 @@
   <link rel="stylesheet" href="cinematic-patch.css" />
   <link rel="stylesheet" href="inner.css" />
   <link rel="stylesheet" href="inner-mobile.css" />
+  <link rel="stylesheet" href="experience-result.css" />
+  <link rel="stylesheet" href="lock-surface.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -64,6 +71,12 @@
       <p class="kicker">The gap</p>
       <h1>You don’t need another tracker.<br/><em>You need a diagnosis.</em></h1>
       <p class="lead">Goals, notes, and habit apps already exist. What does not exist is a single intelligence that sees how Prestige, Soul, and Wealth collide — then refuses the path that wastes a year.</p>
+      <div class="chips">
+        <span>Diagnosis first</span>
+        <span>One bottleneck</span>
+        <span>One move</span>
+        <span>Memory</span>
+      </div>
 
       <div class="inner-grid">
         <article class="tile glass old reveal-ready">
@@ -86,28 +99,66 @@
         </article>
       </div>
 
-      <div class="tile glass reveal-ready thesis-panel">
-        <p class="kicker">Thesis</p>
-        <h2>The product is the shortest legitimate route.</h2>
-        <p class="lead thesis-lead">Nexi is calibrated against two failures: shortcuts that look productive, and slow paths that feel safe while the real constraint sits unused.</p>
-        <div class="inner-grid" id="thesis-grid">
-          <div class="thesis" data-delay="0"><div class="k">Diagnosis before advice</div><div class="v">Name what is actually going on. Encouragement without a bottleneck is noise.</div></div>
-          <div class="thesis" data-delay="90"><div class="k">One move, not a dump</div><div class="v">Verb-first. 15–45 minutes. Evidence from a finished action, not a longer list.</div></div>
-          <div class="thesis" data-delay="180"><div class="k">Triple lens, one collapse</div><div class="v">Prestige, Wealth, Soul scored together. Only one engine is primary today.</div></div>
-          <div class="thesis" data-delay="270"><div class="k">Memory that compounds</div><div class="v">Tomorrow already knows what failed, what worked, and which belief is still unproven.</div></div>
+      <div class="tile glass lock-surface why-lock reveal-ready" id="why-lock">
+        <p class="kicker">Thesis · live</p>
+        <h2 class="why-heading">The product is the shortest legitimate route.</h2>
+        <p class="lead why-lead">Nexi is calibrated against two failures: shortcuts that look productive, and slow paths that feel safe while the real constraint sits unused.</p>
+
+        <div class="lens-collision" id="why-lenses">
+          <div class="lens-meter" data-delay="0">
+            <div class="k">Prestige</div>
+            <div class="v">Proof</div>
+            <div class="bar-track"><div class="bar-fill" style="width:76%"></div></div>
+            <p>Without Wealth, proof stays unpaid. Skill must become optionality.</p>
+          </div>
+          <div class="lens-meter" data-delay="80">
+            <div class="k">Wealth</div>
+            <div class="v">Demand</div>
+            <div class="bar-track"><div class="bar-fill" style="width:61%"></div></div>
+            <p>Without Soul, cash plans die on Tuesday. Capacity is a constraint.</p>
+          </div>
+          <div class="lens-meter primary" data-delay="160">
+            <div class="k">Soul · primary</div>
+            <div class="v">Capacity</div>
+            <div class="bar-track"><div class="bar-fill" style="width:54%"></div></div>
+            <p>Without Prestige, reflection has no optionality. Name the collapse first.</p>
+          </div>
+        </div>
+
+        <div class="flow" id="why-rail">
+          <div class="flow-step loop-row" data-delay="0">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Diagnosis before advice</strong><p>Name what is actually going on. Encouragement without a bottleneck is noise.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="90">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>One move, not a dump</strong><p>Verb-first. 15–45 minutes. Evidence from a finished action, not a longer list.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="180">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Triple lens, one collapse</strong><p>Prestige, Wealth, Soul scored together. Only one engine is primary today.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="270">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Memory that compounds</strong><p>Tomorrow already knows what failed, what worked, and which belief is still unproven.</p></div>
+          </div>
+        </div>
+
+        <div class="inner-grid cap-grid" id="why-cap">
+          <div class="cap-cell" data-delay="0"><div class="ck">Tracker</div><div class="cv">Activity theater</div><p>Logs motion. Never names the constraint that would change the week.</p></div>
+          <div class="cap-cell" data-delay="100"><div class="ck">Chatbot</div><div class="cv">Endless plan</div><p>Answers without locking a move. Tomorrow still starts from zero.</p></div>
+          <div class="cap-cell" data-delay="200"><div class="ck">Coach</div><div class="cv">One lens</div><p>Guesses from prestige or mood. Misses the collision that actually stalls you.</p></div>
+          <div class="cap-cell" data-delay="300"><div class="ck">Nexi</div><div class="cv">Named bottleneck</div><p>Three engines. One primary. One mission that produces evidence today.</p></div>
         </div>
       </div>
 
-      <p class="kicker section-kicker">Where systems break</p>
-      <h2>The bottleneck is almost never where you are looking.</h2>
-      <p class="lead">Prestige without Wealth becomes unpaid proof. Wealth without Soul becomes a schedule that dies on Tuesday. Soul without Prestige becomes reflection with no optionality.</p>
-      <div class="inner-grid three lens-tiles">
-        <article class="tile glass reveal-ready"><span class="pulse-dot"></span><h3>Prestige</h3><p>Skill, artifacts, reputation. The evidence that compounds into optionality — not the appearance of being busy.</p></article>
-        <article class="tile glass reveal-ready"><span class="pulse-dot"></span><h3>Wealth</h3><p>Cash, leverage, this week’s real constraints. What is actually possible — not what a vision board pretends.</p></article>
-        <article class="tile glass reveal-ready"><span class="pulse-dot"></span><h3>Soul</h3><p>Energy, meaning, recovery. The identity load that decides whether execution survives the calendar.</p></article>
-      </div>
-
       <blockquote class="quote-card glass reveal-ready">The interface is secondary. The operating model is the product.</blockquote>
+
+      <div class="inner-grid three doctrine-grid">
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Prestige</h3><p>Skill, artifacts, reputation. The evidence that compounds into optionality — not the appearance of being busy.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Wealth</h3><p>Cash, leverage, this week’s real constraints. What is actually possible — not what a vision board pretends.</p></article>
+        <article class="tile glass doctrine-tile reveal-ready"><h3>Soul</h3><p>Energy, meaning, recovery. The identity load that decides whether execution survives the calendar.</p></article>
+      </div>
 
       <div class="inner-cta">
         <a href="experience.html" class="btn">Experience the diagnosis</a>
@@ -135,9 +186,14 @@
   <script src="app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('#thesis-grid .thesis').forEach((el) => {
-        const d = parseInt(el.dataset.delay || '0', 10);
-        setTimeout(() => el.classList.add('assembled'), 280 + d);
+      document.querySelectorAll('#why-lenses .lens-meter').forEach((meter) => {
+        setTimeout(() => meter.classList.add('assembled'), 120 + parseInt(meter.dataset.delay || '0', 10));
+      });
+      document.querySelectorAll('#why-rail .loop-row').forEach((row) => {
+        setTimeout(() => row.classList.add('assembled'), 420 + parseInt(row.dataset.delay || '0', 10));
+      });
+      document.querySelectorAll('#why-cap .cap-cell').forEach((cell) => {
+        setTimeout(() => cell.classList.add('assembled'), 980 + parseInt(cell.dataset.delay || '0', 10));
       });
     });
   </script>

@@ -4,18 +4,18 @@ Glassmorphism-heavy, motion-rich, product-grade site for Nexi Life OS.
 
 **Live:** https://anshikanexi.github.io/nexi-web/
 
-## Status (21 Sep 2026)
+## Status (22 Sep 2026)
 
 ### Live
 GitHub Pages deploys on every push to `main`.
 
-### Today (21 Sep)
-Highest-priority unfinished piece from 20 Sep plan: **How It Works desktop density / lock surface**.
+### Today (22 Sep)
+Highest-priority unfinished piece from 21 Sep plan: **Why Nexi desktop density / lock language**.
 
-- How now loads `lock-surface.css` + `experience-result.css` so the protocol card matches Intelligence / Blueprint / Experience / Sample / Journey
-- Triple-lens collision meters assemble before the Investigate → Lock → Adapt rail
-- Capability cells (Ask / Act / Mission / Graph) assemble after the rail
-- Viewport-fit, OG tags, doctrine tiles, active nav on How
+- Why now loads `lock-surface.css` + `experience-result.css` so the thesis card matches How / Intelligence / Blueprint / Experience
+- Triple-lens collision meters assemble (Soul named primary on this page — the usual missed constraint)
+- Thesis rail + Tracker / Chatbot / Coach / Nexi capability cells assemble after the meters
+- Viewport-fit, OG tags, doctrine tiles for Prestige / Wealth / Soul, active nav on Why
 - Waitlist still stores **name + email only**
 - OG raster PNG still blocked (GitHub file tools are text-only); live OG remains `assets/og-share.svg`
 
@@ -25,7 +25,7 @@ Highest-priority unfinished piece from 20 Sep plan: **How It Works desktop densi
 - **Experience Nexi** — cinematic console + live Mission Zero + last-lock restore + post-diagnosis reserve
 
 ### Tomorrow
-Why Nexi desktop density / lock language to match How + Intelligence. Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
+Referral / Leaderboard lock-surface density to match Why + How (circle protocol as a product surface, not a table). Smoke a second waitlist email through a live `?ref=` against `credit_circle_invite` if a test address is provided. Revisit binary OG PNG if a non-text push path appears.
 
 ### Supabase
 - Project: `wzygcmsikopblntwdqsv` (existing only)
