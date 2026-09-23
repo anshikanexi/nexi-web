@@ -9,6 +9,9 @@
   <meta property="og:title" content="Join the Nexi early circle" />
   <meta property="og:description" content="One intelligence. Prestige, Wealth, Soul. Invite-only waitlist." />
   <meta property="og:url" content="https://anshikanexi.github.io/nexi-web/referral.html" />
+  <meta property="og:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -16,6 +19,8 @@
   <link rel="stylesheet" href="cinematic-patch.css" />
   <link rel="stylesheet" href="inner.css" />
   <link rel="stylesheet" href="inner-mobile.css" />
+  <link rel="stylesheet" href="experience-result.css" />
+  <link rel="stylesheet" href="lock-surface.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -66,8 +71,40 @@
       <p class="kicker">Early circle</p>
       <h1>Invite the right people.<br/><em>Compound the network.</em></h1>
       <p class="lead">Nexi opens in waves. Referrals accelerate access for people who will actually use the OS — not collect another login.</p>
-      <div class="ref-grid">
-        <div class="share-card glass reveal-ready">
+      <div class="chips">
+        <span>One code</span>
+        <span>Alias only</span>
+        <span>Verified converts</span>
+        <span>Quality over volume</span>
+      </div>
+
+      <div class="tile glass lock-surface ref-lock reveal-ready" id="ref-lock">
+        <p class="kicker">Circle protocol · live</p>
+        <h2 class="ref-heading">The circle is a product surface, not a table.</h2>
+        <p class="lead ref-lead">Claim a code from the waitlist email. Share it with builders who will run Mission Zero. Rank only moves on a verified convert.</p>
+
+        <div class="lens-collision" id="ref-lenses">
+          <div class="lens-meter" data-delay="0">
+            <div class="k">Claim</div>
+            <div class="v">Identity</div>
+            <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+            <p>One code per waitlist email. Alias on the board. Email stays off it.</p>
+          </div>
+          <div class="lens-meter primary" data-delay="80">
+            <div class="k">Share · primary</div>
+            <div class="v">Signal</div>
+            <div class="bar-track"><div class="bar-fill" style="width:88%"></div></div>
+            <p>The move is a precise invite — not a blast. Send it to someone who will actually lock a diagnosis.</p>
+          </div>
+          <div class="lens-meter" data-delay="160">
+            <div class="k">Convert</div>
+            <div class="v">Evidence</div>
+            <div class="bar-track"><div class="bar-fill" style="width:54%"></div></div>
+            <p>Rank only increments when they join the waitlist through your code. Self-referrals die here.</p>
+          </div>
+        </div>
+
+        <div class="share-card" style="margin-top:1.35rem">
           <h2>Your invite link</h2>
           <p class="lead" style="margin-top:.4rem;margin-bottom:1.2rem">Generate a personal code from the email you used on the waitlist. Only a display alias is stored with the code.</p>
           <div class="code-block">
@@ -89,12 +126,40 @@
             <button type="button" class="btn" id="btn-copy-msg">Copy invite message</button>
           </article>
         </div>
-        <div class="perk-stack">
-          <article class="perk tile glass reveal-ready"><span class="num">01</span><h3>Priority lane</h3><p>Successful invites move you forward in the launch sequence. Quality over volume.</p></article>
-          <article class="perk tile glass reveal-ready"><span class="num">02</span><h3>Visible on Leaderboard</h3><p>Ranks update when someone joins the waitlist through your link.</p></article>
-          <article class="perk tile glass reveal-ready"><span class="num">03</span><h3>Founding context</h3><p>Early circle members shape doctrine feedback before the product hardens.</p></article>
+
+        <div class="flow" id="ref-rail">
+          <div class="flow-step loop-row" data-delay="0">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Waitlist first</strong><p>Name + email only. The circle cannot exist without a real seat.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="90">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Claim one code</strong><p>Deterministic from that email. Alias is the only public face.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="180">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Share a precise invite</strong><p>One builder who will run Experience Nexi beats ten collected logins.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="270">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Convert writes the board</strong><p>Verified waitlist join through your <code>?ref=</code>. Abuse resets rank.</p></div>
+          </div>
+        </div>
+
+        <div class="inner-grid cap-grid" id="ref-cap">
+          <div class="cap-cell" data-delay="0"><div class="ck">Farm</div><div class="cv">Paid traffic</div><p>Bulk codes and scraped lists. The circle treats this as noise and resets it.</p></div>
+          <div class="cap-cell" data-delay="100"><div class="ck">Broadcast</div><div class="cv">Empty reach</div><p>A blast with no constraint. Collects emails that never lock a diagnosis.</p></div>
+          <div class="cap-cell" data-delay="200"><div class="ck">Collect</div><div class="cv">Login theater</div><p>Another waitlist badge. No evidence that the person will use the OS.</p></div>
+          <div class="cap-cell" data-delay="300"><div class="ck">Circle</div><div class="cv">Named convert</div><p>One code. One alias. Rank only when they join through your link.</p></div>
         </div>
       </div>
+
+      <div class="perk-stack" style="margin-top:2rem">
+        <article class="perk tile glass doctrine-tile reveal-ready"><span class="num">01</span><h3>Priority lane</h3><p>Successful invites move you forward in the launch sequence. Quality over volume.</p></article>
+        <article class="perk tile glass doctrine-tile reveal-ready"><span class="num">02</span><h3>Visible on Leaderboard</h3><p>Ranks update when someone joins the waitlist through your link.</p></article>
+        <article class="perk tile glass doctrine-tile reveal-ready"><span class="num">03</span><h3>Founding context</h3><p>Early circle members shape doctrine feedback before the product hardens.</p></article>
+      </div>
+
       <section class="rules glass reveal-ready" style="margin-top:2rem">
         <h3>Rules of the circle</h3>
         <ul class="tile new" style="margin-top:.8rem">
@@ -120,6 +185,18 @@
   <script src="app.js"></script>
   <script>
 (function () {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#ref-lenses .lens-meter').forEach((meter) => {
+      setTimeout(() => meter.classList.add('assembled'), 120 + parseInt(meter.dataset.delay || '0', 10));
+    });
+    document.querySelectorAll('#ref-rail .loop-row').forEach((row) => {
+      setTimeout(() => row.classList.add('assembled'), 420 + parseInt(row.dataset.delay || '0', 10));
+    });
+    document.querySelectorAll('#ref-cap .cap-cell').forEach((cell) => {
+      setTimeout(() => cell.classList.add('assembled'), 980 + parseInt(cell.dataset.delay || '0', 10));
+    });
+  });
+
   const linkEl = document.getElementById('ref-link');
   const nameEl = document.getElementById('ref-name');
   const emailEl = document.getElementById('ref-email');
