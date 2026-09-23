@@ -6,6 +6,11 @@
   <title>Leaderboard — Nexi</title>
   <meta name="description" content="Early circle ranks. Signal over noise. Who is compounding invites." />
   <meta name="theme-color" content="#050A12" />
+  <meta property="og:title" content="Nexi early circle — Leaderboard" />
+  <meta property="og:description" content="Ranks by verified waitlist conversions. Aliases only." />
+  <meta property="og:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://anshikanexi.github.io/nexi-web/assets/og-share.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -14,6 +19,8 @@
   <link rel="stylesheet" href="inner.css" />
   <link rel="stylesheet" href="leaderboard-live.css" />
   <link rel="stylesheet" href="inner-mobile.css" />
+  <link rel="stylesheet" href="experience-result.css" />
+  <link rel="stylesheet" href="lock-surface.css" />
 </head>
 <body>
   <header class="nav" id="nav">
@@ -64,12 +71,55 @@
       <p class="kicker">Signal</p>
       <h1>Early circle<br/><em>Leaderboard</em></h1>
       <p class="lead">Ranks by verified waitlist conversions from a unique invite code. Aliases only. No emails on this board.</p>
-      <div class="lb-meta">
-        <span class="chip-live"><span class="dot"></span> Live ranks</span>
-        <span class="chip-muted" id="lb-meta-note">Reading the circle…</span>
+
+      <div class="tile glass lock-surface lb-lock reveal-ready" id="lb-lock">
+        <p class="kicker">Board protocol · live</p>
+        <h2 class="lb-heading">Evidence first. Fabricated ranks never.</h2>
+        <p class="lead lb-lead">The board is a lock surface: signal in, alias public, verified invite as the only score that moves a row.</p>
+
+        <div class="lens-collision" id="lb-lenses">
+          <div class="lens-meter" data-delay="0">
+            <div class="k">Signal</div>
+            <div class="v">Live</div>
+            <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+            <p>Reads the circle table. Empty is honest. Errors never invent names.</p>
+          </div>
+          <div class="lens-meter" data-delay="80">
+            <div class="k">Alias</div>
+            <div class="v">Public face</div>
+            <div class="bar-track"><div class="bar-fill" style="width:66%"></div></div>
+            <p>Display name only. Waitlist email never lands here.</p>
+          </div>
+          <div class="lens-meter primary" data-delay="160">
+            <div class="k">Verified · primary</div>
+            <div class="v">Converts</div>
+            <div class="bar-track"><div class="bar-fill" style="width:48%"></div></div>
+            <p>Score = waitlist joins through a unique code. Self-referrals do not count.</p>
+          </div>
+        </div>
+
+        <div class="lb-meta">
+          <span class="chip-live"><span class="dot"></span> Live ranks</span>
+          <span class="chip-muted" id="lb-meta-note">Reading the circle…</span>
+        </div>
+        <div class="board" id="board" aria-live="polite"></div>
+
+        <div class="flow" id="lb-rail">
+          <div class="flow-step loop-row" data-delay="0">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>No placeholder names</strong><p>If the table is empty, the view says so. Invented ranks would poison the circle.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="90">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Alias, never email</strong><p>The waitlist remains name + email only. The board stores code, alias, count.</p></div>
+          </div>
+          <div class="flow-step loop-row" data-delay="180">
+            <div class="flow-mark"><span class="pulse-dot"></span></div>
+            <div><strong>Verified convert only</strong><p>Rank moves when someone joins through your link. Volume farms reset.</p></div>
+          </div>
+        </div>
       </div>
-      <div class="board" id="board" aria-live="polite"></div>
-      <p class="lead" style="margin-top:2rem">Display aliases only. Scores = verified waitlist conversions from a unique referral code. Abuse resets rank.</p>
+
       <div class="inner-cta">
         <a href="referral.html" class="btn">Get your invite link</a>
         <a href="index.html#waitlist" class="btn secondary">Join Waitlist</a>
@@ -85,5 +135,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
   <script src="leaderboard-live.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('#lb-lenses .lens-meter').forEach((meter) => {
+        setTimeout(() => meter.classList.add('assembled'), 120 + parseInt(meter.dataset.delay || '0', 10));
+      });
+      document.querySelectorAll('#lb-rail .loop-row').forEach((row) => {
+        setTimeout(() => row.classList.add('assembled'), 420 + parseInt(row.dataset.delay || '0', 10));
+      });
+    });
+  </script>
 </body>
 </html>
