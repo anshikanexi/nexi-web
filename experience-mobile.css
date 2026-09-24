@@ -1,0 +1,97 @@
+/* Experience — phone + keyboard surface. Does not touch desktop density. */
+@media (max-width: 900px) {
+  body.exp-chat-live .exp-copy {
+    display: none;
+  }
+  body.exp-chat-live .exp-page {
+    padding-top: calc(4.6rem + env(safe-area-inset-top));
+    padding-bottom: calc(0.4rem + env(safe-area-inset-bottom) + var(--kb-inset, 0px));
+  }
+  body.exp-chat-live .exp-layout {
+    gap: 0;
+  }
+  body.exp-chat-live .exp-card {
+    min-height: calc(100svh - 6.2rem - env(safe-area-inset-top) - env(safe-area-inset-bottom) - var(--kb-inset, 0px));
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.85rem;
+  }
+  body.exp-chat-live #phase-chat {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+  body.exp-chat-live .thread {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+  }
+  body.exp-chat-live .composer {
+    position: sticky;
+    bottom: calc(0.15rem + env(safe-area-inset-bottom) + var(--kb-inset, 0px));
+    margin: 0 -0.35rem;
+    padding: 0.55rem 0.35rem 0.15rem;
+    background: linear-gradient(180deg, rgba(5,10,18,0), rgba(5,10,18,0.88) 28%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  body.exp-chat-live .composer textarea {
+    min-height: 52px;
+    max-height: 132px;
+    line-height: 1.4;
+    border-radius: 16px;
+    background: rgba(0,0,0,.52);
+  }
+  body.exp-result-live .exp-copy .lead,
+  body.exp-result-live .side-orb {
+    display: none;
+  }
+  body.exp-result-live .exp-copy h1 {
+    font-size: clamp(1.55rem, 7vw, 2.05rem);
+    margin-bottom: 0;
+  }
+  body.exp-result-live .exp-copy .kicker {
+    margin-bottom: 0.35rem;
+  }
+
+  .exp-card.lock-surface {
+    box-shadow: 0 22px 48px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.06);
+    background: linear-gradient(165deg, rgba(255,255,255,.07), rgba(8,12,18,.5));
+  }
+
+  .claim-row .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  #phase-result .lens-collision {
+    gap: 0.45rem;
+  }
+  #phase-result .lens-meter {
+    padding: 0.72rem 0.8rem 0.78rem;
+  }
+  #phase-result .diag-cell .v {
+    font-size: 0.88rem;
+  }
+  #phase-result .mission-steps li {
+    font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 700px) {
+  body.exp-chat-live .status-bar,
+  body.exp-chat-live #chat-sub {
+    display: none;
+  }
+  body.exp-chat-live .exp-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.exp-chat-live .composer {
+    backdrop-filter: none;
+  }
+}
