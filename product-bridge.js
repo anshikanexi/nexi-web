@@ -1,6 +1,7 @@
 (function () {
   injectCinematicNavCss();
   bootExperienceExtras();
+  bootHomeLock();
 
   function injectCinematicNavCss() {
     if (document.getElementById('cinematic-nav-css')) return;
@@ -10,7 +11,7 @@
     css.textContent = [
       '.nav-toggle{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);backdrop-filter:blur(16px);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}',
       '.nav-toggle span{display:block;width:16px;height:1.5px;background:var(--gold);transition:transform .3s,opacity .3s}',
-      '.nav-backdrop{position:fixed;inset:0;z-index:30;background:rgba(5,10,18,.55);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s}',
+      '.nav-backdrop{position:fixed;inset:0;z-index:30;background:rgba(8,14,24,.55);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s}',
       'body.nav-open .nav-backdrop{opacity:1;pointer-events:auto}',
       'body.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}',
       'body.nav-open .nav-toggle span:nth-child(2){opacity:0}',
@@ -25,6 +26,25 @@
     if ([].some.call(document.scripts, function (s) { return (s.src || '').indexOf('experience-extras.js') !== -1; })) return;
     const s = document.createElement('script');
     s.src = 'experience-extras.js';
+    document.body.appendChild(s);
+  }
+
+  function ensureSheet(href) {
+    if (document.querySelector('link[href="' + href + '"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+
+  function bootHomeLock() {
+    if (!document.getElementById('waitlist')) return;
+    ensureSheet('lock-surface.css');
+    ensureSheet('experience-result.css');
+    ensureSheet('home-lock.css');
+    if ([].some.call(document.scripts, function (s) { return (s.src || '').indexOf('home-lock.js') !== -1; })) return;
+    const s = document.createElement('script');
+    s.src = 'home-lock.js';
     document.body.appendChild(s);
   }
 })();
