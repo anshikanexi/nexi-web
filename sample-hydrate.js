@@ -73,10 +73,17 @@
     const kicker = document.getElementById('sample-kicker');
     const status = document.querySelector('.sample-status span:last-child');
     const when = formatWhen(data.savedAt);
-    if (kicker) kicker.textContent = 'Diagnosis locked · your last live run';
-    if (status) status.textContent = when ? ('Locked on this device · ' + when) : 'Diagnosis locked · your last live run';
+    if (kicker) kicker.textContent = 'Diagnosis locked \u00b7 your last live run';
+    if (status) status.textContent = when ? ('Locked on this device \u00b7 ' + when) : 'Diagnosis locked \u00b7 your last live run';
     if (titleEl) {
-      titleEl.innerHTML = esc(a.title || data.title || 'Your next move');
+      const rawTitle = String(a.title || data.title || 'Your next move');
+      const parts = rawTitle.split(/\s+/);
+      if (parts.length > 3) {
+        titleEl.innerHTML = esc(parts.slice(0, parts.length - 2).join(' ')) +
+          '<br/><em>' + esc(parts.slice(-2).join(' ')) + '</em>';
+      } else {
+        titleEl.innerHTML = '<em>' + esc(rawTitle) + '</em>';
+      }
     }
     if (subEl) {
       subEl.textContent = 'Hydrated from your last Experience Nexi session on this device. Same triple-lens lock as the live engine.';
@@ -87,8 +94,8 @@
     const cells = [
       { k: 'Want', v: d.want, span: true },
       { k: "What's going on", v: d.whats_going_on, span: true },
-      { k: 'Primary lens', v: d.lens_label || d.lens || data.lens || '—' },
-      { k: 'Not doing today', v: d.not_doing_today || '—' }
+      { k: 'Primary lens', v: d.lens_label || d.lens || data.lens || '\u2014' },
+      { k: 'Not doing today', v: d.not_doing_today || '\u2014' }
     ];
     if (d.collapse) cells.push({ k: 'Where it collapses', v: d.collapse, span: true });
     if (d.better_path) cells.push({ k: 'Better path', v: d.better_path, span: true });
@@ -96,7 +103,7 @@
     const grid = document.getElementById('diag-grid');
     grid.innerHTML = cells.map(function (c, i) {
       return '<div class="diag-cell' + (c.span ? ' span2' : '') + '" data-delay="' + (i * 80) + '">' +
-        '<div class="k">' + esc(c.k) + '</div><div class="v">' + esc(c.v || '—') + '</div></div>';
+        '<div class="k">' + esc(c.k) + '</div><div class="v">' + esc(c.v || '\u2014') + '</div></div>';
     }).join('');
 
     const steps = Array.isArray(a.steps) ? a.steps : [];
@@ -107,7 +114,7 @@
       '<div class="mission-meta">' +
         '<span class="chip">' + esc(a.type || 'execute') + '</span>' +
         '<span class="chip">' + esc(String(a.est_minutes || 30)) + ' min</span>' +
-        '<span class="chip">Done when: ' + esc(a.done_when || '—') + '</span>' +
+        '<span class="chip">Done when: ' + esc(a.done_when || '\u2014') + '</span>' +
       '</div>' +
       (steps.length
         ? '<ul class="mission-steps" id="mission-steps">' + steps.map(function (s, i) {
@@ -119,7 +126,7 @@
     const line = data.belief || data.identity_line;
     if (belief) {
       belief.textContent = line
-        ? '“' + line + '”' + (data.tomorrow_focus ? ' · Tomorrow: ' + data.tomorrow_focus : '')
+        ? '\u201c' + line + '\u201d' + (data.tomorrow_focus ? ' \u00b7 Tomorrow: ' + data.tomorrow_focus : '')
         : belief.textContent;
     }
 
