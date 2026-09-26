@@ -149,6 +149,46 @@
   .home-lock .stats {
     grid-template-columns: 1fr;
   }
+  .home-lock .wait-form .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 420px) {
+  .home-lock {
+    padding: 1.05rem 0.92rem 1.1rem;
+    border-radius: 20px;
+  }
+  .home-lock .home-heading {
+    font-size: 1.48rem;
+    letter-spacing: -0.03em;
+  }
+  .home-lock .home-lead {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+  .home-lock .protocol {
+    gap: 0.4rem;
+  }
+  .home-lock .protocol span {
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    padding: 0.28rem 0.55rem;
+  }
+  .home-lock .lm-v {
+    font-size: 1.12rem;
+    word-break: break-word;
+  }
+  .home-lock .wait-form input {
+    height: 48px;
+    font-size: 16px;
+  }
+  .home-lock .stats > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.7rem;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-lock .lens-meter,
